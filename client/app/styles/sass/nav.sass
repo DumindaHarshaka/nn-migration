@@ -1,0 +1,53 @@
+nav
+  position: fixed
+  z-index: 1000
+  top: 0px
+  left: 0px
+  right: 0px
+  height: 80px
+  background: #fff
+  color: #000
+  @include display(flex)
+
+  @include justify-content(space-around)
+  @include align-items(center)
+
+  // display: flex
+  // justify-content: space-around
+  // align-items: center
+  border-bottom: rgb(224, 224, 224) 1px solid
+
+  .menu
+    height: 100%
+    @include display(flex)
+    @include align-items(center)
+    ul
+      @include display(flex)
+      //display: flex
+      .active
+        a
+          color: $nature_green
+      li
+        display: block
+        margin-right: 20px
+        font-weight: bold
+
+        a
+          text-decoration: none
+          color: inherit
+
+        &:hover
+          a
+            color: $nature_green
+
+  .logo
+    width: 200px
+    height: 100%
+
+    a
+      @include display(flex)
+      @include align-items(center)
+      height: 100%
+      img
+        height: 70%
+        width: auto

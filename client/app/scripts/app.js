@@ -15,9 +15,16 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngMap'
   ])
-  .config(function ($routeProvider) {
+  .controller('NavbarController', function ($scope,$location) {
+    $scope.getClass = function(path) {
+      //console.log($location.path().substr(0, path.length));
+      return ($location.path().substr(0, path.length) === path) ? 'active' : '';
+    }
+  })
+  .config(function ($routeProvider,$locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -29,7 +36,19 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/myroute', {
+        templateUrl: 'views/myroute.html',
+        controller: 'MyrouteCtrl',
+        controllerAs: 'myroute'
+      })
+      .when('/green-exchange', {
+        templateUrl: 'views/green-exchange.html',
+        controller: 'GreenExchangeCtrl',
+        controllerAs: 'greenExchange'
+      })
       .otherwise({
         redirectTo: '/'
       });
+
+      $locationProvider.html5Mode(true);
   });

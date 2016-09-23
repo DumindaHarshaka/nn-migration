@@ -26,7 +26,7 @@ module.exports = {
     //
     // });
     // All other routes should redirect to the index.html
-    app.route('/')
+    app.route('/*')
       .get((req, res) => {
         res.sendFile(path.join(__dirname + '/client/app/index.html'));
       });

@@ -1,0 +1,152 @@
+.green-ex-container 
+  .side-bar
+    .search
+      input(type="text", placeholder="Search the green exchange",ng-model="greenExchangeCtrl.message")
+        
+      input(type="button", name="name", value="Search")
+    hr
+    a(href="#", ng-click="greenExchange.doCollapse()") 
+      .add-new
+        .icon
+          img(src="/images/add_plant.png", alt="Post a new plant")
+        .text
+          h2 Post a new plant
+          p Post your plant and start exchanging 
+    .plant-info(ng-class="greenExchange.collapse ? 'collapse' : ''")
+      .form
+        form(name="plantForm")
+          label Plant name 
+          input(type="text", name="plantName",id="plantName",placeholder="Name of the plant" required)
+          
+          label Description
+          
+          textarea(name="description",id="description", rows="4", cols="40",placeholder="Description") 
+          
+          label Quantity 
+          
+          input(type="number",min="1",name="quantity",id="qty", placeholder="Quantity")
+          
+          label Location 
+          
+          input(id="loc" places-auto-complete size=80 ng-model="greenExchange.address" component-restrictions="{country:'lk'}" types="{{types}}" on-place-changed="greenExchange.placeChanged()" required)  
+      .map  
+        ng-map(class="map")
+      
+
+    hr
+    .filler
+  .new-posts
+    h1 34
+    p new posts
+        
+  .posts
+    .post
+      .owner
+        .image
+          img(class='img',src='/images/avatar.svg')
+        .details
+          h2(class='name')  Heshan Malinda 
+          p(class='action') has posted a new plant on 
+           span#marketplace Marketplace
+          p(class='date') 16/10/2016 06:34 pm
+      .o-divider 
+      .item
+        .image
+          img(src='/images/plant.png')  
+        .details
+          h3(class='name') Waldel (Dillenia triquetra)
+          p(class='status') Staus: Critically endangered
+          p(class='discription') Endemic to Sri Lanka
+        //- .status
+        //-   h3(class='current-status')   
+      
+      .market-item-bids
+        ul(class='bids-list')
+          li(class='bid-item')
+            .bidder
+              .image
+                img(src='/images/avatar.svg')      
+            .details
+              h3.name Duminda Harshaka 
+                small.action has bid on this plant with
+              h3.value Dorana (Dipterocarpus glandulosus)
+              p.discription Critically endangered, endemic to Sri Lanka
+          li(class='bid-item')
+            .bidder
+              .image
+                img(src='/images/avatar.svg')      
+            .details
+              h3.name Duminda Harshaka 
+                small.action has bid on this plant with
+              h3.value Dorana (Dipterocarpus glandulosus)
+              p.discription Critically endangered, endemic to Sri Lanka    
+          li(class='bid-item')
+            .bidder
+              .image
+                img(src='/images/avatar.svg')      
+            .details
+              h3.name Duminda Harshaka 
+                small.action has bid on this plant with
+              h3.value Dorana (Dipterocarpus glandulosus)
+              p.discription Critically endangered, endemic to Sri Lanka    
+    //
+    .post
+      .owner
+        .image
+          img(class='img',src='/images/avatar.svg')
+        .details
+          h2(class='name')  Heshan Malinda 
+          p(class='action') has posted a new plant on 
+           span#marketplace Marketplace
+          p(class='date') 16/10/2016 06:34 pm
+      .o-divider 
+      .item
+        .image
+          img(src='/images/plant.png')  
+        .details
+          h3(class='name') Waldel (Dillenia triquetra)
+          p(class='status') Staus: Critically endangered
+          p(class='discription') Endemic to Sri Lanka
+        .status
+          h3(class='current-status')   
+      
+      .market-item-bids
+        ul(class='bids-list')
+          li(class='bid-item')
+            .bidder
+              .image
+                img(src='/images/avatar.svg')      
+            .details
+              h3.name Duminda Harshaka 
+                small.action has bid on this plant with
+              h3.value Dorana (Dipterocarpus glandulosus)
+              p.discription Critically endangered, endemic to Sri Lanka
+          li(class='bid-item')
+            .bidder
+              .image
+                img(src='/images/avatar.svg')      
+            .details
+              h3.name Duminda Harshaka 
+                small.action has bid on this plant with
+              h3.value Dorana (Dipterocarpus glandulosus)
+              p.discription Critically endangered, endemic to Sri Lanka    
+          li(class='bid-item')
+            .bidder
+              .image
+                img(src='/images/avatar.svg')      
+            .details
+              h3.name Duminda Harshaka 
+                small.action has bid on this plant with
+              h3.value Dorana (Dipterocarpus glandulosus)
+              p.discription Critically endangered, endemic to Sri Lanka    
+
+  
+        
+    
+
+
+   
+
+
+//- script(type="application/javascript", src="../../assets/js/script.js")
+//script(type="application/javascript",src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCO13QjFKNU_2w0aCcwqJV5vymDjr5OVY&libraries=places&callback=initAutocomplete" async defer)

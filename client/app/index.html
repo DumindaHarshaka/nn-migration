@@ -11,8 +11,11 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+     <base href="/">
   </head>
   <body ng-app="naturenurtureApp">
     <!--[if lte IE 8]>
@@ -20,29 +23,53 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <a class="navbar-brand" href="#/">naturenurture</a>
-          </div>
-
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li class="active"><a href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
+    <nav ng-controller="NavbarController">
+      <div class="logo">
+        <a href="/">
+          <img src="/images/logo.png"/></a>
       </div>
-    </div>
+      <div class="menu">
+        <ul>
+          <li ng-repeat="item in nav.menu" ui-sref-active="active">
+            <a ui-sref="{{item.state}}">{{item.title}}</a>
+          </li>
+          <li ng-show="nav.isAdmin()" ui-sref-active="active">
+            <a ui-sref="admin">Admin</a>
+          </li>
+        </ul>
+        <ul>
+          <li ng-hide="nav.isLoggedIn()" ui-sref-active="active" ng-class="getClass('/green-exchange')">
+            <a href="/green-exchange">Green Exchange</a>
+          </li>
+          <li ng-hide="nav.isLoggedIn()" ui-sref-active="active" ng-class="getClass('/forest')">
+            <a href="/forest">The Forest
+            </a>
+          </li>
+          <li ng-hide="nav.isLoggedIn()" ui-sref-active="active">
+            <a href="signup">Sign up</a>
+          </li>
+          <li ng-hide="nav.isLoggedIn()" ui-sref-active="active">
+            <a href="login">Login</a>
+          </li>
+          <li ng-show="nav.isLoggedIn()">
+            <p class="navbar-text">Hello
+              {{ nav.getCurrentUser().name }}</p>
+          </li>
+          <li ng-show="nav.isLoggedIn()" ui-sref-active="active">
+            <a ui-sref="settings">
+              <span class="glyphicon glyphicon-co"></span>
+            </a>
+          </li>
+          <li ng-show="nav.isLoggedIn()">
+            <a ui-sref="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-    <div class="container">
+
     <div ng-view=""></div>
-    </div>
+
 
     <div class="footer">
       <div class="container">
@@ -73,11 +100,16 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCO13QjFKNU_2w0aCcwqJV5vymDjr5OVY&libraries=places"></script>
+    <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/myroute.js"></script>
+        <script src="scripts/controllers/green-exchange.js"></script>
         <!-- endbuild -->
+
 </body>
 </html>
