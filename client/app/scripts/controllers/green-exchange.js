@@ -27,5 +27,11 @@ angular.module('naturenurtureApp')
       console.log(this.collapse);
     }
 
+    this.plant = {}
+    this.submitForm = function() {
+      console.log(this.plant);
+      
+    }
+
 
   });

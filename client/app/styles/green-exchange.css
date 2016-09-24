@@ -8,7 +8,7 @@ Error: Undefined mixin 'col'.
 5:   .side-bar
 6:     overflow-y: scroll
 7:     position: fixed
-8:     @include col(2,6)
+8:     @include col(3,12)
 9:     background: #fff
 10:     height: 100vh
 11:     border-right: 1px solid rgb(224, 224, 224)
@@ -83,4 +83,4 @@ styles/sass/green-exchange.sass:8
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'col'.\A         on line 8 of styles/sass/green-exchange.sass, in `col'\A         from line 8 of styles/sass/green-exchange.sass\A \A 3: .green-ex-container\A 4:   margin-top: 80px\A 5:   .side-bar\A 6:     overflow-y: scroll\A 7:     position: fixed\A 8:     @include col(2,6)\A 9:     background: #fff\A 10:     height: 100vh\A 11:     border-right: 1px solid rgb(224, 224, 224)\A 12:     .search\A 13:       text-align: center"; }
+  content: "Error: Undefined mixin 'col'.\A         on line 8 of styles/sass/green-exchange.sass, in `col'\A         from line 8 of styles/sass/green-exchange.sass\A \A 3: .green-ex-container\A 4:   margin-top: 80px\A 5:   .side-bar\A 6:     overflow-y: scroll\A 7:     position: fixed\A 8:     @include col(3,12)\A 9:     background: #fff\A 10:     height: 100vh\A 11:     border-right: 1px solid rgb(224, 224, 224)\A 12:     .search\A 13:       text-align: center"; }

@@ -13,7 +13,7 @@ module.exports = {
     app.use(express.static('client/app'));
     app.use('/bower_components',express.static('client/bower_components'));
     // Insert routes below
-    //app.use('/api/things', require('./api/thing'));
+    app.use('/api/plant', require('./api/plant'));
     //app.use('/api/users', require('./api/user'));
 
     //app.use('/auth', require('./auth').default);

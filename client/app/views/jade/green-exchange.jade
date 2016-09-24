@@ -14,23 +14,34 @@
           p Post your plant and start exchanging 
     .plant-info(ng-class="greenExchange.collapse ? 'collapse' : ''")
       .form
-        form(name="plantForm")
+        form(name="plantForm", ng-submit="greenExchange.submitForm()" novalidate)
           label Plant name 
-          input(type="text", name="plantName",id="plantName",placeholder="Name of the plant" required)
+          input(type="text",ng-model="greenExchange.plant.name", name="name",placeholder="Name of the plant", ng-class="{ 'has-error' : plantForm.name.$invalid && !plantForm.name.$pristine }" required)
           
           label Description
           
-          textarea(name="description",id="description", rows="4", cols="40",placeholder="Description") 
+          textarea(name="description",ng-model="greenExchange.plant.description",id="description", rows="4", cols="40",placeholder="Description")
           
           label Quantity 
           
-          input(type="number",min="1",name="quantity",id="qty", placeholder="Quantity")
+          input(type="number",ng-model="greenExchange.plant.quantity",min="1",name="quantity",id="qty", placeholder="Quantity", ng-class="{ 'has-error' : plantForm.quantity.$invalid && !plantForm.quantity.$pristine }" required)
           
           label Location 
           
-          input(id="loc" places-auto-complete size=80 ng-model="greenExchange.address" component-restrictions="{country:'lk'}" types="{{types}}" on-place-changed="greenExchange.placeChanged()" required)  
+          input(places-auto-complete size=80 ng-model="greenExchange.plant.address" component-restrictions="{country:'lk'}" types="{{types}}" on-place-changed="greenExchange.placeChanged()", ng-class="{ 'has-error' : plantForm.location.$invalid && !plantForm.location.$pristine }", name="location" required)  
+          hr
+          label Your name
+          input(type="text",name="username",ng-model="greenExchange.plant.username", placeholder="Your name", ng-class="{ 'has-error' : plantForm.username.$invalid && !plantForm.username.$pristine }" required) 
+          label Email
+          input(type="email",name="email",ng-model="greenExchange.plant.email", placeholder="Email address", ng-class="{ 'has-error' : plantForm.email.$invalid && !plantForm.email.$pristine }" required) 
+          
+          input(type="submit", value="Post" ng-disabled="plantForm.$invalid")
+         
       .map  
         ng-map(class="map")
+      
+      
+          
       
 
     hr

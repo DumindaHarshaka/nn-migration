@@ -5,7 +5,7 @@ input[type=button]
   .side-bar
     overflow-y: scroll
     position: fixed
-    @include col(2,6)
+    @include col(3,12)
     background: #fff
     height: 100vh
     border-right: 1px solid rgb(224, 224, 224)
@@ -13,6 +13,7 @@ input[type=button]
       text-align: center
       margin-top: 20px
       margin-bottom: 20px
+
       //height: 40px
       input
         &:focus
@@ -24,7 +25,7 @@ input[type=button]
         border: 1px solid #999999
         padding: 5px
         @include border-left-radius(10px)
-        font-size: 18px
+        font-size: 14px
         font-weight: 300
         font-family: 'Roboto', sans-serif
         @include placeholder
@@ -36,8 +37,8 @@ input[type=button]
         width: 20%
         @include border-left-radius(0px)
         @include border-right-radius(10px)
-        font-size: 18px
-        padding: 5px
+        font-size: 14px
+        padding: 4.5px
         border: 1px solid #999999
         border-left: 0px
         background: #fff
@@ -96,10 +97,11 @@ input[type=button]
       overflow: hidden
       transition: all 0.2s ease-out
       opacity: 0
+      background: #f9f9f9
       &.collapse
-        max-height: 600px
+        max-height: 900px
         opacity: 1
-        //overflow: visible
+        //overflow-y: scroll
         transition: all 0.5s ease-out
 
 
@@ -109,20 +111,52 @@ input[type=button]
         padding: 20px
         padding-top: 5px
         box-sizing: border-box
+
         label
           display: block
           margin-top: 10px
           margin-bottom: 5px
+          font-size: 14px
+          color: #000
+          //font-weight: bolder
         input,textarea
+          box-sizing: border-box
           margin-bottom: 0px
           width: 95%
           border: 1px solid #999999
           padding: 4px
-          @include border-left-radius(5px)
-          @include border-right-radius(5px)
+          @include border-left-radius(3px)
+          @include border-right-radius(3px)
           font-size: 14px
           font-weight: 300
           font-family: 'Roboto', sans-serif
+          &:focus
+            outline: none
+            border: 2px solid $nature_green
+          &.has-error
+            border-color: #f55
+
+
+        input[type=submit]
+          margin-top: 10px
+          transition: all 0.5s ease
+          font-size: 18px
+          width: auto
+          color: #fff
+          background: $nature_green
+          border: 2px solid $nature_green
+          @include border-left-radius(3px)
+          @include border-right-radius(3px)
+          padding: 10px 20px
+          &:hover
+            color: #fff
+            background: $nature_green
+          &:focus
+            outline: none
+          // &:disabled
+          //   background: #999
+          //   opacity: 0.5
+
 
 
 
@@ -130,7 +164,7 @@ input[type=button]
         height: 200px
         display: block
   .new-posts
-    @include col(1,12,$push:4)
+    @include col(1,12,$push:3)
     position: fixed
     height: auto
     background: #fff
@@ -144,7 +178,7 @@ input[type=button]
     p
       margin: 0px
   .posts
-    @include col(3,6,$push:2.5,$last:true)
+    @include col(6,12,$push:4,$last:true)
     height: auto
     //background: #f00
     margin-top: 10px
