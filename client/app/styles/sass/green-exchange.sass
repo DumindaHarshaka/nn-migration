@@ -71,8 +71,13 @@ input[type=button]
           //@include col(1,5)
           //background: #ffaaaa
           box-sizing: border-box
+          vertical-align: middle
+
           img
             width: 100%
+            display: inline-block
+            vertical-align: middle
+
         .text
 
           //@include col(4,5,$last:true)
@@ -104,6 +109,41 @@ input[type=button]
         //overflow-y: scroll
         transition: all 0.5s ease-out
 
+      .post-type
+        width: 100%
+        text-align: center
+        margin-top: 0px
+        button
+          display: inline-block
+          transition: all 0.5s ease
+          font-size: 14px
+          width: 33.33%
+          color: $nature_green
+          background: #fff
+          border: 2px solid $nature_green
+          @include border-left-radius(0px)
+          @include border-right-radius(0px)
+          padding: 5px 10px
+          &:hover
+            color: #fff
+            background: $nature_green
+          &:focus
+            outline: none
+          &:first-child
+            @include border-left-radius(5px)
+            @include border-right-radius(0px)
+            @include border-top-radius(0px)
+            border-right: 0px
+            //@include border-right-radius(0px)
+          &:last-child
+            @include border-left-radius(0px)
+            @include border-right-radius(5px)
+            @include border-top-radius(0px)
+            border-left: 0px
+          &.active
+            color: #fff
+            background: $nature_green
+
 
       .form
         margin-top: 0px
@@ -111,7 +151,10 @@ input[type=button]
         padding: 20px
         padding-top: 5px
         box-sizing: border-box
-
+        .loading
+          display: inline-block
+          margin-left: 10px
+          vertical-align: middle
         label
           display: block
           margin-top: 10px
@@ -130,6 +173,8 @@ input[type=button]
           font-size: 14px
           font-weight: 300
           font-family: 'Roboto', sans-serif
+          //transition: all 0s linear 0.5s
+
           &:focus
             outline: none
             border: 2px solid $nature_green
@@ -181,7 +226,7 @@ input[type=button]
     @include col(6,12,$push:4,$last:true)
     height: auto
     //background: #f00
-    margin-top: 10px
+    margin-top: 5px
     .post
       @include col(1,1,$last:true)
       margin-top: 10px
@@ -189,12 +234,14 @@ input[type=button]
       //background: #f00
       background: #fff
       height: auto
+      box-sizing: border-box
       //width: 600px
-      top: 0px
-      bottom: 0px
-      left: 0px
+      // top: 0px
+      // bottom: 0px
+      // left: 0px
       border: rgb(224, 224, 224) 1px solid
-      border-radius: 8px
+      @include border-top-radius(8px)
+      @include border-bottom-radius(8px)
       overflow: hidden
       .o-divider
         height: 1px
@@ -203,17 +250,18 @@ input[type=button]
         width: 100%
       .owner
         position: relative
-        height: 100px
+        height: 60px
         top: 0px
         left: 0px
         //background: #00f
 
         .image
           position: absolute
-          padding: 10px
-          $h:80px
+          padding: 5px
+          $h:50px
           height: $h
           width: $h
+
 
           .img
             height: 100%
@@ -224,13 +272,13 @@ input[type=button]
           top: 0px
           right: 0px
           bottom: 0px
-          left: 100px
+          left: 60px
           //background: #0f0
-          padding: 15px
+          padding: 5px
           padding-left: 5px
 
           h2.name
-            font-size: 18px
+            font-size: 15px
             color: $nature_green
             position: relative
             margin: 0px
@@ -238,14 +286,17 @@ input[type=button]
           p.action
             position: relative
             //top: 45px
-            color: $gray
+            font-size: 12px
+            color: #444
             margin: 0px
           p.date
             position: relative
             margin: 0px
             margin-top: 3px
-            font-size: 12px
+            font-size: 10px
             color: $gray
+
+
 
 
       .item
@@ -255,9 +306,43 @@ input[type=button]
         top: 0px
         width: 100%
         height: 188px
+        vertical-align: bottom
 
         //background: #f00
-
+        .type
+          box-sizing: border-box
+          position: relative
+          background: $nature_green
+          color: #fff
+          width: auto
+          //right: 0px
+          float: right
+          margin-top: 0px
+          margin-right: 10px
+          border: 1px solid #E0E0E0
+          border-top: 0px
+          border-right: 0px
+          @include border-top-radius(0px)
+          @include border-bottom-radius(5px)
+          padding: 5px
+          font-size: 12px
+          &.exchange
+            background: $nature_green
+          &.donate
+            background: #506AAD
+          &.request
+            background: #AD5098
+          &:first-child
+            color: #999
+            font-size: 12px
+            background: #fff
+            border: 1px solid #E0E0E0
+            border-top: 0px
+            border-left: 0px
+            @include border-left-radius(0px)
+          &:nth-child(2)
+            margin-right: 0px
+            @include border-right-radius(0px)
 
         .image
           position: relative
@@ -265,6 +350,7 @@ input[type=button]
           width: 188px
           height: 188px
           overflow: hidden
+          background: #c4c4c4
           img
             width: 100%
             height: auto
@@ -284,25 +370,115 @@ input[type=button]
           .status
             margin: 5px
             margin-bottom: 0px
-            font-size: 13px
-            color: $gray
+            font-size: 14px
+            font-weight: 400
+            color: #444
           .discription
             margin: 5px
             margin-top: 2px
             font-size: 13px
             color: $gray
+          a:hover
+            .responds
+              span
+                font-weight: bold
+                text-decoration: underline
+          .responds
+            display: block
+            //background: #aaf
+            span
+              //background: #ffe
+              display: inline-block
+              vertical-align: middle
+              font-size: 14px
+              &.exchange
+                color: $nature_green
+              &.donate
+                color: #506AAD
+              &.request
+                color: #AD5098
+              img
+                display: inline-block
+                vertical-align: middle
+      .respond
+        transition: all 1s ease
+        max-height: 0px
+        &.collapse
+          max-height: 300px
+        .respond-form
+          width: 100%
+          padding: 10px
+          box-sizing: border-box
+          border-top: 1px solid #e0e0e0
+          background: #f9f9f9
+          .loading
+            display: inline-block
+            vertical-align: middle
+            margin-left: 10px
+          .break
+            display: block
+          form
+            p
+              font-size: 13px
+              margin: 0px
+              margin-bottom: 10px
+              color: $nature_green
+            input
+              display: inline-block
+              box-sizing: border-box
+              margin: 0px
+              width: 33.333%
+              font-size: 14px
+              border: 1px solid #e0e0e0
+              margin-bottom: 5px
+              padding-left: 5px
+              -webkit-transition: all .5s ease
+              transition: all .5s ease
+              @include placeholder
+                color: #777777
+                font-weight: 200
+
+
+              &:nth-child(1)
+                @include border-left-radius(5px)
+              &:nth-child(2)
+                border-left: 0px
+                border-right: 0px
+              &:nth-child(3)
+                @include border-right-radius(5px)
+              &:nth-child(4)
+                @include border-left-radius(5px)
+              &:nth-child(5)
+                @include border-right-radius(5px)
+                border-left: 0px
+              &:focus
+                outline: none
+                border-color: #444
+              &.has-error
+                border-color: #f55
+            input[type=submit]
+              padding: 0px
+              display: inline-block
+              background: $nature_green
+              color: #fff
+              width: auto
+              padding: 10px 25px
+              @include border-right-radius(5px)
+              @include border-left-radius(5px)
+              &:disabled
+                opacity: 0.5
 
       .market-item-bids
         position: relative
         display: inline-block
         left: 0px
-        top: 0px
+        //top: 0px
         width: 100%
         //border: rgb(224, 224, 224) 1px solid
         //border-bottom-left-radius: 8px
         //border-bottom-right-radius: 8px
         //height: 70px
-        background: #fff
+        background: #faebd7
         ul.bids-list
           margin: 0px
           //padding: 5px
@@ -311,16 +487,17 @@ input[type=button]
 
           li.bid-item
             position: relative
+            box-sizing: border-box
             display: inline-block
             width: 100%
-            height: 60px
+            height: auto
             padding: 5px
             border-top: #e0e0e0 1px solid
             //background: #f77
             .bidder
               position: relative
-              height: 60px
-              width: 60px
+              height: 35px
+              width: 35px
               .image
                 position: absolute
                 left: 0px
@@ -338,18 +515,19 @@ input[type=button]
 
               //background: #f55
               top: 0px
-              left: 70px
+              left: 50px
               bottom: 0px
               right: 5px
-              padding: 10px
+              padding: 5px
 
               h3.name
-                font-size: 18px
+                font-size: 14px
                 margin: 0px
                 color: $nature_green
                 small.action
+                  font-weight: 500
                   position: relative
-                  color: #666
+                  color: #444
 
               h3.value
                 font-size: 13px

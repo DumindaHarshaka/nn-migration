@@ -1,7 +1,13 @@
 // grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+//child schema - Responses
+var responsesSchema = new Schema({
+  response: {
+    type: Schema.Types.ObjectId,
+    ref: 'Plant'
+  }
+})
 // create a schema
 var plantSchema = new Schema({
   address: {
@@ -10,6 +16,11 @@ var plantSchema = new Schema({
     trim: true
   },
   name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  type: {
     type: String,
     required: true,
     trim: true
@@ -38,6 +49,7 @@ var plantSchema = new Schema({
     required: false,
     default: true
   },
+  responses: [responsesSchema],
 }, {
   timestamps: true
 });

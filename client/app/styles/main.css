@@ -115,6 +115,7 @@ nav {
     font-size: 16px;
     box-sizing: border-box;
     vertical-align: top;
+    background: #fff;
     padding: 40px;
     margin-top: 20px; }
     @media only screen and (min-width: 768px) {
@@ -365,9 +366,12 @@ input[type=button] {
         .green-ex-container .side-bar a .add-new .icon {
           display: inline-block;
           width: 15%;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+          vertical-align: middle; }
           .green-ex-container .side-bar a .add-new .icon img {
-            width: 100%; }
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle; }
         .green-ex-container .side-bar a .add-new .text {
           height: 100%;
           width: 80%;
@@ -393,12 +397,57 @@ input[type=button] {
         max-height: 900px;
         opacity: 1;
         transition: all 0.5s ease-out; }
+      .green-ex-container .side-bar .plant-info .post-type {
+        width: 100%;
+        text-align: center;
+        margin-top: 0px; }
+        .green-ex-container .side-bar .plant-info .post-type button {
+          display: inline-block;
+          transition: all 0.5s ease;
+          font-size: 14px;
+          width: 33.33%;
+          color: #50AD65;
+          background: #fff;
+          border: 2px solid #50AD65;
+          border-bottom-left-radius: 0px;
+          border-top-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+          border-top-right-radius: 0px;
+          padding: 5px 10px; }
+          .green-ex-container .side-bar .plant-info .post-type button:hover {
+            color: #fff;
+            background: #50AD65; }
+          .green-ex-container .side-bar .plant-info .post-type button:focus {
+            outline: none; }
+          .green-ex-container .side-bar .plant-info .post-type button:first-child {
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-right-radius: 0px;
+            border-top-right-radius: 0px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-right: 0px; }
+          .green-ex-container .side-bar .plant-info .post-type button:last-child {
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 0px;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-left: 0px; }
+          .green-ex-container .side-bar .plant-info .post-type button.active {
+            color: #fff;
+            background: #50AD65; }
       .green-ex-container .side-bar .plant-info .form {
         margin-top: 0px;
         width: 100%;
         padding: 20px;
         padding-top: 5px;
         box-sizing: border-box; }
+        .green-ex-container .side-bar .plant-info .form .loading {
+          display: inline-block;
+          margin-left: 10px;
+          vertical-align: middle; }
         .green-ex-container .side-bar .plant-info .form label {
           display: block;
           margin-top: 10px;
@@ -475,7 +524,7 @@ input[type=button] {
     box-sizing: border-box;
     vertical-align: top;
     height: auto;
-    margin-top: 10px; }
+    margin-top: 5px; }
     @media only screen and (min-width: 768px) {
       .green-ex-container .posts {
         width: 49.5%;
@@ -492,11 +541,12 @@ input[type=button] {
       position: relative;
       background: #fff;
       height: auto;
-      top: 0px;
-      bottom: 0px;
-      left: 0px;
+      box-sizing: border-box;
       border: #e0e0e0 1px solid;
-      border-radius: 8px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
       overflow: hidden; }
       @media only screen and (min-width: 768px) {
         .green-ex-container .posts .post {
@@ -511,14 +561,14 @@ input[type=button] {
         width: 100%; }
       .green-ex-container .posts .post .owner {
         position: relative;
-        height: 100px;
+        height: 60px;
         top: 0px;
         left: 0px; }
         .green-ex-container .posts .post .owner .image {
           position: absolute;
-          padding: 10px;
-          height: 80px;
-          width: 80px; }
+          padding: 5px;
+          height: 50px;
+          width: 50px; }
           .green-ex-container .posts .post .owner .image .img {
             height: 100%;
             border-radius: 50%; }
@@ -527,23 +577,24 @@ input[type=button] {
           top: 0px;
           right: 0px;
           bottom: 0px;
-          left: 100px;
-          padding: 15px;
+          left: 60px;
+          padding: 5px;
           padding-left: 5px; }
           .green-ex-container .posts .post .owner .details h2.name {
-            font-size: 18px;
+            font-size: 15px;
             color: #50AD65;
             position: relative;
             margin: 0px; }
           .green-ex-container .posts .post .owner .details p.action {
             position: relative;
-            color: #888;
+            font-size: 12px;
+            color: #444;
             margin: 0px; }
           .green-ex-container .posts .post .owner .details p.date {
             position: relative;
             margin: 0px;
             margin-top: 3px;
-            font-size: 12px;
+            font-size: 10px;
             color: #888; }
       .green-ex-container .posts .post .item {
         position: relative;
@@ -551,13 +602,52 @@ input[type=button] {
         left: 0px;
         top: 0px;
         width: 100%;
-        height: 188px; }
+        height: 188px;
+        vertical-align: bottom; }
+        .green-ex-container .posts .post .item .type {
+          box-sizing: border-box;
+          position: relative;
+          background: #50AD65;
+          color: #fff;
+          width: auto;
+          float: right;
+          margin-top: 0px;
+          margin-right: 10px;
+          border: 1px solid #E0E0E0;
+          border-top: 0px;
+          border-right: 0px;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          padding: 5px;
+          font-size: 12px; }
+          .green-ex-container .posts .post .item .type.exchange {
+            background: #50AD65; }
+          .green-ex-container .posts .post .item .type.donate {
+            background: #506AAD; }
+          .green-ex-container .posts .post .item .type.request {
+            background: #AD5098; }
+          .green-ex-container .posts .post .item .type:first-child {
+            color: #999;
+            font-size: 12px;
+            background: #fff;
+            border: 1px solid #E0E0E0;
+            border-top: 0px;
+            border-left: 0px;
+            border-bottom-left-radius: 0px;
+            border-top-left-radius: 0px; }
+          .green-ex-container .posts .post .item .type:nth-child(2) {
+            margin-right: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-right-radius: 0px; }
         .green-ex-container .posts .post .item .image {
           position: relative;
           display: inline-block;
           width: 188px;
           height: 188px;
-          overflow: hidden; }
+          overflow: hidden;
+          background: #c4c4c4; }
           .green-ex-container .posts .post .item .image img {
             width: 100%;
             height: auto; }
@@ -574,34 +664,132 @@ input[type=button] {
           .green-ex-container .posts .post .item .details .status {
             margin: 5px;
             margin-bottom: 0px;
-            font-size: 13px;
-            color: #888; }
+            font-size: 14px;
+            font-weight: 400;
+            color: #444; }
           .green-ex-container .posts .post .item .details .discription {
             margin: 5px;
             margin-top: 2px;
             font-size: 13px;
             color: #888; }
+          .green-ex-container .posts .post .item .details a:hover .responds span {
+            font-weight: bold;
+            text-decoration: underline; }
+          .green-ex-container .posts .post .item .details .responds {
+            display: block; }
+            .green-ex-container .posts .post .item .details .responds span {
+              display: inline-block;
+              vertical-align: middle;
+              font-size: 14px; }
+              .green-ex-container .posts .post .item .details .responds span.exchange {
+                color: #50AD65; }
+              .green-ex-container .posts .post .item .details .responds span.donate {
+                color: #506AAD; }
+              .green-ex-container .posts .post .item .details .responds span.request {
+                color: #AD5098; }
+              .green-ex-container .posts .post .item .details .responds span img {
+                display: inline-block;
+                vertical-align: middle; }
+      .green-ex-container .posts .post .respond {
+        transition: all 1s ease;
+        max-height: 0px; }
+        .green-ex-container .posts .post .respond.collapse {
+          max-height: 300px; }
+        .green-ex-container .posts .post .respond .respond-form {
+          width: 100%;
+          padding: 10px;
+          box-sizing: border-box;
+          border-top: 1px solid #e0e0e0;
+          background: #f9f9f9; }
+          .green-ex-container .posts .post .respond .respond-form .loading {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px; }
+          .green-ex-container .posts .post .respond .respond-form .break {
+            display: block; }
+          .green-ex-container .posts .post .respond .respond-form form p {
+            font-size: 13px;
+            margin: 0px;
+            margin-bottom: 10px;
+            color: #50AD65; }
+          .green-ex-container .posts .post .respond .respond-form form input {
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0px;
+            width: 33.333%;
+            font-size: 14px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 5px;
+            padding-left: 5px;
+            -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease; }
+            .green-ex-container .posts .post .respond .respond-form form input::-webkit-input-placeholder {
+              color: #777777;
+              font-weight: 200; }
+            .green-ex-container .posts .post .respond .respond-form form input::-moz-placeholder {
+              color: #777777;
+              font-weight: 200; }
+            .green-ex-container .posts .post .respond .respond-form form input:-moz-placeholder {
+              color: #777777;
+              font-weight: 200; }
+            .green-ex-container .posts .post .respond .respond-form form input:-ms-input-placeholder {
+              color: #777777;
+              font-weight: 200; }
+            .green-ex-container .posts .post .respond .respond-form form input:nth-child(1) {
+              border-bottom-left-radius: 5px;
+              border-top-left-radius: 5px; }
+            .green-ex-container .posts .post .respond .respond-form form input:nth-child(2) {
+              border-left: 0px;
+              border-right: 0px; }
+            .green-ex-container .posts .post .respond .respond-form form input:nth-child(3) {
+              border-bottom-right-radius: 5px;
+              border-top-right-radius: 5px; }
+            .green-ex-container .posts .post .respond .respond-form form input:nth-child(4) {
+              border-bottom-left-radius: 5px;
+              border-top-left-radius: 5px; }
+            .green-ex-container .posts .post .respond .respond-form form input:nth-child(5) {
+              border-bottom-right-radius: 5px;
+              border-top-right-radius: 5px;
+              border-left: 0px; }
+            .green-ex-container .posts .post .respond .respond-form form input:focus {
+              outline: none;
+              border-color: #444; }
+            .green-ex-container .posts .post .respond .respond-form form input.has-error {
+              border-color: #f55; }
+          .green-ex-container .posts .post .respond .respond-form form input[type=submit] {
+            padding: 0px;
+            display: inline-block;
+            background: #50AD65;
+            color: #fff;
+            width: auto;
+            padding: 10px 25px;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px; }
+            .green-ex-container .posts .post .respond .respond-form form input[type=submit]:disabled {
+              opacity: 0.5; }
       .green-ex-container .posts .post .market-item-bids {
         position: relative;
         display: inline-block;
         left: 0px;
-        top: 0px;
         width: 100%;
-        background: #fff; }
+        background: #faebd7; }
         .green-ex-container .posts .post .market-item-bids ul.bids-list {
           margin: 0px;
           padding-left: 0px; }
           .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item {
             position: relative;
+            box-sizing: border-box;
             display: inline-block;
             width: 100%;
-            height: 60px;
+            height: auto;
             padding: 5px;
             border-top: #e0e0e0 1px solid; }
             .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .bidder {
               position: relative;
-              height: 60px;
-              width: 60px; }
+              height: 35px;
+              width: 35px; }
               .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .bidder .image {
                 position: absolute;
                 left: 0px;
@@ -613,17 +801,18 @@ input[type=button] {
               position: absolute;
               display: inline-block;
               top: 0px;
-              left: 70px;
+              left: 50px;
               bottom: 0px;
               right: 5px;
-              padding: 10px; }
+              padding: 5px; }
               .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .details h3.name {
-                font-size: 18px;
+                font-size: 14px;
                 margin: 0px;
                 color: #50AD65; }
                 .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .details h3.name small.action {
+                  font-weight: 500;
                   position: relative;
-                  color: #666; }
+                  color: #444; }
               .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .details h3.value {
                 font-size: 13px;
                 margin: 0px;
