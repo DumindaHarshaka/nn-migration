@@ -357,6 +357,124 @@ input[type=button] {
       height: 80px;
       display: block;
       width: 100%; }
+    .green-ex-container .side-bar .sign-up {
+      transition: all 0.5s ease;
+      text-align: center;
+      background: #50AD65; }
+      .green-ex-container .side-bar .sign-up:hover {
+        background: #408a51; }
+      .green-ex-container .side-bar .sign-up .signup-form {
+        transition: all 0.5s ease;
+        text-align: left;
+        background: #f9f9f9;
+        max-height: 0px;
+        overflow: hidden;
+        border-bottom: 1px solid #E0E0E0;
+        margin-top: 0px;
+        width: 100%;
+        box-sizing: border-box;
+        opacity: 0; }
+        .green-ex-container .side-bar .sign-up .signup-form.collapse {
+          max-height: 800px;
+          opacity: 1; }
+        .green-ex-container .side-bar .sign-up .signup-form form {
+          padding: 20px;
+          padding-top: 10px; }
+        .green-ex-container .side-bar .sign-up .signup-form .terms {
+          display: block;
+          width: 100%;
+          height: auto;
+          margin-top: 5px; }
+          .green-ex-container .side-bar .sign-up .signup-form .terms .text {
+            background: #FAEBD7;
+            padding: 5px;
+            box-sizing: border-box;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+            border: 1px solid #E0E0E0;
+            display: block;
+            margin: 0px;
+            margin-top: 15px;
+            width: 100%;
+            text-align: center; }
+            .green-ex-container .side-bar .sign-up .signup-form .terms .text p {
+              display: inline-block;
+              margin: 0px;
+              line-height: 16px;
+              font-size: 12px; }
+          .green-ex-container .side-bar .sign-up .signup-form .terms input {
+            display: inline-block;
+            width: 50%;
+            margin: 0px;
+            box-sizing: border-box; }
+        .green-ex-container .side-bar .sign-up .signup-form label {
+          display: block;
+          margin-top: 10px;
+          margin-bottom: 5px;
+          font-size: 14px;
+          color: #000; }
+          .green-ex-container .side-bar .sign-up .signup-form label span {
+            color: #50AD65;
+            font-size: 20px; }
+        .green-ex-container .side-bar .sign-up .signup-form input, .green-ex-container .side-bar .sign-up .signup-form textarea {
+          box-sizing: border-box;
+          margin-bottom: 0px;
+          width: 95%;
+          border: 1px solid #afafaf;
+          padding: 4px;
+          border-bottom-left-radius: 3px;
+          border-top-left-radius: 3px;
+          border-bottom-right-radius: 3px;
+          border-top-right-radius: 3px;
+          font-size: 14px;
+          font-weight: 300;
+          font-family: "Roboto", sans-serif; }
+          .green-ex-container .side-bar .sign-up .signup-form input:focus, .green-ex-container .side-bar .sign-up .signup-form textarea:focus {
+            outline: none;
+            border: 2px solid #50AD65; }
+          .green-ex-container .side-bar .sign-up .signup-form input.has-error, .green-ex-container .side-bar .sign-up .signup-form textarea.has-error {
+            border-color: #f55; }
+        .green-ex-container .side-bar .sign-up .signup-form input[type=submit] {
+          margin-top: 10px;
+          transition: all 0.5s ease;
+          font-size: 18px;
+          width: auto;
+          color: #fff;
+          background: #50AD65;
+          border: 2px solid #50AD65;
+          border-bottom-left-radius: 3px;
+          border-top-left-radius: 3px;
+          border-bottom-right-radius: 3px;
+          border-top-right-radius: 3px;
+          padding: 10px 20px; }
+          .green-ex-container .side-bar .sign-up .signup-form input[type=submit]:hover {
+            color: #fff;
+            background: #50AD65; }
+          .green-ex-container .side-bar .sign-up .signup-form input[type=submit]:focus {
+            outline: none; }
+      .green-ex-container .side-bar .sign-up a .img {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        padding-bottom: 0px;
+        margin: 0px;
+        box-sizing: border-box; }
+        .green-ex-container .side-bar .sign-up a .img img {
+          display: inline-block;
+          margin: 0px; }
+      .green-ex-container .side-bar .sign-up a .text {
+        display: inline-block;
+        color: #fff;
+        width: 100%; }
+        .green-ex-container .side-bar .sign-up a .text h1 {
+          margin: 0px;
+          margin-bottom: 5px;
+          font-weight: 300; }
+        .green-ex-container .side-bar .sign-up a .text p {
+          margin-top: 0px;
+          font-weight: 300; }
     .green-ex-container .side-bar a {
       text-decoration: none;
       color: #444; }

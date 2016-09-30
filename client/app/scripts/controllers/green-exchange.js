@@ -111,8 +111,12 @@ angular.module('naturenurtureApp')
       })(post,$scope), function(res) {
         console.log(res);
       });
+    }
 
-
+    //collapse sign up form
+    $scope.isSignUpCollapse = false;
+    $scope.signUpCollapse  = function() {
+      $scope.isSignUpCollapse = !$scope.isSignUpCollapse
     }
 
   });
