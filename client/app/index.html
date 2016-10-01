@@ -28,16 +28,16 @@
         <a href="/">
           <img src="/images/logo.png"/></a>
       </div>
-      <div class="menu">
+      <div class="menu" class="ng-cloak">
         <ul>
-          <li ng-repeat="item in nav.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
+          <li ng-repeat="item in nav.menu" ui-sref-active="active" ng-cloak>
+            <a ui-sref="{{item.state}}" ng-cloak>{{item.title}}</a>
           </li>
-          <li ng-show="nav.isAdmin()" ui-sref-active="active">
+          <li ng-show="nav.isAdmin()" ui-sref-active="active" ng-cloak>
             <a ui-sref="admin">Admin</a>
           </li>
         </ul>
-        <ul>
+        <ul ng-cloak>
           <li ng-hide="nav.isLoggedIn()" ui-sref-active="active" ng-class="getClass('/green-exchange')">
             <a href="/green-exchange">Green Exchange</a>
           </li>
@@ -51,16 +51,16 @@
           <li ng-hide="nav.isLoggedIn()" ui-sref-active="active">
             <a href="login">Login</a>
           </li>
-          <li ng-show="nav.isLoggedIn()">
+          <li ng-show="nav.isLoggedIn()" ng-cloak>
             <p class="navbar-text">Hello
               {{ nav.getCurrentUser().name }}</p>
           </li>
-          <li ng-show="nav.isLoggedIn()" ui-sref-active="active">
+          <li ng-show="nav.isLoggedIn()" ui-sref-active="active" ng-cloak>
             <a ui-sref="settings">
               <span class="glyphicon glyphicon-co"></span>
             </a>
           </li>
-          <li ng-show="nav.isLoggedIn()">
+          <li ng-show="nav.isLoggedIn()" ng-cloak>
             <a ui-sref="logout">Logout</a>
           </li>
         </ul>
@@ -108,6 +108,7 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/myroute.js"></script>
         <script src="scripts/controllers/green-exchange.js"></script>
+        <script src="scripts/services/config.js"></script>
         <!-- endbuild -->
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCO13QjFKNU_2w0aCcwqJV5vymDjr5OVY&libraries=places"></script>

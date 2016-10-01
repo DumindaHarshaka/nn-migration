@@ -8,7 +8,7 @@
  * Controller of the naturenurtureApp
  */
 angular.module('naturenurtureApp')
-  .controller('GreenExchangeCtrl', function($scope, NgMap, $http) {
+  .controller('GreenExchangeCtrl', function($scope, NgMap, $http,config) {
     $scope.posts = []
 
     //plant form population
@@ -38,7 +38,7 @@ angular.module('naturenurtureApp')
         var plant = $scope.plant;
         $scope.plant.plantLoading = true;
         console.log($scope.plant);
-        $http.post('http://localhost:9000/api/plant/', $scope.plant).then((function(a) {
+        $http.post(config.baseUrl+'api/plant/', $scope.plant).then((function(a) {
           return function(res) {
             console.log(res);
             $scope.posts.unshift(res.data);
@@ -56,7 +56,7 @@ angular.module('naturenurtureApp')
       //var init_obj = this;
     this.init = function() {
       //var posts = this.posts
-      $http.get('http://localhost:9000/api/plant/').then(function(res) {
+      $http.get(config.baseUrl+'api/plant/').then(function(res) {
 
         $scope.posts = res.data;
         console.log($scope.posts);
@@ -92,7 +92,7 @@ angular.module('naturenurtureApp')
       var loading = post.responseLoading = true;
       console.log(post.new_response);
 
-      $http.post('http://localhost:9000/api/plant/response',{id:post._id,response:post.new_response}).then((function(post,$scope) {
+      $http.post(config.baseUrl+'api/plant/response',{id:post._id,response:post.new_response}).then((function(post,$scope) {
         return function(res) {
           console.log(res);
           post.responseLoading = false;
