@@ -14,9 +14,9 @@ module.exports = {
     app.use('/bower_components',express.static('client/bower_components'));
     // Insert routes below
     app.use('/api/plant', require('./api/plant'));
-    //app.use('/api/users', require('./api/user'));
+    app.use('/api/users', require('./api/user'));
 
-    //app.use('/auth', require('./auth').default);
+    app.use('/auth', require('./auth'));
 
     // // All undefined asset or api routes should return a 404
     // app.route('/:url(api|auth|components|app|bower_components|assets)/*')
