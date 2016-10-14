@@ -46,6 +46,16 @@ angular
         controller: 'GreenExchangeCtrl',
         controllerAs: 'greenExchange'
       })
+      .when('/email-verified', {
+        templateUrl: 'views/email-verified.html',
+        controller: 'EmailVerifiedCtrl',
+        controllerAs: 'emailVerified'
+      })
+      .when('/email-discarded', {
+        templateUrl: 'views/email-discarded.html',
+        controller: 'EmailDiscardedCtrl',
+        controllerAs: 'emailDiscarded'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -8,7 +8,10 @@
  * Controller of the naturenurtureApp
  */
 angular.module('naturenurtureApp')
-  .controller('GreenExchangeCtrl', function($scope, NgMap, $http,config) {
+  .controller('GreenExchangeCtrl', function($scope, NgMap, $http,config,auth) {
+    auth.getCurrentUser(function (u) {
+      console.log(u);
+    });
     $scope.posts = []
 
     //plant form population
@@ -117,6 +120,18 @@ angular.module('naturenurtureApp')
     $scope.isSignUpCollapse = false;
     $scope.signUpCollapse  = function() {
       $scope.isSignUpCollapse = !$scope.isSignUpCollapse
+    }
+
+    //signup
+
+
+
+    $scope.signUp = function() {
+      $scope.user.name = $scope.user.first_name.toLowerCase();
+      console.log($scope.user);
+      auth.createUser($scope.user);
+
+
     }
 
   });

@@ -3,6 +3,7 @@
 var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
+var email = require('../../email/email.service');
 var jwt = require('jsonwebtoken');
 
 function validationError(res, statusCode) {
@@ -35,11 +36,17 @@ module.exports = {
    * Creates a new user
    */
   create: function(req, res, next) {
+
+    console.log(req.body);
     var newUser = new User(req.body);
     newUser.provider = 'local';
     newUser.role = 'user';
     newUser.save()
       .then(function(user) {
+        email.sendVerification({
+          verification_code: user.verification_code,
+          to: user.email
+        });
         var token = jwt.sign({
           _id: user._id
         }, config.secrets.session, {
@@ -51,7 +58,41 @@ module.exports = {
       })
       .catch(validationError(res));
   },
+  verify: function(req, res, next) {
+    return User.findOne({
+        verification_code: req.params.id
+      }).exec()
+      .then(user => {
+        user.verified = true;
+        user.save()
+          .then(user => {
+            res.redirect("/email-verified");
+          })
+          .catch(next())
+      })
 
+  },
+  discard: function(req, res, next) {
+    return User.findOne({
+        verification_code: req.params.id
+      }).exec()
+      .then(user => {
+        console.log(user);
+        console.log(user.verified);
+
+        if (user.verified === 'false') {
+          user.active = false;
+          user.save()
+          .then(user => {
+              res.redirect("/email-discarded");
+            })
+            .catch(console.log(err))
+        }else {
+          //res.redirect("/");
+        }
+
+      })
+  },
   /**
    * Get a single user
    */

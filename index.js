@@ -4,7 +4,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var mongoose = require('mongoose');
-//mongoose.Promise = require('bluebird');
+mongoose.Promise = require('bluebird');
 var config = require('./config/environment');
 var http = require('http');
 
