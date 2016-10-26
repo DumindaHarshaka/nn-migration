@@ -11,10 +11,10 @@ angular.module('naturenurtureApp')
   .factory('interceptor', function($rootScope, $q, $cookies, $injector, $location) {
       return {
         request: function(config) {
-          console.log("thru");
+          //console.log("thru");
           config.headers = config.headers || {};
             if ($cookies.get('token')) {
-            console.log("INTERCEPTOR "+$cookies.get('token'));
+            //console.log("INTERCEPTOR "+$cookies.get('token'));
             config.headers.authorization = 'Bearer ' + $cookies.get('token');
           }
         return config;

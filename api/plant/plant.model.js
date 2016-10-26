@@ -3,12 +3,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 //child schema - Responses
 var responsesSchema = new Schema({
-  response: {
-    type: Schema.Types.ObjectId,
-    ref: 'Plant'
-  }
-})
-// create a schema
+    response: {
+      type: Schema.Types.ObjectId,
+      ref: 'Plant'
+    },
+    contact_info: {
+      type: String,
+      required: true,
+      trim: true
+    }
+  })
+  // create a schema
 var plantSchema = new Schema({
   address: {
     type: String,
@@ -17,7 +22,7 @@ var plantSchema = new Schema({
   },
   name: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   type: {
@@ -34,24 +39,43 @@ var plantSchema = new Schema({
     type: Number,
     required: true
   },
-  username: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  email: {
-    type: String,
-    required: true,
-    trim: true
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
   approved: {
     type: Boolean,
     required: false,
     default: true
   },
+  //status: ['active','closed','deleted','review']
+  status: {
+    type: String,
+    required: false,
+    default: 'active'
+  },
   responses: [responsesSchema],
 }, {
   timestamps: true
+});
+
+//
+// indexing for text searches
+//
+plantSchema.index({
+  address: 'text',
+  name: 'text',
+  type: 'text',
+  description: 'text'
+}, {
+  name: 'Plant text index',
+  weights: {
+    address: 9,
+    name: 10,
+    type: 6,
+    description: 2
+  }
 });
 
 // the schema is useless so far

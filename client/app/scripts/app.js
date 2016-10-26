@@ -18,10 +18,27 @@ angular
     'ngTouch',
     'ngMap'
   ])
-  .controller('NavbarController', function ($scope,$location) {
+  .controller('NavbarController', function ($scope,$location,auth) {
     $scope.getClass = function(path) {
       //console.log($location.path().substr(0, path.length));
+      //console.log(path);
       return ($location.path().substr(0, path.length) === path) ? 'active' : '';
+    }
+
+    $scope.currentUser = function() {
+      if(auth.getCurrentUserObj()){
+        return auth.getCurrentUserObj().name;
+      }
+    }
+
+    $scope.isLoggedIn = function() {
+      //console.log(auth.isLoggedIn());
+      return auth.isLoggedIn();
+
+    }
+    $scope.logout = function() {
+      console.log("logging out");
+      auth.logout();
     }
   })
   .config(function ($routeProvider,$locationProvider) {
@@ -55,6 +72,16 @@ angular
         templateUrl: 'views/email-discarded.html',
         controller: 'EmailDiscardedCtrl',
         controllerAs: 'emailDiscarded'
+      })
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl',
+        controllerAs: 'Signup'
+      })
+      .when('/logout', {
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl',
+        controllerAs: 'logout'
       })
       .otherwise({
         redirectTo: '/'

@@ -68,7 +68,9 @@ module.exports = {
           .then(user => {
             res.redirect("/email-verified");
           })
-          .catch(next())
+          .then(null,err =>{
+            next(err)
+          })
       })
 
   },
