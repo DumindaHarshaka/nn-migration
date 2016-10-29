@@ -419,6 +419,19 @@ angular.module('naturenurtureApp')
     //
     $scope.report = function(post) {
       console.log(post._id);
+      $http.post(config.baseUrl + 'api/plant/report/' + post._id).then(function(res) {
+
+        //$scope.posts = res.data;
+
+        if (res.data.status === 'review') {
+          console.log(res);
+        }
+
+
+
+      }, function(res) {
+        //console.log(res);
+      });
     }
     //
     //

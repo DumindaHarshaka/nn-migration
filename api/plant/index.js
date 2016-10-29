@@ -481,6 +481,37 @@ router.post('/close/:id', function(req, res) {
   });
 
 });
+//
+//
+// mark post as review
+//
+//
+router.post('/report/:id', function(req, res) {
+  console.log('review - ' + req.params.id);
+  Plant.findOneAndUpdate({
+    _id: req.params.id
+  }, {
+    status: 'review'
+  }, {
+    upsert: true
+  }, function(err, doc) {
+    if (err) return res.send(500, {
+      error: err
+    });
+    Plant.findOne({
+      _id: req.params.id
+    }, function(err, doc) {
+      if (err) return res.send(500, {
+        error: err
+      });
+      console.log(doc);
+      return res.send(doc);
+    })
+
+
+  });
+
+});
 
 // router.put('/:id', controller.update);
 // router.patch('/:id', controller.update);
