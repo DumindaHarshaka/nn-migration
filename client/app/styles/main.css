@@ -1560,4 +1560,231 @@ input[type=button] {
       margin-top: 0px;
       font-weight: 300; }
 
+.post-form {
+  width: 100%; }
+  .post-form form textarea {
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    vertical-align: bottom;
+    border-bottom-width: 0px;
+    outline: none; }
+  .post-form form input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    vertical-align: bottom;
+    border-bottom-width: 0px;
+    outline: none; }
+  .post-form .controles-panal {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    margin: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px; }
+    .post-form .controles-panal input[type=submit] {
+      border: 1px solid #50AD65;
+      background: #50AD65;
+      padding: 4px 10px;
+      outline: none;
+      font-size: 14px;
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+      color: #fff; }
+    .post-form .controles-panal button {
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      padding: 4px 10px;
+      outline: none;
+      font-size: 14px;
+      color: #5b5b5b;
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+      margin-right: 5px; }
+      .post-form .controles-panal button:hover {
+        background: #f9f9f9; }
+    .post-form .controles-panal .preview {
+      display: block;
+      border: 1px solid #e0e0e0;
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+      padding: 5px;
+      box-sizing: border-box;
+      margin-bottom: 10px; }
+    .post-form .controles-panal .add {
+      display: inline-block;
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+      height: 100px;
+      width: 100px;
+      overflow: hidden;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 400;
+      background: #e0e0e0; }
+      .post-form .controles-panal .add:hover {
+        background: #cacaca; }
+      .post-form .controles-panal .add .add-flex {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+    .post-form .controles-panal .img-preview {
+      display: inline-block;
+      height: 100px;
+      width: 100px;
+      overflow: hidden;
+      margin-right: 2px;
+      text-align: center; }
+      .post-form .controles-panal .img-preview img {
+        display: inline-block; }
+        .post-form .controles-panal .img-preview img.portrait {
+          height: 100%;
+          width: auto; }
+        .post-form .controles-panal .img-preview img.landscape {
+          height: auto;
+          width: 100%; }
+
+.post .images {
+  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box; }
+  .post .images .cover {
+    border: 1px solid #e0e0e0;
+    padding: 2px;
+    width: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top; }
+    .post .images .cover img {
+      width: 100%;
+      height: auto;
+      display: block; }
+  .post .images .other {
+    border: 1px solid #e0e0e0;
+    padding: 2px;
+    width: 50%;
+    box-sizing: border-box;
+    display: inline-block; }
+    .post .images .other img {
+      width: 50%;
+      height: auto;
+      display: inline-block; }
+.post .text {
+  border-top: 1px solid #e0e0e0;
+  border-left: 55px solid #50AD65;
+  padding: 15px;
+  color: #50AD65; }
+  .post .text .subject h2 {
+    margin: 0px;
+    margin-bottom: 5px;
+    font-weight: 400; }
+  .post .text .body p {
+    margin: 0px;
+    font-size: 14px;
+    color: #000; }
+.post .comments {
+  border-top: 1px solid #e0e0e0;
+  background: #f9f9f9; }
+  .post .comments li ul {
+    margin-left: 40px;
+    border-left: 2px solid #50AD65;
+    padding-left: 10px; }
+  .post .comments ul {
+    padding: 15px;
+    margin: 0px; }
+    .post .comments ul li {
+      display: block; }
+      .post .comments ul li .comment .avatar {
+        position: absolute;
+        width: 30px;
+        display: inline-block; }
+        .post .comments ul li .comment .avatar img {
+          width: 100%;
+          height: auto; }
+      .post .comments ul li .text {
+        color: #000;
+        display: inline-block;
+        border: 0px;
+        padding: 0px;
+        vertical-align: top;
+        padding-left: 40px; }
+        .post .comments ul li .text .meta span {
+          font-size: 12px; }
+          .post .comments ul li .text .meta span.owner {
+            color: #50AD65; }
+        .post .comments ul li .text .content p {
+          font-size: 13px;
+          margin: 0px;
+          margin-top: 5px; }
+
+.wrap {
+  padding: 75px;
+  margin-top: 105px;
+  background: #fff;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #e0e0e0; }
+  .wrap p {
+    font-size: 18px;
+    text-align: center; }
+
+.pass-reset-form {
+  text-align: center; }
+  .pass-reset-form input {
+    display: inline-block;
+    font-size: 24px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 15px;
+    border: 2px solid #5B5B5B;
+    outline: none;
+    margin-bottom: 5px; }
+    .pass-reset-form input:focus {
+      border: 2px solid #50AD65; }
+  .pass-reset-form button {
+    transition: all 0.5s ease;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-top: 15px;
+    padding: 15px 20px;
+    font-size: 20px;
+    color: #50AD65;
+    border: 2px solid #50AD65;
+    background: #fff;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    outline: none; }
+    .pass-reset-form button:hover {
+      background: #50AD65;
+      color: #fff; }
+    .pass-reset-form button:focus {
+      background: #50AD65;
+      color: #fff; }
+
 /*# sourceMappingURL=main.css.map */
