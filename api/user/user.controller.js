@@ -88,11 +88,13 @@ module.exports = {
         email.sendPasswordResetLink({reset_code: crypto.encryptText(user._id.toString()), to: req.params.id})
         .then(function(info) {
           console.log(info);
-          res.send(info);
+          //res.send(info);
+          res.status(204).end();
         })
         .catch(function(err) {
           console.log(err);
-          res.send(err);
+          //res.send(err);
+          res.status(500).end();
         });
 
 

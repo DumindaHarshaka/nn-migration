@@ -1752,6 +1752,10 @@ input[type=button] {
 
 .pass-reset-form {
   text-align: center; }
+  .pass-reset-form p {
+    color: #50AD65; }
+    .pass-reset-form p.error {
+      color: #ff5577; }
   .pass-reset-form input {
     display: inline-block;
     font-size: 24px;
@@ -1786,5 +1790,7 @@ input[type=button] {
     .pass-reset-form button:focus {
       background: #50AD65;
       color: #fff; }
+    .pass-reset-form button:disabled {
+      opacity: 0.5; }
 
 /*# sourceMappingURL=main.css.map */
