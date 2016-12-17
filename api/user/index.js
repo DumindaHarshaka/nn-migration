@@ -14,5 +14,6 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 router.get('/verify/:id', controller.verify);
 router.get('/discard/:id', controller.discard);
-
+router.get('/reset_password_request/:id', controller.reset_password_request);
+router.post('/reset_password_request/', controller.reset_password_request_data);
 module.exports = router;
