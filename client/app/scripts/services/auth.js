@@ -75,7 +75,7 @@ angular.module('naturenurtureApp')
         //console.log("creating user");
         user.name = capitalizeFirstLetter(user.name);
         return $http.post(config.baseUrl + 'api/users/', user).then(function(data) {
-          console.log(data);
+          //console.log(data);
           if (data.status !== 422) {
             $cookies.put('token', data.data.token);
             return $http.get(config.baseUrl + 'api/users/me').then(function(res) {
