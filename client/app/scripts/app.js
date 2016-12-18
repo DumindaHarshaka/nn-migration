@@ -83,6 +83,11 @@ angular
         controller: 'LogoutCtrl',
         controllerAs: 'logout'
       })
+      .when('/reset_password/:reset_code', {
+        templateUrl: 'views/reset_password.html',
+        controller: 'ResetPasswordCtrl',
+        controllerAs: 'resetPassword'
+      })
       .otherwise({
         redirectTo: '/'
       });
