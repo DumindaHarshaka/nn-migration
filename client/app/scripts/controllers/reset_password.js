@@ -12,7 +12,7 @@ angular.module('naturenurtureApp').controller('ResetPasswordCtrl', function($sco
   $scope.reset_mail_pending = false;
   $scope.reset_data_pending = false;
   $scope.$on('$routeChangeSuccess', function() {
-    console.log($routeParams.reset_code == '0');
+    //console.log($routeParams.reset_code == '0');
     if ($routeParams.reset_code == '0') {
       $scope.resetFormView = false;
     }else {
@@ -26,7 +26,9 @@ angular.module('naturenurtureApp').controller('ResetPasswordCtrl', function($sco
     // }
   }
   $scope.reset_password = function() {
-    console.log($scope.resetRequest.email);
+    $scope.reset_mail_pending = false;
+    $scope.reset_data_pending = false;
+    //console.log($scope.resetRequest.email);
     $scope.reset_mail_pending = true;
     $http.get(config.baseUrl + 'api/users/reset_password_request/' + $scope.resetRequest.email).then(function(res) {
 
@@ -45,7 +47,7 @@ angular.module('naturenurtureApp').controller('ResetPasswordCtrl', function($sco
     });
   }
   $scope.reset_password_send_data = function() {
-    console.log($routeParams.reset_code );
+    //console.log($routeParams.reset_code );
     $scope.reset_data_pending = true;
     if($routeParams.reset_code != '0'){
       $http.post(config.baseUrl + 'api/users/reset_password_request/',
@@ -55,7 +57,7 @@ angular.module('naturenurtureApp').controller('ResetPasswordCtrl', function($sco
       }).then(function(res) {
 
       //$scope.posts = res.data;
-      console.log(res.data);
+      //console.log(res.data);
       if (res.status != 204) {
         $scope.reset_data_error = true;
       }else{
