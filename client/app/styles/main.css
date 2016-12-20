@@ -816,6 +816,36 @@ input[type=button] {
             background: #50AD65; }
           .green-ex-container .side-bar .plant-info .form input[type=submit]:focus {
             outline: none; }
+          .green-ex-container .side-bar .plant-info .form input[type=submit]:disabled {
+            opacity: 0.5; }
+        .green-ex-container .side-bar .plant-info .form .notify-me {
+          background: #fff;
+          padding: 10px;
+          box-sizing: border-box;
+          border: 2px solid #f5f5f5;
+          margin-top: 15px;
+          margin-bottom: 0px;
+          border-bottom-left-radius: 5px;
+          border-top-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-top-right-radius: 5px; }
+          .green-ex-container .side-bar .plant-info .form .notify-me label {
+            font-size: 12px; }
+          .green-ex-container .side-bar .plant-info .form .notify-me input {
+            border-width: 2px;
+            border-color: #aaa; }
+          .green-ex-container .side-bar .plant-info .form .notify-me p {
+            color: #999;
+            font-weight: 100;
+            font-size: 14px;
+            margin: 0; }
+          .green-ex-container .side-bar .plant-info .form .notify-me .mail-temple {
+            margin-top: 10px; }
+            .green-ex-container .side-bar .plant-info .form .notify-me .mail-temple p {
+              font-size: 10px;
+              color: #aaa; }
+              .green-ex-container .side-bar .plant-info .form .notify-me .mail-temple p span {
+                font-weight: 400; }
       .green-ex-container .side-bar .plant-info .map {
         height: 200px;
         display: block; }
@@ -1340,6 +1370,92 @@ input[type=button] {
                 .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .contact-info button:hover {
                   background: #50AD65;
                   color: #fff; }
+
+.donation-guide {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: #fff;
+  width: calc((100% - 10px)/2);
+  box-sizing: border-box;
+  padding: 0px;
+  margin-top: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #e0e0e0; }
+  .donation-guide.last {
+    margin-right: 0px; }
+  .donation-guide .image {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.333% - 4px);
+    margin-right: 4px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box; }
+    .donation-guide .image img {
+      width: 100%;
+      height: auto; }
+    .donation-guide .image h1 {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 3px; }
+    .donation-guide .image p {
+      font-size: 12px;
+      margin: 2px; }
+  .donation-guide .text {
+    background: #f5f5f5;
+    display: inline-block;
+    width: calc(66.666%);
+    padding: 20px;
+    text-align: left;
+    box-sizing: border-box;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px; }
+    .donation-guide .text img {
+      transition: all 0.5s ease;
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+      border: 2px solid #e0e0e0;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      margin: 5px;
+      margin-left: 0;
+      z-index: 9999999; }
+      .donation-guide .text img:hover {
+        transform: scale(2.3); }
+    .donation-guide .text h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0;
+      margin-bottom: 10px; }
+    .donation-guide .text p {
+      font-size: 12px;
+      margin: 2px; }
+      .donation-guide .text p span.bold {
+        font-weight: 600; }
+
+.fx-valley {
+  position: fixed;
+  display: block;
+  margin: 20px;
+  margin-bottom: 10px;
+  bottom: 0px;
+  right: 0px;
+  z-index: 999999; }
+  .fx-valley p {
+    font-size: 10px;
+    color: #999;
+    margin: 0;
+    font-weight: 400; }
+    .fx-valley p span {
+      font-weight: 600; }
 
 .verify {
   width: 100%;

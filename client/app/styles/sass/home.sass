@@ -1,0 +1,139 @@
+.container
+  @include container()
+  margin-top: 80px
+  p
+    font-size: 14px
+  .hero
+
+    @include col(1,3)
+    background: #fff
+    padding: 40px
+    margin-top: $break
+    @include border-left-radius(5px)
+    @include border-right-radius(5px)
+    border: 1px solid rgb(224, 224, 224)
+    .img
+      @include col(1,1)
+      img
+        width: 100%
+      .text1
+        @include col(1,1)
+        padding-left: 10px
+        h1
+          color: $nature_green
+          font-size: 40px
+          font-weight: 500
+          margin: 0
+        h2
+          color: $text_color
+          font-size: 36px
+          font-weight: 300
+          margin: 0
+
+      .text2
+        @include col(1,1,$last:true)
+  .sections
+    @include col(1.5,3)
+  .green-ex
+    @include col(1,1,$last:true)
+    background: #fff
+    padding: 40px
+    margin-top: $break
+    border: 1px solid rgb(224, 224, 224)
+    @include border-left-radius(5px)
+    @include border-right-radius(5px)
+    .img
+      @include col(1,2)
+      img
+        width: 100%
+
+  .forest
+    @include col(1,1,$last:true)
+    background: #fff
+    padding: 40px
+    margin-top: $break
+    border: 1px solid rgb(224, 224, 224)
+    @include border-left-radius(5px)
+    @include border-right-radius(5px)
+    .img
+      @include col(1,2)
+      img
+        width: 100%
+
+.login
+  @include col(0.5,3,$last:true)
+  //background: #fff
+  padding: 5px
+  padding-top: 10px
+  margin-top: $break
+  //border: 1px solid rgb(224, 224, 224)
+  @include border-top-radius(5px)
+  @include border-bottom-radius(5px)
+  text-align: center
+  input
+    display: block
+    width: 100%
+    margin: 0px
+    box-sizing: border-box
+    border: 2px solid $nature_green
+    font-size: 16px
+    &:disabled
+      opacity: 0.5
+    &:focus
+      outline: none
+    &:first-child
+      @include border-top-radius(5px)
+      @include border-bottom-radius(0px)
+      font-size: 12px
+      padding: 2px
+    &:nth-child(2)
+      @include border-top-radius(0px)
+      @include border-bottom-radius(0px)
+      border-top: 0px
+      border-bottom: 0px
+      font-size: 12px
+      padding: 2px
+    &:last-child
+      @include border-top-radius(0px)
+      @include border-bottom-radius(5px)
+      background: $nature_green
+      color: #fff
+
+  a
+    text-decoration: none
+    color: $nature_green
+
+.start
+  @include col(1,1,$last:true)
+
+  .flex
+    text-align: left
+    a
+      transition: all 0.5s ease
+      font-size: 14px
+      color: $nature_green
+      background: #fff
+      border: 2px solid $nature_green
+      border-radius: 8px
+      padding: 10px 20px
+      text-decoration: none
+      &:hover
+        color: #fff
+        background: $nature_green
+      &:focus
+        outline: none
+
+.text1
+
+  @include col(1,2,$last:true)
+  padding-left: 10px
+  h1
+    color: $nature_green
+    font-size: 30px
+    font-weight: 500
+    margin: 0
+  h2
+    color: $text_color
+    font-size: 24px
+    font-weight: 300
+    margin: 0

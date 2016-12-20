@@ -1,0 +1,188 @@
+.post-form
+  width: 100%
+  //background: #f44
+  form
+
+    textarea
+      width: 100%
+      resize: none
+      box-sizing: border-box
+      //@include border-top-radius(5px)
+      font-size: 14px
+      padding: 15px
+      border: 1px solid #e0e0e0
+      vertical-align: bottom
+      border-bottom-width: 0px
+      outline: none
+    input[type=text]
+      width: 100%
+      box-sizing: border-box
+      @include border-top-radius(5px)
+      font-size: 16px
+      font-weight: bold
+      padding: 15px
+      border: 1px solid #e0e0e0
+      vertical-align: bottom
+      border-bottom-width: 0px
+      outline: none
+  .controles-panal
+    background: #f9f9f9
+    padding: 15px
+    border: 1px solid #e0e0e0
+    margin: 0px
+    @include border-bottom-radius(5px)
+
+
+    input[type=submit]
+      border: 1px solid $nature_green
+      background: $nature_green
+      padding: 4px 10px
+      outline: none
+      font-size: 14px
+      @include border-left-radius(3px)
+      @include border-right-radius(3px)
+      color: #fff
+
+    button
+      border: 1px solid #e0e0e0
+      background: #fff
+      padding: 4px 10px
+      outline: none
+      font-size: 14px
+      color: #5b5b5b
+      @include border-left-radius(3px)
+      @include border-right-radius(3px)
+      margin-right: 5px
+      &:hover
+        background: #f9f9f9
+    .preview
+      display: block
+      border: 1px solid #e0e0e0
+      @include border-left-radius(3px)
+      @include border-right-radius(3px)
+      padding: 5px
+      box-sizing: border-box
+      margin-bottom: 10px
+    .add
+      display: inline-block
+      //border: 1px solid #e0e0e0
+      @include border-left-radius(3px)
+      @include border-right-radius(3px)
+      height: 100px
+      width: 100px
+      overflow: hidden
+      color: #fff
+      font-size: 16px
+      font-weight: 400
+      background: #e0e0e0
+      &:hover
+        background: #cacaca
+      .add-flex
+        height: 100%
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+
+    .img-preview
+      display: inline-block
+      height: 100px
+      width: 100px
+      overflow: hidden
+      margin-right: 2px
+      text-align: center
+      img
+        display: inline-block
+        &.portrait
+          height: 100%
+          width: auto
+        &.landscape
+          height: auto
+          width: 100%
+.post
+  .images
+    border-top: 1px solid #e0e0e0
+
+    width: 100%
+    padding: 5px
+    //background: #e0e0e0
+    box-sizing: border-box
+    .cover
+      border: 1px solid #e0e0e0
+      padding: 2px
+      width: 50%
+      box-sizing: border-box
+      display: inline-block
+      vertical-align: top
+
+      img
+        width: 100%
+        height: auto
+        display: block
+
+    .other
+      border: 1px solid #e0e0e0
+      padding: 2px
+      width: 50%
+      box-sizing: border-box
+      display: inline-block
+      img
+        width: 50%
+        height: auto
+        display: inline-block
+
+  .text
+    border-top: 1px solid #e0e0e0
+    border-left: 55px solid $nature_green
+    padding: 15px
+    color: $nature_green
+    .subject
+      h2
+        margin: 0px
+        margin-bottom: 5px
+        font-weight: 400
+    .body
+      p
+        margin: 0px
+        font-size: 14px
+        color: #000
+
+  .comments
+    border-top: 1px solid #e0e0e0
+    background: #f9f9f9
+    li
+      ul
+        margin-left: 40px
+        border-left: 2px solid $nature_green
+        padding-left: 10px
+    ul
+      padding: 15px
+      margin: 0px
+      li
+        display: block
+        .comment
+          .avatar
+            position: absolute
+            width: 30px
+            display: inline-block
+            img
+              width: 100%
+              height: auto
+        .text
+
+          color: #000
+          display: inline-block
+          border: 0px
+          padding: 0px
+          vertical-align: top
+          padding-left: 40px
+          .meta
+            span
+              font-size: 12px
+              &.owner
+                color: $nature_green
+          .content
+            p
+              font-size: 13px
+              margin: 0px
+              margin-top: 5px
