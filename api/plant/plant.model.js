@@ -39,17 +39,47 @@ var plantSchema = new Schema({
     type: Number,
     required: true
   },
+  instant:{
+    type: Boolean,
+    required: false
+  },
+  owner_name: {
+    type: String,
+    required: function() {
+      if (this.instant) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  owner_email: {
+    type: String,
+    required: function() {
+      if (this.instant) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: function() {
+      if (this.instant) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
   approved: {
     type: Boolean,
     required: false,
     default: true
   },
-  //status: ['active','closed','deleted','review']
+  //status: ['pending','active','closed','deleted','review']
   status: {
     type: String,
     required: false,
@@ -76,6 +106,14 @@ plantSchema.index({
     type: 6,
     description: 2
   }
+});
+
+plantSchema.pre('save', function(next) {
+  if (this.instant) {
+    //this.approved = false;
+    this.status = 'pending';
+  }
+  next();
 });
 
 // the schema is useless so far

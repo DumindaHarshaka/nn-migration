@@ -15,6 +15,8 @@ function requiredProcessEnv(name) {
 var all = {
   env: process.env.NODE_ENV,
 
+  email_from: 'Nature Nurture <automated@naturenurture.lk>',
+
   // Root path of server
   root: path.normalize(__dirname + '/../../..'),
 

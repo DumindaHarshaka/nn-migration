@@ -3,6 +3,9 @@
 // Production specific configuration
 // =================================
 module.exports = {
+  //global url
+  url: 'http://www.naturenurture.lk/',
+
   // Server IP
   ip:     process.env.OPENSHIFT_NODEJS_IP ||
           process.env.IP ||

@@ -4,7 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var email = require('../../email/email.service');
-var crypto = require('../../crypto/crypto.service')
+var crypto = require('../../crypto/crypto.service');
 var jwt = require('jsonwebtoken');
 
 function validationError(res, statusCode) {

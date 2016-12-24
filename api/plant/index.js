@@ -3,8 +3,12 @@
 var express = require('express');
 var Plant = require('./plant.model')
 var User = require('../user/user.model')
+var config = require('../../config/environment');
+var email = require('../../email/email.service');
+var crypto = require('../../crypto/crypto.service');
 
 var router = express.Router();
+
 //
 //
 //get all plants
@@ -12,49 +16,37 @@ var router = express.Router();
 //
 router.get('/', function(req, res) {
   Plant.find({
-      type: {
-        $nin: ['Response']
-      },
-      status:{
-        $nin:['deleted','closed']
-      }
+    type: {
+      $nin: ['Response']
+    },
+    status: {
+      $nin: ['deleted', 'closed', 'pending']
+    }
 
-    }, null, {
-      sort: {
-        createdAt: -1
-      }
-    })
-    .select('-responses.contact_info')
-    .populate('responses.response')
+  }, null, {
+    sort: {
+      createdAt: -1
+    }
+  }).select('-responses.contact_info').populate('responses.response').populate('owner', '_id name').exec(function(err, data) {
+    if (err) {
+      res.send({error: true, message: err});
+      return;
+    } else {
 
-  .populate('owner', '_id name')
-    .exec(function(err, data) {
-      if (err) {
-        res.send({
-          error: true,
-          message: err
-        });
-        return;
-      } else {
+      User.populate(data, {
+        path: 'responses.response.owner',
+        select: '_id name',
+        // <== We are populating phones so we need to use the correct model, not User
+      }, function(err, docs) {
+        if (err) {
+          res.send({error: true, message: err});
+          return;
+        }
+        res.send(docs);
+      });
+    }
 
-        User.populate(data, {
-          path: 'responses.response.owner',
-          select: '_id name',
-          // <== We are populating phones so we need to use the correct model, not User
-        }, function(err, docs) {
-          if (err) {
-            res.send({
-              error: true,
-              message: err
-            });
-            return;
-          }
-          res.send(docs);
-        });
-      }
-
-
-    })
+  })
 });
 //
 //
@@ -63,49 +55,37 @@ router.get('/', function(req, res) {
 //
 router.get('/user/:id', function(req, res) {
   Plant.find({
-      owner: req.params.id,
-      type: {
-        $nin: ['Response']
-      },
-      status:{
-        $nin:['deleted','closed']
-      }
-    }, null, {
-      sort: {
-        createdAt: -1
-      }
-    })
-    .select('-responses.contact_info')
-    .populate('responses.response')
+    owner: req.params.id,
+    type: {
+      $nin: ['Response']
+    },
+    status: {
+      $nin: ['deleted', 'closed']
+    }
+  }, null, {
+    sort: {
+      createdAt: -1
+    }
+  }).select('-responses.contact_info').populate('responses.response').populate('owner', '_id name').exec(function(err, data) {
+    if (err) {
+      res.send({error: true, message: err});
+      return;
+    } else {
 
-  .populate('owner', '_id name')
-    .exec(function(err, data) {
-      if (err) {
-        res.send({
-          error: true,
-          message: err
-        });
-        return;
-      } else {
+      User.populate(data, {
+        path: 'responses.response.owner',
+        select: '_id name',
+        // <== We are populating phones so we need to use the correct model, not User
+      }, function(err, docs) {
+        if (err) {
+          res.send({error: true, message: err});
+          return;
+        }
+        res.send(docs);
+      });
+    }
 
-        User.populate(data, {
-          path: 'responses.response.owner',
-          select: '_id name',
-          // <== We are populating phones so we need to use the correct model, not User
-        }, function(err, docs) {
-          if (err) {
-            res.send({
-              error: true,
-              message: err
-            });
-            return;
-          }
-          res.send(docs);
-        });
-      }
-
-
-    })
+  })
 });
 //
 //
@@ -118,32 +98,51 @@ router.post('/', function(req, res) {
     //console.log(req.body);
     //console.log(dt);
     if (err) {
-      res.status(500).send({
-        error: true,
-        message: err
-      });
+      res.status(500).send({error: true, message: err});
 
     } else {
-      //console.log(dt._id);
-      Plant.findOne({
-          _id: dt._id
-        })
-        .populate('owner', '_id name')
-        .exec(function(err, data) {
-          if (err) {
-            res.send({
-              error: true,
-              message: err
-            });
-            return;
-          }
 
-          res.send(data);
-        })
+      Plant.findOne({_id: dt._id}).populate('owner', '_id name').exec(function(err, data) {
+        if (err) {
+          res.status(500).send({error: true, message: err});
+          return;
+        }
+        if (req.body.instant) {
+          var ins_data = data;
+          ins_data.verification_link = config.url + 'api/plant/verify_instant_post/' + crypto.encryptText(data._id.toString());
+          ins_data.offer_text = ((ins_data.type == 'Request') ? 'requested ' : 'offered ') + ins_data.quantity + ' '+ ins_data.name + ((ins_data.quantity>1)? ' plants':' plant');
+          console.log(ins_data);
+          email.send('instant_post_verification', ins_data, {
+            from: config.email_from,
+            to: ins_data.owner_email,
+            subject: 'Instant post verification'
+          }).then(function(body) {
+            console.log('instant post verification mail sent');
+          }).catch(function(err) {
+            console.log('mail failed');
+            console.log(err);
+          })
+        }
+        res.send(data);
+      })
     }
-
   })
+});
+//
+//
+///verify_instant_post
+//
+//
+router.get('/verify_instant_post/:id',function(req,res) {
 
+  Plant.findOne({_id: crypto.decryptText(req.params.id)}).exec().then(plant => {
+    plant.status = 'active';
+    plant.save().then(plant => {
+      res.redirect("/email-verified");
+    }).then(null, err => {
+      console.log(err);
+    })
+  })
 });
 //
 //
@@ -157,19 +156,16 @@ router.put('/:id', function(req, res) {
   }, req.body, {
     upsert: true
   }, function(err, doc) {
-    if (err) return res.send(500, {
-      error: err
-    });
+    if (err)
+      return res.send(500, {error: err});
     Plant.findOne({
       _id: req.params.id
     }, function(err, doc) {
-      if (err) return res.send(500, {
-        error: err
-      });
+      if (err)
+        return res.send(500, {error: err});
       console.log(doc);
       return res.send(doc);
     })
-
 
   });
 
@@ -183,92 +179,71 @@ router.post('/response', function(req, res) {
   if (req.body.response) {
     req.body.response.type = "Response";
   } else {
-    res.status(400).send({
-      error: true,
-      message: "Empty request body"
-    });
+    res.status(400).send({error: true, message: "Empty request body"});
     return;
   }
 
   console.log("object of post -> " + req.body);
 
-  User.findOne({
-      email: 'guest@guest.com'
-    })
-    .exec(function(err, doc) {
+  User.findOne({email: 'guest@guest.com'}).exec(function(err, doc) {
+    if (err) {
+      res.status(500).send({error: true, message: err});
+    }
+    //
+    //
+    // get guest user for
+    if (req.body.response.owner === 'guest') {
+      req.body.response.owner = doc._id;
+    }
+    //
+    //
+
+    Plant.create(req.body.response, function(err, dt) {
+      console.log(req.body);
+      console.log(dt);
       if (err) {
-        res.status(500).send({
-          error: true,
-          message: err
-        });
-      }
-      //
-      //
-      // get guest user for
-      if (req.body.response.owner === 'guest') {
-        req.body.response.owner = doc._id;
-      }
-      //
-      //
+        res.status(500).send({error: true, message: err});
 
-      Plant.create(req.body.response, function(err, dt) {
-        console.log(req.body);
-        console.log(dt);
-        if (err) {
-          res.status(500).send({
-            error: true,
-            message: err
-          });
-
-        } else {
-          console.log("object id of response-> " + dt._id);
-          Plant.findOne({
-            _id: req.body.id
-          }, function(err, doc) {
-            console.log(doc);
-            doc.responses.push({
-              response: dt._id,
-              contact_info: req.body.response.contact_info
-            });
-            doc.save(function(err, updatedDoc) {
-              if (err) {
-                res.status(500).send(err);
-                return;
-              }
-              Plant.populate(updatedDoc, {
-                path: 'responses.response'
-              }, function(err, doc) {
-                User.populate(doc, {
-                  path: 'responses.response.owner',
-                  select: '_id name',
-                  // <== We are populating phones so we need to use the correct model, not User
-                }, function(err, docs) {
-                  if (err) {
-                    res.send({
-                      error: true,
-                      message: err
-                    });
-                    return;
-                  }
-                  res.send(docs);
-                });
-
-                //res.send(doc);
+      } else {
+        console.log("object id of response-> " + dt._id);
+        Plant.findOne({
+          _id: req.body.id
+        }, function(err, doc) {
+          console.log(doc);
+          doc.responses.push({response: dt._id, contact_info: req.body.response.contact_info});
+          doc.save(function(err, updatedDoc) {
+            if (err) {
+              res.status(500).send(err);
+              return;
+            }
+            Plant.populate(updatedDoc, {
+              path: 'responses.response'
+            }, function(err, doc) {
+              User.populate(doc, {
+                path: 'responses.response.owner',
+                select: '_id name',
+                // <== We are populating phones so we need to use the correct model, not User
+              }, function(err, docs) {
+                if (err) {
+                  res.send({error: true, message: err});
+                  return;
+                }
+                res.send(docs);
               });
 
-
-              console.log("SUCCESS");
+              //res.send(doc);
             });
+
+            console.log("SUCCESS");
           });
-        }
-
-      })
-
+        });
+      }
 
     })
 
-  //console.log(req.body.response.owner);
+  })
 
+  //console.log(req.body.response.owner);
 
 });
 //
@@ -277,23 +252,17 @@ router.post('/response', function(req, res) {
 //
 //
 router.get('/response/:id', function(req, res) {
-  Plant.findOne({
-      'responses._id': req.params.id
-    })
-    //.select('responses.contact_info')
+  Plant.findOne({'responses._id': req.params.id})
+  //.select('responses.contact_info')
     .exec(function(err, data) {
-      if (err) {
-        res.status(500).send({
-          error: err
-        })
-        return;
-      }
-      var relation = data.responses.id(req.params.id)
-      console.log(relation);
-      res.status(200).send({
-        contact_info: relation.contact_info
-      });
-    })
+    if (err) {
+      res.status(500).send({error: err})
+      return;
+    }
+    var relation = data.responses.id(req.params.id)
+    console.log(relation);
+    res.status(200).send({contact_info: relation.contact_info});
+  })
 });
 //
 //
@@ -301,59 +270,44 @@ router.get('/response/:id', function(req, res) {
 //
 //
 router.get('/search/:id', function(req, res) {
-  Plant.find(
-
-      {
-        $text: {
-          $search: req.params.id
-        },
-        type: {
-          $nin: ['Response']
-        },
-        status:{
-          $nin:['deleted','closed']
-        }
-      }, {
-        score: {
-          $meta: "textScore"
-        }
-      }
-
-    )
-    .sort({
-      score: {
-        $meta: 'textScore'
-      }
-    })
-    .select('-responses.contact_info')
-    .populate('responses.response')
-    .populate('owner', '_id name')
-    .exec(function(err, data) {
+  Plant.find({
+    $text: {
+      $search: req.params.id
+    },
+    type: {
+      $nin: ['Response']
+    },
+    status: {
+      $nin: ['deleted', 'closed']
+    }
+  }, {
+    score: {
+      $meta: "textScore"
+    }
+  }).sort({
+    score: {
+      $meta: 'textScore'
+    }
+  }).select('-responses.contact_info').populate('responses.response').populate('owner', '_id name').exec(function(err, data) {
+    if (err) {
+      res.status(500).send({error: err})
+      return;
+    }
+    User.populate(data, {
+      path: 'responses.response.owner',
+      select: '_id name',
+      // <== We are populating phones so we need to use the correct model, not User
+    }, function(err, docs) {
       if (err) {
-        res.status(500).send({
-          error: err
-        })
+        res.send({error: true, message: err});
         return;
       }
-      User.populate(data, {
-        path: 'responses.response.owner',
-        select: '_id name',
-        // <== We are populating phones so we need to use the correct model, not User
-      }, function(err, docs) {
-        if (err) {
-          res.send({
-            error: true,
-            message: err
-          });
-          return;
-        }
-        console.log(data);
-        res.status(200).send(docs);
-        //res.send(docs);
-      });
+      console.log(data);
+      res.status(200).send(docs);
+      //res.send(docs);
+    });
 
-
-    })
+  })
 });
 //
 //
@@ -362,62 +316,50 @@ router.get('/search/:id', function(req, res) {
 //
 router.get('/user/bids/:id', function(req, res) {
   Plant.find({
-      type: {
-        $nin: ['Response']
-      }
-    }, null, {
-      sort: {
-        createdAt: -1
-      }
-    })
-    .select('-responses.contact_info')
-    .populate({
-      path: 'responses.response',
-      match: {
-        owner: req.params.id
-      }
-    })
-    //.where('responses.response.owner').equals(req.params.id)
+    type: {
+      $nin: ['Response']
+    }
+  }, null, {
+    sort: {
+      createdAt: -1
+    }
+  }).select('-responses.contact_info').populate({
+    path: 'responses.response',
+    match: {
+      owner: req.params.id
+    }
+  })
+  //.where('responses.response.owner').equals(req.params.id)
+    .populate('owner', '_id name').exec(function(err, data) {
+    if (err) {
+      res.send({error: true, message: err});
+      return;
+    } else {
+      //console.log(data);
+      data = data.filter(function(d) {
+        d.responses = d.responses.filter(function(response) {
+          //console.log(response);
+          return true;
 
-
-  .populate('owner', '_id name')
-    .exec(function(err, data) {
-      if (err) {
-        res.send({
-          error: true,
-          message: err
         });
-        return;
-      } else {
-        //console.log(data);
-        data = data.filter(function(d) {
-          d.responses = d.responses.filter(function(response) {
-            //console.log(response);
-            return true;
+        return d.responses.length > 0;
+      });
+      //console.log(data);
 
-          });
-          return d.responses.length > 0;
-        });
-        //console.log(data);
+      User.populate(data, {
+        path: 'responses.response.owner',
+        select: '_id name',
+        // <== We are populating phones so we need to use the correct model, not User
+      }, function(err, docs) {
+        if (err) {
+          res.send({error: true, message: err});
+          return;
+        }
+        res.send(docs);
+      });
+    }
 
-        User.populate(data, {
-          path: 'responses.response.owner',
-          select: '_id name',
-          // <== We are populating phones so we need to use the correct model, not User
-        }, function(err, docs) {
-          if (err) {
-            res.send({
-              error: true,
-              message: err
-            });
-            return;
-          }
-          res.send(docs);
-        });
-      }
-
-
-    })
+  })
 });
 //
 //
@@ -433,19 +375,16 @@ router.delete('/:id', function(req, res) {
   }, {
     upsert: true
   }, function(err, doc) {
-    if (err) return res.send(500, {
-      error: err
-    });
+    if (err)
+      return res.send(500, {error: err});
     Plant.findOne({
       _id: req.params.id
     }, function(err, doc) {
-      if (err) return res.send(500, {
-        error: err
-      });
+      if (err)
+        return res.send(500, {error: err});
       console.log(doc);
       return res.send(doc);
     })
-
 
   });
 
@@ -464,19 +403,16 @@ router.post('/close/:id', function(req, res) {
   }, {
     upsert: true
   }, function(err, doc) {
-    if (err) return res.send(500, {
-      error: err
-    });
+    if (err)
+      return res.send(500, {error: err});
     Plant.findOne({
       _id: req.params.id
     }, function(err, doc) {
-      if (err) return res.send(500, {
-        error: err
-      });
+      if (err)
+        return res.send(500, {error: err});
       console.log(doc);
       return res.send(doc);
     })
-
 
   });
 
@@ -495,19 +431,16 @@ router.post('/report/:id', function(req, res) {
   }, {
     upsert: true
   }, function(err, doc) {
-    if (err) return res.send(500, {
-      error: err
-    });
+    if (err)
+      return res.send(500, {error: err});
     Plant.findOne({
       _id: req.params.id
     }, function(err, doc) {
-      if (err) return res.send(500, {
-        error: err
-      });
+      if (err)
+        return res.send(500, {error: err});
       console.log(doc);
       return res.send(doc);
     })
-
 
   });
 

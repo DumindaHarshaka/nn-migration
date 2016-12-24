@@ -834,6 +834,8 @@ input[type=button] {
           .green-ex-container .side-bar .plant-info .form .notify-me input {
             border-width: 2px;
             border-color: #aaa; }
+            .green-ex-container .side-bar .plant-info .form .notify-me input.has-error {
+              border-color: #f55; }
           .green-ex-container .side-bar .plant-info .form .notify-me p {
             color: #999;
             font-weight: 100;
