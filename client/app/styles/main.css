@@ -1373,75 +1373,87 @@ input[type=button] {
                   background: #50AD65;
                   color: #fff; }
 
-.donation-guide {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  background: #fff;
-  width: calc((100% - 10px)/2);
-  box-sizing: border-box;
-  padding: 0px;
-  margin-top: 10px;
-  margin-right: 10px;
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid #e0e0e0; }
-  .donation-guide.last {
-    margin-right: 0px; }
-  .donation-guide .image {
+.guide {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .guide .donation-guide {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: #fff;
+    width: calc((100% - 10px)/2);
+    box-sizing: border-box;
+    padding: 0px;
+    margin-top: 10px;
+    margin-right: 10px;
     display: inline-block;
     vertical-align: top;
-    width: calc(33.333% - 4px);
-    margin-right: 4px;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box; }
-    .donation-guide .image img {
-      width: 100%;
-      height: auto; }
-    .donation-guide .image h1 {
-      font-size: 20px;
-      font-weight: 500;
-      margin: 3px; }
-    .donation-guide .image p {
-      font-size: 12px;
-      margin: 2px; }
-  .donation-guide .text {
-    background: #f5f5f5;
-    display: inline-block;
-    width: calc(66.666%);
-    padding: 20px;
-    text-align: left;
-    box-sizing: border-box;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px; }
-    .donation-guide .text img {
-      transition: all 0.5s ease;
-      display: block;
-      width: 100%;
-      height: auto;
-      vertical-align: middle;
-      border: 2px solid #e0e0e0;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      margin: 5px;
-      margin-left: 0;
-      z-index: 9999999; }
-      .donation-guide .text img:hover {
-        transform: scale(2.3); }
-    .donation-guide .text h2 {
-      font-size: 18px;
-      font-weight: 500;
-      margin: 0;
-      margin-bottom: 10px; }
-    .donation-guide .text p {
-      font-size: 12px;
-      margin: 2px; }
-      .donation-guide .text p span.bold {
-        font-weight: 600; }
+    border: 1px solid #e0e0e0; }
+    .guide .donation-guide.last {
+      margin-right: 0px; }
+    .guide .donation-guide .image {
+      display: inline-block;
+      vertical-align: top;
+      width: calc(33.333% - 4px);
+      margin-right: 4px;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box; }
+      .guide .donation-guide .image img {
+        width: 100%;
+        height: auto; }
+      .guide .donation-guide .image h1 {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 3px; }
+      .guide .donation-guide .image p {
+        font-size: 12px;
+        margin: 2px; }
+    .guide .donation-guide .text {
+      background: #f5f5f5;
+      display: inline-block;
+      width: calc(66.666%);
+      padding: 20px;
+      text-align: left;
+      box-sizing: border-box;
+      height: 100%;
+      border-bottom-right-radius: 8px;
+      border-top-right-radius: 8px; }
+      .guide .donation-guide .text img {
+        transition: all 0.5s ease;
+        display: block;
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+        border: 2px solid #e0e0e0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin: 5px;
+        margin-left: 0;
+        z-index: 9999999; }
+        .guide .donation-guide .text img:hover {
+          transform: scale(2.3); }
+      .guide .donation-guide .text h2 {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 0;
+        margin-bottom: 10px; }
+      .guide .donation-guide .text p {
+        font-size: 12px;
+        margin: 2px; }
+        .guide .donation-guide .text p span.bold {
+          font-weight: 600; }
 
 .fx-valley {
   position: fixed;
