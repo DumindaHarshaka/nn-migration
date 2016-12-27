@@ -1,6 +1,7 @@
 // grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var active_status = ['active','closed','deleted','review']
 //child schema - Responses
 var responsesSchema = new Schema({
     response: {
@@ -41,7 +42,8 @@ var plantSchema = new Schema({
   },
   instant:{
     type: Boolean,
-    required: false
+    required: false,
+    default: false
   },
   owner_name: {
     type: String,
@@ -109,7 +111,7 @@ plantSchema.index({
 });
 
 plantSchema.pre('save', function(next) {
-  if (this.instant) {
+  if (this.instant && active_status.indexOf(this.status) === -1) {
     //this.approved = false;
     this.status = 'pending';
   }

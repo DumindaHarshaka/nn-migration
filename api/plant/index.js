@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
       return;
     } else {
 
-      User.populate(data, {
+      return User.populate(data, {
         path: 'responses.response.owner',
         select: '_id name',
         // <== We are populating phones so we need to use the correct model, not User
@@ -134,15 +134,21 @@ router.post('/', function(req, res) {
 //
 //
 router.get('/verify_instant_post/:id',function(req,res) {
-
-  Plant.findOne({_id: crypto.decryptText(req.params.id)}).exec().then(plant => {
-    plant.status = 'active';
-    plant.save().then(plant => {
-      res.redirect("/email-verified");
-    }).then(null, err => {
-      console.log(err);
-    })
+  Plant.findOneAndUpdate({_id: crypto.decryptText(req.params.id)},{status: 'active'},function(err,results) {
+    console.log(results);
+    res.redirect("/email-verified");
   })
+  // Plant.findOneAndUpdate({_id: crypto.decryptText(req.params.id)}).exec().then(plant => {
+  //   plant.status = 'active';
+  //   plant.markModified('status');
+  //   console.log(plant);
+  //   plant.save().then(plant => {
+  //     console.log(plant);
+  //     res.redirect("/email-verified");
+  //   }).then(null, err => {
+  //     console.log(err);
+  //   })
+  // })
 });
 //
 //
@@ -219,20 +225,60 @@ router.post('/response', function(req, res) {
             Plant.populate(updatedDoc, {
               path: 'responses.response'
             }, function(err, doc) {
-              User.populate(doc, {
+              User.populate(doc, [{
                 path: 'responses.response.owner',
                 select: '_id name',
                 // <== We are populating phones so we need to use the correct model, not User
-              }, function(err, docs) {
+              },{
+                path: 'owner',
+                select: 'email',
+                // <== We are populating phones so we need to use the correct model, not User
+              }], function(err, docs) {
                 if (err) {
                   res.send({error: true, message: err});
                   return;
                 }
+                User.populate(dt,{
+                  path: 'owner',
+                  select: '_id name email',
+                },function(err,owner_doc) {
+                  if (err) {
+                    console.log(err);
+                  }
+
+                  owner_doc.contact_info = req.body.response.contact_info;
+                  owner_doc.parent = docs;
+                  var date = new Date(owner_doc.createdAt);
+                  console.log(date.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
+                  owner_doc.date = date.toLocaleString('en-US',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric',minute: 'numeric'});
+
+                  if (docs.instant && (docs.instant !== undefined)) {
+                    owner_doc.parent_name = docs.owner_name;
+                    owner_doc.to = docs.owner_email;
+                  }else {
+                    owner_doc.parent_name = docs.owner.name;
+                    owner_doc.to = docs.owner.email;
+                  }
+
+                  console.log(docs.instant && (docs.instant !== undefined));
+                  email.send('response_notification',owner_doc,{
+                    from: config.email_from,
+                    to: owner_doc.to,
+                    subject: req.body.response.quantity +' '+req.body.response.name+' plants from '+req.body.response.address.toString().split(',')[0]
+                  }).then(function(res) {
+                    console.log(res);
+                  }).catch(function(err) {
+                    console.log(err);
+                  });
+
+                })
+
                 res.send(docs);
               });
 
               //res.send(doc);
             });
+
 
             console.log("SUCCESS");
           });
