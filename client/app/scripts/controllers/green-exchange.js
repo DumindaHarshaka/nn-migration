@@ -236,7 +236,7 @@ angular.module('naturenurtureApp')
       //
     $scope.isMyPost = function(post) {
         if (auth.getCurrentUserObj() && auth.getCurrentUserObj() !== null) {
-          console.log(post);
+          //console.log(post);
           if (post.instant === true) {
             return post.owner_email === auth.getCurrentUserObj().email
           }
