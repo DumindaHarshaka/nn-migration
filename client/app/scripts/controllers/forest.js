@@ -7,7 +7,7 @@
  * # ForestCtrl
  * Controller of the naturenurtureApp
  */
-angular.module('naturenurtureApp',['ngFileUpload'])
+angular.module('naturenurtureApp')
   .controller('ForestCtrl', function (Upload) {
 
   });

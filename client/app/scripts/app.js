@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMap'
+    'ngMap',
+    'ngFileUpload'
   ])
   .controller('NavbarController', function ($scope,$location,auth) {
     $scope.getClass = function(path) {
