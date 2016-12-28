@@ -39,9 +39,11 @@ angular.module('naturenurtureApp')
 
     $scope.plant = {}
     $scope.submitForm = function() {
+      console.log("regular");
         var plant = $scope.plant;
         auth.getCurrentUser().then(function(res) {
-          //console.info(res);
+          console.info(res);
+          //return;
           plant.owner = res._id;
           $scope.plant.plantLoading = true;
 
@@ -62,6 +64,25 @@ angular.module('naturenurtureApp')
         });
 
       }
+    $scope.submitInstantForm = function() {
+      console.log("instant");
+      var plant = $scope.plant;
+      plant.instant = true;
+      $http.post(config.baseUrl + 'api/plant/', $scope.plant).then((function(a) {
+        return function(res) {
+          //console.log(res);
+          $scope.posts.unshift(res.data);
+          plant.plantLoading = false;
+          $scope.plant = {}
+          $scope.plant.type = 'Exchange';
+          $scope.pform.plantForm.$setPristine();
+        }
+
+      })($scope.plant), function(res) {
+        //console.log(res);
+      });
+
+    }
       //var init_obj = this;
     this.init = function() {
       //var posts = this.posts
@@ -215,6 +236,10 @@ angular.module('naturenurtureApp')
       //
     $scope.isMyPost = function(post) {
         if (auth.getCurrentUserObj() && auth.getCurrentUserObj() !== null) {
+          //console.log(post);
+          if (post.instant === true) {
+            return post.owner_email === auth.getCurrentUserObj().email
+          }
           return post.owner._id === auth.getCurrentUserObj()._id
         }
 

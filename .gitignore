@@ -56,10 +56,10 @@ jspm_packages
 
 
 ### Sass ###
-**/.sass-cache/
-*.css.map
-**/sass
-**/*.css.map
+#**/.sass-cache/
+#*.css.map
+#**/sass
+#**/*.css.map
 
 ### Jade ###
-**/jade
+#**/jade

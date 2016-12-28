@@ -4,7 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var email = require('../../email/email.service');
-var crypto = require('../../crypto/crypto.service')
+var crypto = require('../../crypto/crypto.service');
 var jwt = require('jsonwebtoken');
 
 function validationError(res, statusCode) {
@@ -55,6 +55,17 @@ module.exports = {
       user.verified = true;
       user.save().then(user => {
         res.redirect("/email-verified");
+        //donation-guide email
+        email.send('donation-guide', {}, {
+          from: config.email_from,
+          to: user.email,
+          subject: 'Quick guide'
+        }).then(function(body) {
+          console.log('Quick guide mail sent');
+        }).catch(function(err) {
+          console.log('Quick guide mail failed');
+          console.log(err);
+        })
       }).then(null, err => {
         next(err)
       })

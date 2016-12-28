@@ -3,6 +3,9 @@
 // Development specific configuration
 // ==================================
 module.exports = {
+  
+  //global url
+  url: 'http://localhost:9000/',
 
   // MongoDB connection options
   mongo: {

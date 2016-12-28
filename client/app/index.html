@@ -42,10 +42,10 @@
           <li  ui-sref-active="active" ng-class="getClass('/green-exchange')">
             <a href="/green-exchange">Green Exchange</a>
           </li>
-          <li  ui-sref-active="active" ng-class="getClass('/forest')">
+          <!-- <li  ui-sref-active="active" ng-class="getClass('/forest')">
             <a href="/forest">The Forest
             </a>
-          </li>
+          </li> -->
           <li ng-hide="isLoggedIn()" ui-sref-active="active" ng-class="getClass('/signup')">
             <a href="/signup">Sign up</a>
           </li>
@@ -82,7 +82,14 @@
 
     <div class="footer">
       <div class="container">
-        <p></p>
+        <div class="fx-valley">
+          <p>Made with
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            by
+            <span>FX Valley
+            </span>
+          </p>
+        </div>
       </div>
     </div>
 
