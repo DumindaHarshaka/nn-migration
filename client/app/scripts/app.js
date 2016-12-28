@@ -88,6 +88,11 @@ angular
         controller: 'ResetPasswordCtrl',
         controllerAs: 'resetPassword'
       })
+      .when('/forest', {
+        templateUrl: 'views/forest.html',
+        controller: 'ForestCtrl',
+        controllerAs: 'forest'
+      })
       .otherwise({
         redirectTo: '/'
       });
