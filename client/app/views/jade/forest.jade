@@ -137,10 +137,10 @@
               img.portrait(ngf-thumbnail="file")
                
               
-            .add(name="file", ngf-select ng-model="files" ngf-multiple="true", ngf-keep="'distinct'",ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="5MB")
+            .add(name="file", ngf-select ng-model="files" ngf-multiple="true", ngf-keep="'distinct'",ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="5MB" ngf-dimensions="dim($file, $width, $height)")
               .add-flex Add more
                 
-          button(type="button", name="file", ngf-select ng-model="files" ngf-multiple="true", ngf-keep="false") <i class="fa fa-picture-o" aria-hidden="true"></i> Photo
+          button(type="button", name="file", ngf-select ng-model="files" ngf-multiple="true", ngf-keep="false" ngf-max-size="5MB" ngf-dimensions="dim($file, $width, $height)") <i class="fa fa-picture-o" aria-hidden="true"></i> Photo
           
           input(type="submit", value="Post")
         

@@ -23,6 +23,7 @@ angular.module('naturenurtureApp')
     // for multiple files:
     $scope.uploadFiles = function(files) {
       if (files && files.length) {
+        console.log(files);
         // for (var i = 0; i < files.length; i++) {
         //   Upload.upload({..., data: {file: files[i]}, ...})...;
         // }
@@ -31,7 +32,8 @@ angular.module('naturenurtureApp')
           url: 'http://localhost:9000/api/post/',
           arrayKey: '',
           data: {
-            file: files
+            file: files,
+            me:'Duminda'
             //'username': $scope.username
           }
         }).then(function(resp) {
@@ -43,6 +45,12 @@ angular.module('naturenurtureApp')
           console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
       }
+    }
+
+    $scope.dim = function(file, width, height) {
+      console.log(file);
+      console.log(width);
+      console.log(height);
     }
 
   });
