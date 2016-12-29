@@ -159,13 +159,20 @@
           h2 {{post.subject}}
         .body 
          p {{post.body}}    
-      .images
-        .cover
-          img(src="{{post.images[0].url}}", alt="")
-        .other
-          img(src="/images/book.jpg", alt="")
-          img(src="/images/book.jpg", alt="")
-          img(src="/images/book.jpg", alt="")    
+      .images(ng-show="post.images && post.images.length")
+        .image(ng-repeat="img in post.images|limitTo:4", ng-class="imageGridClass(post)")
+          img(src="{{img.url}}")
+        //- .other
+        //-   img(src="/images/book.jpg", alt="")
+        //-   img(src="/images/book.jpg", alt="")
+        //-   img(src="/images/book.jpg", alt="")  
+      //- .images(ng-show="post.images && post.images.length == 1")
+      //-   .cover
+      //-     img(src="{{post.images[0].url}}", alt="")
+        //- .other
+        //-   img(src="/images/book.jpg", alt="")
+        //-   img(src="/images/book.jpg", alt="")
+        //-   img(src="/images/book.jpg", alt="")       
       
       
           

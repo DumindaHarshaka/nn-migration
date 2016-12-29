@@ -68,4 +68,12 @@ angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upl
     console.log(height);
   }
 
+  $scope.imageGridClass = function(post) {
+    if (post.images.length < 5) {
+      return 'img-'+post.images.length;
+    }else {
+      return 'img-5-plus';
+    }
+  }
+
 });
