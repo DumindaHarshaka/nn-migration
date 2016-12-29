@@ -1822,13 +1822,14 @@ input[type=button] {
       display: inline-block; }
 .post .text {
   border-top: 1px solid #e0e0e0;
-  border-left: 55px solid #50AD65;
+  border-left: 2px solid #50AD65;
   padding: 15px;
   color: #50AD65; }
   .post .text .subject h2 {
     margin: 0px;
     margin-bottom: 5px;
-    font-weight: 400; }
+    font-weight: 400;
+    color: #000; }
   .post .text .body p {
     margin: 0px;
     font-size: 14px;

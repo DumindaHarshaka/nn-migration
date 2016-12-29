@@ -7,33 +7,44 @@
  * # ForestCtrl
  * Controller of the naturenurtureApp
  */
-angular.module('naturenurtureApp')
-  .controller('ForestCtrl', function ($scope, Upload) {
-    $scope.d = function() {
-      console.log("efs");
+angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload ,$http, config, auth) {
+  this.init = function() {
+    //var posts = this.posts
+    $http.get(config.baseUrl + 'api/post/').then(function(res) {
+
+      $scope.posts = res.data;
+      //console.log($scope.posts);
+
+    }, function(res) {
+      //console.log(res);
+    });
+  }
+  this.init();
+
+  $scope.d = function() {
+    console.log("efs");
+  }
+
+  $scope.submit = function() {
+    console.log('submitting...');
+    if ($scope.postForm.file.$valid && $scope.files) {
+      $scope.uploadFiles($scope.files);
     }
+  };
 
-    $scope.submit = function() {
-      console.log('submitting...');
-      if ($scope.postForm.file.$valid && $scope.files) {
-        $scope.uploadFiles($scope.files);
-      }
-    };
-
-    // for multiple files:
-    $scope.uploadFiles = function(files) {
+  // for multiple files:
+  $scope.uploadFiles = function(files) {
+    auth.getCurrentUser().then(function(res) {
+      $scope.post.owner = res._id;
+      $scope.post.type = 'post';
       if (files && files.length) {
         console.log(files);
-        // for (var i = 0; i < files.length; i++) {
-        //   Upload.upload({..., data: {file: files[i]}, ...})...;
-        // }
-        // or send them all together for HTML5 browsers:
         Upload.upload({
           url: 'http://localhost:9000/api/post/',
           arrayKey: '',
           data: {
             file: files,
-            me:'Duminda'
+            post: $scope.post
             //'username': $scope.username
           }
         }).then(function(resp) {
@@ -45,12 +56,16 @@ angular.module('naturenurtureApp')
           console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
       }
-    }
+    });
 
-    $scope.dim = function(file, width, height) {
-      console.log(file);
-      console.log(width);
-      console.log(height);
-    }
+  }
 
-  });
+
+
+  $scope.dim = function(file, width, height) {
+    console.log(file);
+    console.log(width);
+    console.log(height);
+  }
+
+});

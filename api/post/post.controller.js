@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../user/user.model');
+var Post = require('./post.model');
 var config = require('../../config/environment');
 var email = require('../../email/email.service');
 var gm = require('gm');
@@ -45,10 +46,49 @@ module.exports = {
       promises.push(getMeta(req.files[i].path))
     }
     Promise.all(promises).then(function(result) {
+      req.body.post.images = result;
       console.log(result);
+      console.log(req.body);
+      Post.create(req.body.post,function(err,result) {
+        console.log(result);
+      })
     }).catch(function(err) {
       console.log(err);
     })
 
+  },
+  findAll: function(req, res) {
+    Post.find({
+      type: {
+        $nin: ['comment']
+      },
+      status: {
+        $nin: ['deleted', 'closed', 'pending']
+      }
+
+    }, null, {
+      sort: {
+        createdAt: -1
+      }
+    }).select('-status').populate('comments.comment').populate('owner', '_id name').exec(function(err, data) {
+      if (err) {
+        res.send({error: true, message: err});
+        return;
+      } else {
+
+        return User.populate(data, {
+          path: 'comments.comment.owner',
+          select: '_id name',
+          // <== We are populating phones so we need to use the correct model, not User
+        }, function(err, docs) {
+          if (err) {
+            res.send({error: true, message: err});
+            return;
+          }
+          res.send(docs);
+        });
+      }
+
+    })
   }
 }

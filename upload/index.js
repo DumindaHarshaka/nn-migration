@@ -1,13 +1,14 @@
 'use strict';
 
 var multer  = require('multer');
+var uuid = require('node-uuid');
 
 var img_storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'upload/images')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "_"+file.originalname) //Appending .jpg
+    cb(null, uuid.v4() + "."+file.mimetype.split('/')[1]) //Appending .jpg
   }
 })
 
@@ -16,7 +17,7 @@ var vid_storage = multer.diskStorage({
     cb(null, 'upload/videos')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "_"+file.originalname) //Appending .jpg
+    cb(null, uuid.v4() + "."+file.mimetype.split('/')[1]) //Appending .jpg
   }
 })
 
@@ -25,7 +26,7 @@ var doc_storage = multer.diskStorage({
     cb(null, 'upload/docs')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "_"+file.originalname) //Appending .jpg
+    cb(null, uuid.v4() + "."+file.mimetype.split('/')[1]) //Appending .jpg
   }
 })
 

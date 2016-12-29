@@ -11,6 +11,7 @@ var express = require('express');
 module.exports = {
   default: function(app) {
     app.use(express.static('client/app'));
+    app.use('/upload',express.static('upload'));
     app.use('/bower_components',express.static('client/bower_components'));
     // Insert routes below
     app.use('/api/plant', require('./api/plant'));

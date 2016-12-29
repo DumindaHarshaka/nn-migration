@@ -48,8 +48,8 @@ var postSchema = new Schema({
         return true
       }
     }
-  }
-  parant: {
+  },
+  parent: {
     type: Schema.Types.ObjectId,
     ref: 'Post',
     required: function() {
