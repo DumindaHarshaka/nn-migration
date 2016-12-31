@@ -101,7 +101,7 @@ $scope.signUp = function() {
       if (files && files.length) {
         console.log(files);
         Upload.upload({
-          url: 'http://localhost:9000/api/post/',
+          url: config.baseUrl+'api/post/',
           arrayKey: '',
           data: {
             file: files,
