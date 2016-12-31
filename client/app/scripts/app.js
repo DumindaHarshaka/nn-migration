@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMap',
-    'ngFileUpload'
+    'ngFileUpload',
+    'truncate'
   ])
   .controller('NavbarController', function ($scope,$location,auth) {
     $scope.getClass = function(path) {

@@ -42,10 +42,10 @@
           <li  ui-sref-active="active" ng-class="getClass('/green-exchange')">
             <a href="/green-exchange">Green Exchange</a>
           </li>
-          <!-- <li  ui-sref-active="active" ng-class="getClass('/forest')">
+          <li  ui-sref-active="active" ng-class="getClass('/forest')">
             <a href="/forest">The Forest
             </a>
-          </li> -->
+          </li>
           <li ng-hide="isLoggedIn()" ui-sref-active="active" ng-class="getClass('/signup')">
             <a href="/signup">Sign up</a>
           </li>
@@ -136,6 +136,9 @@
         <script src="scripts/controllers/reset_password.js"></script>
         <script src="scripts/controllers/forest.js"></script>
         <!-- endbuild -->
+        <script src="scripts/services/truncate.js" charset="utf-8"></script>
+
+        <!-- <script src="bower_components/jquery/dist/" charset="utf-8"></script> -->
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCO13QjFKNU_2w0aCcwqJV5vymDjr5OVY&libraries=places"></script>
         <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>

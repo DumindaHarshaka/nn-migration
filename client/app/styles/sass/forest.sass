@@ -1,6 +1,7 @@
 .post-form
   width: 100%
   //background: #f44
+
   form
 
     textarea
@@ -31,8 +32,28 @@
     border: 1px solid #e0e0e0
     margin: 0px
     @include border-bottom-radius(5px)
-
-
+    overflow: hidden
+    position: relative
+    .loading
+      display: inline-block
+      vertical-align: middle
+    .upload-meter
+      display: block
+      position: absolute
+      width: 100%
+      height: 4px
+      //background: #00f
+      bottom: 0px
+      left: 0px
+      //margin-top: -4px
+      .progress-bar
+        transition: all 0.3s ease
+        width: 0%
+        background: $nature_green
+        display: block
+        left: 0px
+        top: 0px
+        height: 100%
     input[type=submit]
       border: 1px solid $nature_green
       background: $nature_green
@@ -100,6 +121,61 @@
           height: auto
           width: 100%
 .post
+  .owner
+    .controls
+      button
+        right: 0
+        margin-top: 17px
+        margin-right: 10px
+        padding: 6px
+        color: #e0e0e0
+        background: #fff
+        border: none
+        font-size: 14px
+        outline: none
+        position: absolute
+        &:hover
+          color: #c0c0c0
+        &:focus
+          & + .drop
+            display: block
+      .drop
+        background: #fff
+        display: none
+        position: absolute
+        right: 0
+        margin-top: 40px
+        margin-right: 5px
+        @include border-left-radius(3px)
+        @include border-right-radius(3px)
+        border: 1px solid #e0e0e0
+        &:hover
+          display: block
+        //min-width: 90px
+        ul
+          padding: 0
+          margin: 0
+          font-size: 14px
+          font-weight: 400
+          list-style-type: none
+          li
+            box-sizing: border-box
+            border-bottom: 1px solid #e0e0e0
+            &:hover
+              background: #f5f5f5
+            a
+              display: inline-block
+              text-decoration: none
+              color: #5b5b5b
+              padding: 5px 10px
+              width: 100%
+              box-sizing: border-box
+            i
+              margin-right: 5px
+
+
+
+
   .images
     border-top: 1px solid #e0e0e0
     width: 100%
@@ -146,6 +222,63 @@
         width: 50%
         height: auto
         display: inline-block
+  .text-edit
+    border-top: 1px solid #e0e0e0
+    border-left: 0px solid $nature_green
+    padding: 15px
+    box-sizing: border-box
+
+    input
+      width: 100%
+      font-size: 14px
+      margin-bottom: 10px
+
+      border-style: dashed
+      border: 1px dashed #b5b5b5
+      padding: 5px
+      box-sizing: border-box
+      outline: none
+    textarea
+      width: 100%
+      font-size: 14px
+      border-style: dashed
+      border: 1px dashed #b5b5b5
+      padding: 5px
+      resize: none
+      box-sizing: border-box
+      outline: none
+    .buttons
+      margin-top: 5px
+      display: inline-block
+      input
+        display: inline-block
+        width: auto
+        margin-right: 3px
+        @include border-top-radius(5px)
+        @include border-bottom-radius(5px)
+        font-size: 11px
+        padding: 2px 6px
+        padding-bottom: 3px
+        outline: none
+        &:first-child
+          background: $nature_green
+          color: #fff
+          border-color: $nature_green
+          border-width: 1px
+        &:nth-child(2)
+          background: #fff
+          color: $nature_green
+          border-color: $nature_green
+          border-width: 1px
+          border-style: solid
+        &:disabled
+          opacity: 0.5
+      .loading
+        display: inline-block
+        vertical-align: middle
+
+
+
 
   .text
     border-top: 1px solid #e0e0e0
@@ -163,6 +296,15 @@
         margin: 0px
         font-size: 14px
         color: #000
+        //word-spacing: 2px
+        line-height: 1.42857
+        font-family: sans-serif
+        font-weight: 400
+        span
+          a
+            text-decoration: none
+            color: #00f
+            font-weight: 500
 
   .comments
     border-top: 1px solid #e0e0e0

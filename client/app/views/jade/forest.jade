@@ -12,7 +12,7 @@
           img(src="/images/nn-round-line.svg", alt="",height="80px",width="80px")
         .text  
           h1 Sign Up Here
-          p Start exchanging, it's free.
+          p Start sharing, it's free.
       .signup-form(ng-class="isSignUpCollapse ? 'collapse' : ''")
         form(name="authform.signUpForm", ng-submit="signUp()")
           label() Name 
@@ -52,59 +52,17 @@
               .icon
                 img(src="/images/responds.svg", alt="Post a new plant")
               .text
-                h2 All plants
-                p Available for exchange
-        li(ng-hide="!isLoggedIn()") 
-          a(href="#", ng-click="doCollapse(); currentSidebarItem='post_plants'", ng-hide="",ng-class="isMenuItemActive('post_plants') ? 'active' : ''") 
-            .side-menu-item
-              .icon
-                img(src="/images/responds.svg", alt="Post a new plant")
-              .text
-                h2 Post a new plant
-                p Start exchanging
-          .plant-info(ng-class="collapse ? 'collapse' : ''")
-            .post-type
-              button(type="button", name="button",ng-class="checkType('Exchange')",ng-click="typeTabClick('Exchange')") Exchange
-              button(type="button", name="button",ng-class="checkType('Donation')",ng-click="typeTabClick('Donation')") Donate
-              button(type="button", name="button",ng-class="checkType('Request')",ng-click="typeTabClick('Request')") Request
-            .form
-
-              form(name="pform.plantForm", ng-submit="submitForm()" novalidate)
-                label Plant name 
-                input(type="text",ng-model="plant.name", name="name",placeholder="Name of the plant", ng-class="{ 'has-error' : pform.plantForm.name.$invalid && !pform.plantForm.name.$pristine }" required)
-
-                label Description
-
-                textarea(name="description",ng-model="plant.description",id="description", rows="4", cols="40",placeholder="Description")
-
-                label Quantity 
-
-                input(type="number",ng-model="plant.quantity",min="1",name="quantity",id="qty", placeholder="Number of plants", ng-class="{ 'has-error' : pform.plantForm.quantity.$invalid && !pform.plantForm.quantity.$pristine }" required)
-
-                label Location 
-
-                input(places-auto-complete size=80 ng-model="plant.address" component-restrictions="{country:'lk'}" types="{{types}}" on-place-changed="greenExchange.placeChanged()", ng-class="{ 'has-error' : pform.plantForm.location.$invalid && !pform.plantForm.location.$pristine }", name="location" required)  
-
-                //- label Your name
-                //- input(type="text",name="username",ng-model="plant.username", placeholder="Your name", ng-class="{ 'has-error' : pform.plantForm.username.$invalid && !pform.plantForm.username.$pristine }" required) 
-                //- label Email
-                //- input(type="email",name="email",ng-model="plant.email", placeholder="Email address", ng-class="{ 'has-error' : pform.plantForm.email.$invalid && !pform.plantForm.email.$pristine }" required) 
-
-                input(type="submit", value="Post" ng-disabled="pform.plantForm.$invalid || plant.plantLoading")
-                .loading(ng-show="plant.plantLoading")
-                  img(src="/images/ball.gif", alt="Wait..", height="30px" , width="30px")
-                      
-
-            .map  
-              ng-map(class="map")             
+                h2 All posts
+                p All the exiting things
+                  
         li(ng-hide="!isLoggedIn()")
           a(href="#", ng-click="getMyPlants(); currentSidebarItem='my_plants'", ng-hide="",ng-class="isMenuItemActive('my_plants') ? 'active' : ''") 
             .side-menu-item
               .icon
                 img(src="/images/avatar.svg", alt="Post a new plant")
               .text
-                h2 My plants
-                p View and edit my plants
+                h2 My posts
+                p View and edit my posts
         //- li(ng-hide="!isLoggedIn()")
         //-   a(href="#", ng-click="getMyBids(); currentSidebarItem='my_bids'", ng-hide="",ng-class="isMenuItemActive('my_bids') ? 'active' : ''") 
         //-     .side-menu-item
@@ -127,12 +85,12 @@
       .notification 
         p.important Please check your inbox and verify your email address.
         p We have sent you a verification email to the email address you provided and it should be in your inbox shortly.
-    .post-form
+    .post-form(ng-hide="!isLoggedIn()")
       form(name="postForm", ng-submit="submit()")
-        input(type="text", placeholder="Subject", ng-model="post.subject")
-        textarea(name="name", rows="4", placeholder="Write your post...", ng-model="post.body")
+        input(type="text", placeholder="Subject", ng-model="post.subject", maxlength="100")
+        textarea(name="name", rows="4", placeholder="Write your post...", ng-model="post.body", maxlength="20000" required)
         .controles-panal
-          .preview(ng-show="files")
+          .preview(ng-show="files && files.length")
             .img-preview(ng-repeat="file in files")
               img.portrait(ngf-thumbnail="file")
                
@@ -142,23 +100,59 @@
                 
           button(type="button", name="file", ngf-select ng-model="files" ngf-multiple="true", ngf-keep="false" ngf-max-size="5MB" ngf-dimensions="dim($file, $width, $height)") <i class="fa fa-picture-o" aria-hidden="true"></i> Photo
           
-          input(type="submit", value="Post")
+          input(type="submit", value="Post", ng-disabled="postForm.$invalid")
+          
+          .loading(ng-show="postLoading")
+            img(src="/images/ball.gif", alt="")
+              
+          .upload-meter(ng-show="postLoading")
+            .progress-bar(style="width:{{progressPercentage}}%")
         
     .post(ng-repeat="post in posts")
       .owner
-        .image(ng-show="post.images && post.images.length")
+        .image()
           img(class='img',src='/images/avatar.svg')
         .details
           h2(class='name')  {{post.owner.name}} 
           p(class='action') has posted on 
             span#marketplace 
               strong The Forest
-          p(class='date') {{post.createdAt}}
-      .text 
+          p(class='date') {{post.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}
+        .controls
+          button <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          .drop  
+            ul
+              li(ng-show="isLoggedIn() && isMyPost(post)")
+                a(href="" ng-click="enable_editing(post)") <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+              li(ng-show="isLoggedIn() && isMyPost(post)")
+                a() <i class="fa fa-trash" aria-hidden="true"></i> Delete 
+              li
+                a() <i class="fa fa-ban" aria-hidden="true"></i> Report
+            
+      .text-edit(ng-show="post.editing")
+        form(ng-submit="submit_edit_post(post)")
+          input(type="text", placeholder="Subject...", ng-model="post.shadow.subject", maxlength="100")
+          textarea(name="name", rows="6", placeholder="Write your post...", ng-model="post.shadow.body", maxlength="20000")
+          .buttons
+            input(type="submit", value="Done" ng-disabled="post.shadow.editInProgress")
+            input(type="button", value="Cancel" ng-disabled="post.shadow.editInProgress",ng-click="edit_cancel(post)")  
+            .loading(ng-show="post.shadow.editInProgress")
+              img(src="/images/ball.gif", alt="Wait..", height="20px" , width="20px")
+              
+          
+      .text(ng-hide="post.editing")
         .subject(ng-show="post.subject")
           h2 {{post.subject}}
-        .body 
-         p {{post.body}}    
+        .body(ng-hide="post.body_collapsed")
+          p {{post.body | words: 60}} 
+            span(ng-show="post.body.split(' ').length > 60")
+              a(href="", ng-click="post.body_collapsed = true") Read more
+        .body(ng-show="post.body_collapsed")
+         p {{post.body}}
+          //- span(ng-show="")
+          //-   a(href="") Read more    
+            
+          
       .images(ng-show="post.images && post.images.length")
         .image(ng-repeat="img in post.images|limitTo:4", ng-class="imageGridClass(post)")
           img(src="{{img.url}}")

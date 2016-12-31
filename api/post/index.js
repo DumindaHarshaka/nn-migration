@@ -14,6 +14,7 @@ var router = new Router();
 // router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/',upload.img_upload.array('file'),controller.create);
 router.get('/',controller.findAll);
+router.put('/:id',controller.update);
 // router.get('/verify/:id', controller.verify);
 // router.get('/discard/:id', controller.discard);
 

@@ -242,7 +242,6 @@ angular.module('naturenurtureApp')
           }
           return post.owner._id === auth.getCurrentUserObj()._id
         }
-
       }
       //
       //

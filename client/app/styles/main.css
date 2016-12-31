@@ -377,7 +377,8 @@ nav {
       border: 2px solid #50AD65;
       border-radius: 8px;
       padding: 10px 20px;
-      text-decoration: none; }
+      text-decoration: none;
+      white-space: nowrap; }
       .start .flex a:hover {
         color: #fff;
         background: #50AD65; }
@@ -1721,7 +1722,27 @@ input[type=button] {
     border: 1px solid #e0e0e0;
     margin: 0px;
     border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px; }
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
+    position: relative; }
+    .post-form .controles-panal .loading {
+      display: inline-block;
+      vertical-align: middle; }
+    .post-form .controles-panal .upload-meter {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      bottom: 0px;
+      left: 0px; }
+      .post-form .controles-panal .upload-meter .progress-bar {
+        transition: all 0.3s ease;
+        width: 0%;
+        background: #50AD65;
+        display: block;
+        left: 0px;
+        top: 0px;
+        height: 100%; }
     .post-form .controles-panal input[type=submit] {
       border: 1px solid #50AD65;
       background: #50AD65;
@@ -1794,6 +1815,55 @@ input[type=button] {
           height: auto;
           width: 100%; }
 
+.post .owner .controls button {
+  right: 0;
+  margin-top: 17px;
+  margin-right: 10px;
+  padding: 6px;
+  color: #e0e0e0;
+  background: #fff;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  position: absolute; }
+  .post .owner .controls button:hover {
+    color: #c0c0c0; }
+  .post .owner .controls button:focus + .drop {
+    display: block; }
+.post .owner .controls .drop {
+  background: #fff;
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 40px;
+  margin-right: 5px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  border: 1px solid #e0e0e0; }
+  .post .owner .controls .drop:hover {
+    display: block; }
+  .post .owner .controls .drop ul {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    list-style-type: none; }
+    .post .owner .controls .drop ul li {
+      box-sizing: border-box;
+      border-bottom: 1px solid #e0e0e0; }
+      .post .owner .controls .drop ul li:hover {
+        background: #f5f5f5; }
+      .post .owner .controls .drop ul li a {
+        display: inline-block;
+        text-decoration: none;
+        color: #5b5b5b;
+        padding: 5px 10px;
+        width: 100%;
+        box-sizing: border-box; }
+      .post .owner .controls .drop ul li i {
+        margin-right: 5px; }
 .post .images {
   border-top: 1px solid #e0e0e0;
   width: 100%;
@@ -1834,6 +1904,60 @@ input[type=button] {
       width: 50%;
       height: auto;
       display: inline-block; }
+.post .text-edit {
+  border-top: 1px solid #e0e0e0;
+  border-left: 0px solid #50AD65;
+  padding: 15px;
+  box-sizing: border-box; }
+  .post .text-edit input {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-style: dashed;
+    border: 1px dashed #b5b5b5;
+    padding: 5px;
+    box-sizing: border-box;
+    outline: none; }
+  .post .text-edit textarea {
+    width: 100%;
+    font-size: 14px;
+    border-style: dashed;
+    border: 1px dashed #b5b5b5;
+    padding: 5px;
+    resize: none;
+    box-sizing: border-box;
+    outline: none; }
+  .post .text-edit .buttons {
+    margin-top: 5px;
+    display: inline-block; }
+    .post .text-edit .buttons input {
+      display: inline-block;
+      width: auto;
+      margin-right: 3px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      font-size: 11px;
+      padding: 2px 6px;
+      padding-bottom: 3px;
+      outline: none; }
+      .post .text-edit .buttons input:first-child {
+        background: #50AD65;
+        color: #fff;
+        border-color: #50AD65;
+        border-width: 1px; }
+      .post .text-edit .buttons input:nth-child(2) {
+        background: #fff;
+        color: #50AD65;
+        border-color: #50AD65;
+        border-width: 1px;
+        border-style: solid; }
+      .post .text-edit .buttons input:disabled {
+        opacity: 0.5; }
+    .post .text-edit .buttons .loading {
+      display: inline-block;
+      vertical-align: middle; }
 .post .text {
   border-top: 1px solid #e0e0e0;
   border-left: 0px solid #50AD65;
@@ -1847,7 +1971,14 @@ input[type=button] {
   .post .text .body p {
     margin: 0px;
     font-size: 14px;
-    color: #000; }
+    color: #000;
+    line-height: 1.42857;
+    font-family: sans-serif;
+    font-weight: 400; }
+    .post .text .body p span a {
+      text-decoration: none;
+      color: #00f;
+      font-weight: 500; }
 .post .comments {
   border-top: 1px solid #e0e0e0;
   background: #f9f9f9; }

@@ -38,23 +38,48 @@ function getMeta(path) {
     })
   });
 }
+//
+//
+//update a plant
+//
+//
+
 
 module.exports = {
   create: function(req, res) {
     var promises = [];
-    for (var i = 0; i < req.files.length; i++) {
-      promises.push(getMeta(req.files[i].path))
-    }
-    Promise.all(promises).then(function(result) {
-      req.body.post.images = result;
-      console.log(result);
-      console.log(req.body);
-      Post.create(req.body.post,function(err,result) {
+    if (req.files && req.files.length) {
+      for (var i = 0; i < req.files.length; i++) {
+        promises.push(getMeta(req.files[i].path))
+      }
+
+      Promise.all(promises).then(function(result) {
+        req.body.post.images = result;
         console.log(result);
+        console.log(req.body);
+        Post.create(req.body.post, function(err, result) {
+          if (!err) {
+            console.log(result);
+            res.status(200).send(result);
+          }else {
+            console.log(err);
+          }
+        })
+      }).catch(function(err) {
+        console.log(err);
       })
-    }).catch(function(err) {
-      console.log(err);
-    })
+    }else {
+      console.log(req.body);
+      Post.create(req.body.post, function(err, result) {
+
+        if (!err) {
+          console.log(result);
+          res.status(200).send(result);
+        }else {
+          console.log(err);
+        }
+      })
+    }
 
   },
   findAll: function(req, res) {
@@ -90,5 +115,26 @@ module.exports = {
       }
 
     })
+  },
+  update: function(req, res) {
+    console.log(req.body);
+    Post.findOneAndUpdate({
+      _id: req.params.id
+    }, req.body, {
+      upsert: true
+    }, function(err, doc) {
+      if (err)
+        return res.send(500, {error: err});
+      Post.findOne({
+        _id: req.params.id
+      }, function(err, doc) {
+        if (err)
+          return res.send(500, {error: err});
+        console.log(doc);
+        return res.send(doc);
+      })
+
+    });
+
   }
 }
