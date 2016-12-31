@@ -4,7 +4,8 @@ var User = require('../user/user.model');
 var Post = require('./post.model');
 var config = require('../../config/environment');
 var email = require('../../email/email.service');
-var gm = require('gm');
+//var gm = require('gm');
+var gm = require('gm').subClass({imageMagick: true});
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
