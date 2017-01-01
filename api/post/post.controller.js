@@ -23,11 +23,11 @@ function handleError(res, statusCode) {
 
 function getMeta(path) {
   return new Promise(function(resolve, reject) {
-    gm(path).size(function(err, size) {
+    gm(config.data_dir+'images/'+path).size(function(err, size) {
       if (!err) {
         console.log(size.height);
         resolve({
-          url: path,
+          url: 'upload/images/'+path,
           meta: {
             height: size.height,
             width: size.width
@@ -48,10 +48,12 @@ function getMeta(path) {
 
 module.exports = {
   create: function(req, res) {
+
+    console.log(req.files);
     var promises = [];
     if (req.files && req.files.length) {
       for (var i = 0; i < req.files.length; i++) {
-        promises.push(getMeta(req.files[i].path))
+        promises.push(getMeta(req.files[i].filename))
       }
 
       Promise.all(promises).then(function(result) {
