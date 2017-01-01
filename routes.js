@@ -7,11 +7,12 @@
 //import errors from './components/errors';
 var path = require('path');
 var express = require('express');
+var config = require('./config/environment');
 
 module.exports = {
   default: function(app) {
     app.use(express.static('client/app'));
-    app.use('/upload',express.static('upload'));
+    app.use('/upload',express.static(config.data_dir));
     app.use('/bower_components',express.static('client/bower_components'));
     // Insert routes below
     app.use('/api/plant', require('./api/plant'));
