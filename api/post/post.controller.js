@@ -23,7 +23,7 @@ function handleError(res, statusCode) {
 
 function getMeta(path) {
   return new Promise(function(resolve, reject) {
-    gm('./' + path).size(function(err, size) {
+    gm(path).size(function(err, size) {
       if (!err) {
         console.log(size.height);
         resolve({
