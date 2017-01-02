@@ -1865,7 +1865,6 @@ input[type=button] {
       .post .owner .controls .drop ul li i {
         margin-right: 5px; }
 .post .images {
-  border-top: 1px solid #e0e0e0;
   width: 100%;
   padding: 5px;
   box-sizing: border-box;

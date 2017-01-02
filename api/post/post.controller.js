@@ -62,8 +62,20 @@ module.exports = {
         console.log(req.body);
         Post.create(req.body.post, function(err, result) {
           if (!err) {
-            console.log(result);
-            res.status(200).send(result);
+            User.populate(result, {
+              path: 'owner',
+              select: '_id name',
+              // <== We are populating phones so we need to use the correct model, not User
+            }, function(err, docs) {
+              if (err) {
+                res.send({error: true, message: err});
+                return;
+              }
+              //res.send(docs);
+              console.log(docs);
+              res.status(200).send(docs);
+            });
+
           }else {
             console.log(err);
           }
@@ -77,7 +89,20 @@ module.exports = {
 
         if (!err) {
           console.log(result);
-          res.status(200).send(result);
+          User.populate(result, {
+            path: 'owner',
+            select: '_id name',
+            // <== We are populating phones so we need to use the correct model, not User
+          }, function(err, docs) {
+            if (err) {
+              res.send({error: true, message: err});
+              return;
+            }
+            //res.send(docs);
+            console.log(docs);
+            res.status(200).send(docs);
+          });
+          //res.status(200).send(result);
         }else {
           console.log(err);
         }

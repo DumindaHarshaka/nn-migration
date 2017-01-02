@@ -83,6 +83,7 @@ $scope.signUp = function() {
         $scope.post.type = 'post';
         $http.post(config.baseUrl + 'api/post/', {post: $scope.post}).then(function(res) {
           console.log(res);
+          $scope.posts.unshift(res.data);
           $scope.postLoading = false;
           $scope.post = {}
           $scope.postForm.$setPristine();
@@ -111,6 +112,7 @@ $scope.signUp = function() {
         }).then(function(resp) {
           //console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
           console.log(resp.data);
+          $scope.posts.unshift(resp.data);
           $scope.postLoading = false;
           $scope.post = {}
           $scope.postForm.$setPristine();

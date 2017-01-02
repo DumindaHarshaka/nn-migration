@@ -63,3 +63,6 @@ jspm_packages
 
 ### Jade ###
 #**/jade
+
+### Local DATA_DIR ###
+upload/images
