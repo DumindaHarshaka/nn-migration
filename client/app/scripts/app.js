@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ngMap',
     'ngFileUpload',
-    'truncate'
+    'truncate',
+    '720kb.socialshare'
   ])
   .controller('NavbarController', function ($scope,$location,auth) {
     $scope.getClass = function(path) {

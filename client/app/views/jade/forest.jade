@@ -156,18 +156,10 @@
       .images(ng-show="post.images && post.images.length")
         .image(ng-repeat="img in post.images|limitTo:4", ng-class="imageGridClass(post)")
           img(src="{{img.url}}")
-        //- .other
-        //-   img(src="/images/book.jpg", alt="")
-        //-   img(src="/images/book.jpg", alt="")
-        //-   img(src="/images/book.jpg", alt="")  
-      //- .images(ng-show="post.images && post.images.length == 1")
-      //-   .cover
-      //-     img(src="{{post.images[0].url}}", alt="")
-        //- .other
-        //-   img(src="/images/book.jpg", alt="")
-        //-   img(src="/images/book.jpg", alt="")
-        //-   img(src="/images/book.jpg", alt="")       
-      
+      .social
+        a(href="#" socialshare socialshare-provider="facebook" socialshare-type="share" socialshare-title="{{post.subject}}" socialshare-description="{{post.body}}" socialshare-hashtags="naturenurture, greenexchange, theforest, lka" socialshare-via="1284200164956355" socialshare-media="http://www.naturenurture.lk/{{img.url}}" socialshare-url="http://www.naturenurture.lk/forest") 
+          span <i class="fa fa-facebook-square" aria-hidden="true"></i> 
+          span.txt Share
       
           
       .comments(ng-show="post.comments && post.comments.length")
