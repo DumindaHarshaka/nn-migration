@@ -7,17 +7,18 @@
  * # ForestCtrl
  * Controller of the naturenurtureApp
  */
-angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload, $http, config, auth) {
+angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload, $http, config, auth, $timeout) {
   this.init = function() {
+
     //var posts = this.posts
     $http.get(config.baseUrl + 'api/post/').then(function(res) {
-
       $scope.posts = res.data;
       //console.log($scope.posts);
 
     }, function(res) {
       //console.log(res);
     });
+
   }
   this.init();
   //
@@ -25,8 +26,8 @@ angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upl
   //collapse sign up form
   //
   //
-$scope.isSignUpCollapse = false;
-$scope.signUpCollapse = function() {
+  $scope.isSignUpCollapse = false;
+  $scope.signUpCollapse = function() {
     $scope.isSignUpCollapse = !$scope.isSignUpCollapse
   }
   //
@@ -34,19 +35,18 @@ $scope.signUpCollapse = function() {
   //signup
   //
   //
-$scope.signUp = function() {
+  $scope.signUp = function() {
     $scope.user.name = $scope.user.first_name.toLowerCase();
     //console.log($scope.user);
     auth.createUser($scope.user).then(function(res) {
 
       if (res.hasOwnProperty('role')) {
         $scope.verify_email_notification = true;
-      }else if (res.status == 422) {
+      } else if (res.status == 422) {
         $scope.duplicate_email = true;
       }
 
     })
-
 
   }
 
@@ -78,7 +78,7 @@ $scope.signUp = function() {
     } else {
       console.log('errrr');
       auth.getCurrentUser().then(function(res) {
-
+        console.log($scope.post);
         $scope.post.owner = res._id;
         $scope.post.type = 'post';
         $http.post(config.baseUrl + 'api/post/', {post: $scope.post}).then(function(res) {
@@ -102,7 +102,7 @@ $scope.signUp = function() {
       if (files && files.length) {
         console.log(files);
         Upload.upload({
-          url: config.baseUrl+'api/post/',
+          url: config.baseUrl + 'api/post/',
           arrayKey: '',
           data: {
             file: files,
@@ -194,5 +194,17 @@ $scope.signUp = function() {
   //submit edit form to API
   //
   //
+
+  $scope.newlineToBr = function(str) {
+    return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+  }
+
+
+  // $scope.tinymceOptions = {
+  //   menubar: false,
+  //   plugins: 'link image lists paste',
+  //
+  //   toolbar: 'bold italic | bullist numlist | link '
+  // };
 
 });

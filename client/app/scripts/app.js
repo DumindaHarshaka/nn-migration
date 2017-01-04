@@ -19,7 +19,8 @@ angular
     'ngMap',
     'ngFileUpload',
     'truncate',
-    '720kb.socialshare'
+    '720kb.socialshare',
+    // 'ui.tinymce'
   ])
   .controller('NavbarController', function ($scope,$location,auth) {
     $scope.getClass = function(path) {

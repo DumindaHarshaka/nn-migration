@@ -87,8 +87,8 @@
         p We have sent you a verification email to the email address you provided and it should be in your inbox shortly.
     .post-form(ng-hide="!isLoggedIn()")
       form(name="postForm", ng-submit="submit()")
-        input(type="text", placeholder="Subject", ng-model="post.subject", maxlength="100")
-        textarea(name="name", rows="4", placeholder="Write your post...", ng-model="post.body", maxlength="20000" required)
+        input(type="text", placeholder="Subject...", ng-model="post.subject", maxlength="100")
+        textarea( name="name", rows="4", ng-model="post.body" , maxlength="10000" required)
         .controles-panal
           .preview(ng-show="files && files.length")
             .img-preview(ng-repeat="file in files")
@@ -132,7 +132,7 @@
       .text-edit(ng-show="post.editing")
         form(ng-submit="submit_edit_post(post)")
           input(type="text", placeholder="Subject...", ng-model="post.shadow.subject", maxlength="100")
-          textarea(name="name", rows="6", placeholder="Write your post...", ng-model="post.shadow.body", maxlength="20000")
+          textarea( name="name", rows="6", placeholder="Write your post...", ng-model="post.shadow.body")
           .buttons
             input(type="submit", value="Done" ng-disabled="post.shadow.editInProgress")
             input(type="button", value="Cancel" ng-disabled="post.shadow.editInProgress",ng-click="edit_cancel(post)")  
@@ -144,11 +144,11 @@
         .subject(ng-show="post.subject")
           h2 {{post.subject}}
         .body(ng-hide="post.body_collapsed")
-          p {{post.body | words: 60}} 
-            span(ng-show="post.body.split(' ').length > 60")
-              a(href="", ng-click="post.body_collapsed = true") Read more
+          p(ng-bind-html="newlineToBr(post.body).split('<br />').slice(0,8).join('<br />') | words: 60") 
+          
+          a(ng-show="post.body.split(' ').length > 60 || newlineToBr(post.body).split('<br />').length > 8" href="", ng-click="post.body_collapsed = true") Read more
         .body(ng-show="post.body_collapsed")
-         p {{post.body}}
+         p(ng-bind-html="newlineToBr(post.body)") 
           //- span(ng-show="")
           //-   a(href="") Read more    
             

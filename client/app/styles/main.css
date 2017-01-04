@@ -1985,10 +1985,11 @@ input[type=button] {
     line-height: 1.42857;
     font-family: sans-serif;
     font-weight: 400; }
-    .post .text .body p span a {
-      text-decoration: none;
-      color: #00f;
-      font-weight: 500; }
+  .post .text .body a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #00f;
+    font-weight: 500; }
 .post .comments {
   border-top: 1px solid #e0e0e0;
   background: #f9f9f9; }
