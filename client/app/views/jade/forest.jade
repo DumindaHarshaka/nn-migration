@@ -88,7 +88,7 @@
     .post-form(ng-hide="!isLoggedIn()")
       form(name="postForm", ng-submit="submit()")
         input(type="text", placeholder="Subject...", ng-model="post.subject", maxlength="100")
-        textarea( name="name", rows="4", ng-model="post.body" , maxlength="10000" required)
+        textarea( name="name", rows="4", ng-model="post.body",placeholder="Write your post..." , maxlength="10000" required)
         .controles-panal
           .preview(ng-show="files && files.length")
             .img-preview(ng-repeat="file in files")
