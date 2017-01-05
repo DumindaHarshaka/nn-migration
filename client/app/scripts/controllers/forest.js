@@ -7,7 +7,10 @@
  * # ForestCtrl
  * Controller of the naturenurtureApp
  */
-angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload, $http, config, auth, $timeout) {
+angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload, $http, config, auth, $timeout, $location, $window) {
+  $scope.$on('$viewContentLoaded', function(event) {
+    $window.ga('send', 'pageview', { page: $location.url() });
+  });
   this.init = function() {
 
     //var posts = this.posts

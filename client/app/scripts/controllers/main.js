@@ -8,6 +8,9 @@
  * Controller of the naturenurtureApp
  */
 angular.module('naturenurtureApp').controller('MainCtrl', function($scope, $http, config, auth, $q, $location, $window) {
+  $scope.$on('$viewContentLoaded', function(event) {
+    $window.ga('send', 'pageview', {page: $location.url()});
+  });
   $scope.login = function() {
     console.log($scope.user);
     auth.login($scope.user).then(function() {

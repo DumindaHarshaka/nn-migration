@@ -7,10 +7,13 @@
  * # ResetPasswordCtrl
  * Controller of the naturenurtureApp
  */
-angular.module('naturenurtureApp').controller('ResetPasswordCtrl', function($scope, $http, config, $routeParams) {
+angular.module('naturenurtureApp').controller('ResetPasswordCtrl', function($scope, $http, config, $routeParams, $location, $window) {
   $scope.resetFormView = false;
   $scope.reset_mail_pending = false;
   $scope.reset_data_pending = false;
+  $scope.$on('$viewContentLoaded', function(event) {
+    $window.ga('send', 'pageview', {page: $location.url()});
+  });
   $scope.$on('$routeChangeSuccess', function() {
     //console.log($routeParams.reset_code == '0');
     if ($routeParams.reset_code == '0') {
