@@ -70,7 +70,7 @@ nav
             display: inline-block
             vertical-align: middle
             a
-              transition: all 0.5s ease
+              @include transition(all 0.5s ease)
               @include border-left-radius(3px)
               @include border-right-radius(3px)
               font-size: 10px
@@ -127,7 +127,7 @@ nav
             display: inline-block
             vertical-align: middle
             a
-              transition: all 0.5s ease
+              @include transition(all 0.5s ease)
               @include border-left-radius(3px)
               @include border-right-radius(3px)
               font-size: 10px
@@ -166,9 +166,9 @@ nav
       display: inline-block
       a
         img
-          height: 50%    
+          height: 50%
   button
-    transition: all 0.5s ease
+    @include transition(all 0.5s ease)
     @media only screen and (min-width: 768px)
       display: none
 

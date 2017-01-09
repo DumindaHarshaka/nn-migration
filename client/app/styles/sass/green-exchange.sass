@@ -1,5 +1,5 @@
 input[type=button]
-  transition: all 0.2s ease
+  @include transition(all 0.2s ease)
 .green-ex-container
   margin-top: 60px
   .cloak
@@ -15,7 +15,7 @@ input[type=button]
 
   button
     &.menu-toggle
-      transition: all 0.5s ease
+      @include transition(all 0.5s ease)
       position: fixed
       z-index: 999
       width: 40px
@@ -35,7 +35,7 @@ input[type=button]
         margin-left: calc(70% + 5px)
   button
     &.new-post
-      transition: all 0.5s ease
+      @include transition(all 0.5s ease)
       position: fixed
       z-index: 999
       width: auto
@@ -69,7 +69,7 @@ input[type=button]
     border-right: 1px solid rgb(224, 224, 224)
     z-index: 999
     @media only screen and (max-width: 767px)
-      transition: all 0.5s ease
+      @include transition(all 0.5s ease)
       width: 70%
       margin-left: -70%
     &::-webkit-scrollbar
@@ -104,8 +104,8 @@ input[type=button]
             border-left-color: #fff
 
             display: block
-            -webkit-transition: all 0.5s ease
-            transition: all 0.5s ease
+            //-webkit-transition: all 0.5s ease
+            @include transition(all 0.5s ease)
             &:hover
               //background: #f5f5f5
               border-left-width: 15px
@@ -194,7 +194,7 @@ input[type=button]
       display: block
       width: 100%
     .sign-up
-      transition: all 0.5s ease
+      @include transition(all 0.5s ease)
       text-align: center
       background: $nature_green
 
@@ -203,7 +203,7 @@ input[type=button]
         background: darken($nature_green, 10%)
 
       .signup-form
-        transition: all 0.5s ease
+        @include transition(all 0.5s ease)
         &.collapse
           max-height: 800px
           opacity: 1
@@ -317,7 +317,7 @@ input[type=button]
 
         input[type=submit]
           margin-top: 10px
-          transition: all 0.5s ease
+          @include transition(all 0.5s ease)
           font-size: 18px
           width: auto
           color: #fff
@@ -406,14 +406,16 @@ input[type=button]
     .plant-info
       max-height: 0px
       overflow: hidden
-      transition: all 0.2s ease-out
+      //transition: all 0.2s ease-out
+      @include transition(all 0.2s ease-out)
       opacity: 0
       background: #f9f9f9
       &.collapse
         max-height: 900px
         opacity: 1
         //overflow-y: scroll
-        transition: all 0.5s ease-out
+        //transition: all 0.5s ease-out
+        @include transition(all 0.5s ease-out)
 
       .post-type
         width: 100%
@@ -421,7 +423,7 @@ input[type=button]
         margin-top: 0px
         button
           display: inline-block
-          transition: all 0.5s ease
+          @include transition(all 0.5s ease)
           font-size: 14px
           width: 33.33%
           color: $nature_green
@@ -490,7 +492,7 @@ input[type=button]
 
         input[type=submit]
           margin-top: 10px
-          transition: all 0.5s ease
+          @include transition(all 0.5s ease)
           font-size: 18px
           width: auto
           color: #fff
@@ -713,7 +715,7 @@ input[type=button]
             padding: 0px
             font-size: 12px
             li
-              transition: all 0.5s ease
+              @include transition(all 0.5s ease)
               padding: 0px
               display: inline-block
               border-right: 1px solid #e0e0e0
@@ -767,7 +769,7 @@ input[type=button]
                   padding: 0px
                   font-size: 12px
                   li
-                    transition: all 0.5s ease
+                    @include transition(all 0.5s ease)
                     padding: 0px
                     display: block
                     border-width: 0px
@@ -797,7 +799,7 @@ input[type=button]
                   font-size: 12px
             .buttons
               button
-                transition: all 0.5s ease
+                @include transition(all 0.5s ease)
                 border: 1px solid #e0e0e0
                 padding: 5px 15px
                 font-size: 14px
@@ -909,7 +911,7 @@ input[type=button]
                 vertical-align: middle
 
       .respond
-        transition: all 1s ease
+        @include transition(all 0.5s ease)
         max-height: 0px
         &.collapse
           max-height: 300px
@@ -944,8 +946,7 @@ input[type=button]
               border: 1px solid #e0e0e0
               margin-bottom: 5px
               padding-left: 5px
-              -webkit-transition: all .5s ease
-              transition: all .5s ease
+              @include transition(all 0.5s ease)
               @include placeholder
                 color: #777777
                 font-weight: 200
@@ -1058,7 +1059,7 @@ input[type=button]
                 margin-top: 1px
                 color: #666
             .contact-info
-              transition: all 0.3s ease
+              @include transition(all 0.3s ease)
               display: inline-block
               position: absolute
               top: 0px
@@ -1069,8 +1070,7 @@ input[type=button]
 
 
               button
-                transition: all 0.5s ease
-                -webkit-transition: all 0.5s ease
+                @include transition(all 0.5s ease)
                 margin: 0px
                 margin-right: 10px
                 font-size: 12px
@@ -1143,7 +1143,7 @@ input[type=button]
       height: 100%
       @include border-right-radius(8px)
       img
-        transition: all 0.5s ease
+        @include transition(all 0.5s ease)
         display: block
         width: 100%
         height: auto

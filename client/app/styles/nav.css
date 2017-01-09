@@ -78,6 +78,8 @@ nav {
               display: block;
               margin-bottom: 2px; }
             nav .menu-m ul li.profile .details a {
+              -webkit-transition: all 0.5s ease;
+              -moz-transition: all 0.5s ease;
               transition: all 0.5s ease;
               border-bottom-left-radius: 3px;
               border-top-left-radius: 3px;
@@ -156,6 +158,8 @@ nav {
               display: block;
               margin-bottom: 2px; }
             nav .menu ul li.profile .details a {
+              -webkit-transition: all 0.5s ease;
+              -moz-transition: all 0.5s ease;
               transition: all 0.5s ease;
               border-bottom-left-radius: 3px;
               border-top-left-radius: 3px;
@@ -204,6 +208,8 @@ nav {
         nav .logo a img {
           height: 50%; } }
   nav button {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     height: 100%;
     background: #fff;

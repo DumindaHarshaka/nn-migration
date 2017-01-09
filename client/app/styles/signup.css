@@ -1,7 +1,7 @@
 /*
 Error: Undefined mixin 'container'.
-        on line 6 of /Users/duminda/Documents/My Docs/openshift/ecolab/repo/nn/client/app/styles/sass/signup.sass, in `container'
-        from line 6 of /Users/duminda/Documents/My Docs/openshift/ecolab/repo/nn/client/app/styles/sass/signup.sass
+        on line 6 of styles/sass/signup.sass, in `container'
+        from line 6 of styles/sass/signup.sass
 
 1: @import "var"
 2: .su-container
@@ -16,8 +16,8 @@ Error: Undefined mixin 'container'.
 11:     i
 
 Backtrace:
-/Users/duminda/Documents/My Docs/openshift/ecolab/repo/nn/client/app/styles/sass/signup.sass:6:in `container'
-/Users/duminda/Documents/My Docs/openshift/ecolab/repo/nn/client/app/styles/sass/signup.sass:6
+styles/sass/signup.sass:6:in `container'
+styles/sass/signup.sass:6
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:351:in `block in visit_mixin'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `block in with_mixin'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
@@ -72,4 +72,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'container'.\A         on line 6 of /Users/duminda/Documents/My Docs/openshift/ecolab/repo/nn/client/app/styles/sass/signup.sass, in `container'\A         from line 6 of /Users/duminda/Documents/My Docs/openshift/ecolab/repo/nn/client/app/styles/sass/signup.sass\A \A 1: @import \"var\"\A 2: .su-container\A 3:   margin-top: 100px\A 4: .verify_email_notification\A 5:   text-align: center\A 6:   @include container()\A 7:   h1\A 8:     font-size: 18px\A 9:     margin-top: 0px\A 10:     margin-bottom: 0px\A 11:     i"; }
+  content: "Error: Undefined mixin 'container'.\A         on line 6 of styles/sass/signup.sass, in `container'\A         from line 6 of styles/sass/signup.sass\A \A 1: @import \"var\"\A 2: .su-container\A 3:   margin-top: 100px\A 4: .verify_email_notification\A 5:   text-align: center\A 6:   @include container()\A 7:   h1\A 8:     font-size: 18px\A 9:     margin-top: 0px\A 10:     margin-bottom: 0px\A 11:     i"; }

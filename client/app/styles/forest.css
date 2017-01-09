@@ -9,7 +9,7 @@ Error: Undefined variable: "$nature_green".
 13:       font-size: 18px
 14:       color: $nature_green
 15:   @media only screen and (max-width: 767px)
-16:     transition: all 0.5s ease
+16:     @include transition(all 0.5s ease)
 17:     position: fixed
 18:     //display: none
 19:     z-index: 999
@@ -90,4 +90,4 @@ styles/sass/forest.sass:14
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$nature_green\".\A         on line 14 of styles/sass/forest.sass\A \A 9:       outline: none\A 10:       position: absolute\A 11:       background: none\A 12:       right: 0px\A 13:       font-size: 18px\A 14:       color: $nature_green\A 15:   @media only screen and (max-width: 767px)\A 16:     transition: all 0.5s ease\A 17:     position: fixed\A 18:     //display: none\A 19:     z-index: 999"; }
+  content: "Error: Undefined variable: \"$nature_green\".\A         on line 14 of styles/sass/forest.sass\A \A 9:       outline: none\A 10:       position: absolute\A 11:       background: none\A 12:       right: 0px\A 13:       font-size: 18px\A 14:       color: $nature_green\A 15:   @media only screen and (max-width: 767px)\A 16:     @include transition(all 0.5s ease)\A 17:     position: fixed\A 18:     //display: none\A 19:     z-index: 999"; }

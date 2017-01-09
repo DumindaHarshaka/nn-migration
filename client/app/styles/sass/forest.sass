@@ -13,7 +13,7 @@
       font-size: 18px
       color: $nature_green
   @media only screen and (max-width: 767px)
-    transition: all 0.5s ease
+    @include transition(all 0.5s ease)
     position: fixed
     //display: none
     z-index: 999
@@ -67,7 +67,7 @@
       left: 0px
       //margin-top: -4px
       .progress-bar
-        transition: all 0.3s ease
+        @include transition(all 0.3s ease)
         width: 0%
         background: $nature_green
         display: block

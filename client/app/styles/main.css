@@ -84,6 +84,8 @@ nav {
               display: block;
               margin-bottom: 2px; }
             nav .menu-m ul li.profile .details a {
+              -webkit-transition: all 0.5s ease;
+              -moz-transition: all 0.5s ease;
               transition: all 0.5s ease;
               border-bottom-left-radius: 3px;
               border-top-left-radius: 3px;
@@ -162,6 +164,8 @@ nav {
               display: block;
               margin-bottom: 2px; }
             nav .menu ul li.profile .details a {
+              -webkit-transition: all 0.5s ease;
+              -moz-transition: all 0.5s ease;
               transition: all 0.5s ease;
               border-bottom-left-radius: 3px;
               border-top-left-radius: 3px;
@@ -210,6 +214,8 @@ nav {
         nav .logo a img {
           height: 50%; } }
   nav button {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     height: 100%;
     background: #fff;
@@ -497,6 +503,8 @@ nav {
     margin: 0; }
 
 input[type=button] {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
   transition: all 0.2s ease; }
 
 .green-ex-container {
@@ -513,6 +521,8 @@ input[type=button] {
       .green-ex-container .cloak {
         display: none; } }
   .green-ex-container button.menu-toggle {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     position: fixed;
     z-index: 999;
@@ -535,6 +545,8 @@ input[type=button] {
     .green-ex-container button.menu-toggle.toggle-menu-active {
       margin-left: calc(70% + 5px); }
   .green-ex-container button.new-post {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     position: fixed;
     z-index: 999;
@@ -576,6 +588,8 @@ input[type=button] {
         margin-right: 1; } }
     @media only screen and (max-width: 767px) {
       .green-ex-container .side-bar {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
         transition: all 0.5s ease;
         width: 70%;
         margin-left: -70%; } }
@@ -605,6 +619,7 @@ input[type=button] {
           border-left-color: #fff;
           display: block;
           -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
           transition: all 0.5s ease;
           text-decoration: none; }
           .green-ex-container .side-bar .menu ul li a:hover {
@@ -688,12 +703,16 @@ input[type=button] {
       display: block;
       width: 100%; }
     .green-ex-container .side-bar .sign-up {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
       transition: all 0.5s ease;
       text-align: center;
       background: #50AD65; }
       .green-ex-container .side-bar .sign-up:hover {
         background: #408a51; }
       .green-ex-container .side-bar .sign-up .signup-form {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
         transition: all 0.5s ease;
         text-align: left;
         background: #f9f9f9;
@@ -797,6 +816,8 @@ input[type=button] {
             border-color: #f55; }
         .green-ex-container .side-bar .sign-up .signup-form input[type=submit] {
           margin-top: 10px;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
           transition: all 0.5s ease;
           font-size: 18px;
           width: auto;
@@ -869,12 +890,16 @@ input[type=button] {
     .green-ex-container .side-bar .plant-info {
       max-height: 0px;
       overflow: hidden;
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out;
       opacity: 0;
       background: #f9f9f9; }
       .green-ex-container .side-bar .plant-info.collapse {
         max-height: 900px;
         opacity: 1;
+        -webkit-transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
         transition: all 0.5s ease-out; }
       .green-ex-container .side-bar .plant-info .post-type {
         width: 100%;
@@ -882,6 +907,8 @@ input[type=button] {
         margin-top: 0px; }
         .green-ex-container .side-bar .plant-info .post-type button {
           display: inline-block;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
           transition: all 0.5s ease;
           font-size: 14px;
           width: 33.33%;
@@ -953,6 +980,8 @@ input[type=button] {
             border-color: #f55; }
         .green-ex-container .side-bar .plant-info .form input[type=submit] {
           margin-top: 10px;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
           transition: all 0.5s ease;
           font-size: 18px;
           width: auto;
@@ -1181,6 +1210,8 @@ input[type=button] {
             padding: 0px;
             font-size: 12px; }
             .green-ex-container .posts .post .item .controles ul li {
+              -webkit-transition: all 0.5s ease;
+              -moz-transition: all 0.5s ease;
               transition: all 0.5s ease;
               padding: 0px;
               display: inline-block;
@@ -1229,6 +1260,8 @@ input[type=button] {
                   padding: 0px;
                   font-size: 12px; }
                   .green-ex-container .posts .post .item .controles ul li .menu ul li {
+                    -webkit-transition: all 0.5s ease;
+                    -moz-transition: all 0.5s ease;
                     transition: all 0.5s ease;
                     padding: 0px;
                     display: block;
@@ -1253,6 +1286,8 @@ input[type=button] {
           .green-ex-container .posts .post .item .details .prompt .message p.info {
             font-size: 12px; }
           .green-ex-container .posts .post .item .details .prompt .buttons button {
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
             transition: all 0.5s ease;
             border: 1px solid #e0e0e0;
             padding: 5px 15px;
@@ -1352,7 +1387,9 @@ input[type=button] {
                 display: inline-block;
                 vertical-align: middle; }
       .green-ex-container .posts .post .respond {
-        transition: all 1s ease;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
         max-height: 0px; }
         .green-ex-container .posts .post .respond.collapse {
           max-height: 300px; }
@@ -1387,6 +1424,7 @@ input[type=button] {
             margin-bottom: 5px;
             padding-left: 5px;
             -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
             transition: all 0.5s ease; }
             .green-ex-container .posts .post .respond .respond-form form input::-webkit-input-placeholder {
               color: #777777;
@@ -1494,6 +1532,8 @@ input[type=button] {
                 margin-top: 1px;
                 color: #666; }
             .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .contact-info {
+              -webkit-transition: all 0.3s ease;
+              -moz-transition: all 0.3s ease;
               transition: all 0.3s ease;
               display: inline-block;
               position: absolute;
@@ -1502,8 +1542,9 @@ input[type=button] {
               float: left;
               opacity: 0.5; }
               .green-ex-container .posts .post .market-item-bids ul.bids-list li.bid-item .contact-info button {
-                transition: all 0.5s ease;
                 -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                transition: all 0.5s ease;
                 margin: 0px;
                 margin-right: 10px;
                 font-size: 12px;
@@ -1582,6 +1623,8 @@ input[type=button] {
       border-bottom-right-radius: 8px;
       border-top-right-radius: 8px; }
       .guide .donation-guide .text img {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
         transition: all 0.5s ease;
         display: block;
         width: 100%;
@@ -1695,12 +1738,16 @@ input[type=button] {
   border: 1px #E0E0E0 solid; }
 
 .sign-up {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
   transition: all 0.5s ease;
   text-align: center;
   background: #50AD65; }
   .sign-up:hover {
     background: #408a51; }
   .sign-up .signup-form {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     text-align: left;
     background: #f9f9f9;
@@ -1804,6 +1851,8 @@ input[type=button] {
         border-color: #f55; }
     .sign-up .signup-form input[type=submit] {
       margin-top: 10px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
       transition: all 0.5s ease;
       font-size: 18px;
       width: auto;
@@ -1859,6 +1908,8 @@ input[type=button] {
         display: none; } }
   @media only screen and (max-width: 767px) {
     .post-form {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
       transition: all 0.5s ease;
       position: fixed;
       z-index: 999;
@@ -1907,6 +1958,8 @@ input[type=button] {
       bottom: 0px;
       left: 0px; }
       .post-form .controles-panal .upload-meter .progress-bar {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
         transition: all 0.3s ease;
         width: 0%;
         background: #50AD65;
@@ -2229,6 +2282,8 @@ input[type=button] {
     .pass-reset-form input:focus {
       border: 2px solid #50AD65; }
   .pass-reset-form button {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     display: inline-block;
     box-sizing: border-box;
