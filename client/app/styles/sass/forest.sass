@@ -1,6 +1,26 @@
 .post-form
   width: 100%
   //background: #f44
+  button
+    &.close
+      @media only screen and (min-width: 768px)
+        display: none
+      border: none
+      outline: none
+      position: absolute
+      background: none
+      right: 0px
+      font-size: 18px
+      color: $nature_green
+  @media only screen and (max-width: 767px)
+    transition: all 0.5s ease
+    position: fixed
+    //display: none
+    z-index: 999
+    margin-left: -100%
+    &.new-post-active
+      //display: block
+      margin-left: 0px
 
   form
 

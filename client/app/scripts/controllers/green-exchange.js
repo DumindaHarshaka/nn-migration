@@ -473,7 +473,8 @@ angular.module('naturenurtureApp').controller('GreenExchangeCtrl', function($sco
 
   //
   //
+  //toggle_sidebar
   //
   //
-  //
+  $scope.toggle_sidebar = false;
 });

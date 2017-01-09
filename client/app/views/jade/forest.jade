@@ -1,5 +1,9 @@
 .green-ex-container 
-  .side-bar
+  .cloak(ng-show="new_post")
+  button.menu-toggle(ng-click="toggle_sidebar = toggle_sidebar ? false : true" ng-class="toggle_sidebar ? 'toggle-menu-active' : ''") <i class="fa fa-bars" aria-hidden="true"></i>
+  button.new-post(ng-click="new_post = new_post ? false : true" ng-class="toggle_sidebar ? 'toggle-menu-active' : ''") <i class="fa fa-plus" aria-hidden="true"></i> New post
+      
+  .side-bar(ng-class="toggle_sidebar ? 'toggle-menu-active' : ''")
     .search
       form
         input(type="text", placeholder="Search the green exchange",ng-model="search_text")
@@ -74,9 +78,9 @@
          
       
     .filler
-  .new-posts()
-    h1 {{posts.length}}
-    p posts
+  //- .new-posts()
+  //-   h1 {{posts.length}}
+  //-   p posts
   
   .posts
     .verify_email_notification(ng-show="verify_email_notification")
@@ -85,7 +89,8 @@
       .notification 
         p.important Please check your inbox and verify your email address.
         p We have sent you a verification email to the email address you provided and it should be in your inbox shortly.
-    .post-form(ng-hide="!isLoggedIn()")
+    .post-form(ng-hide="!isLoggedIn()" ng-class="new_post ? 'new-post-active' : '' ")
+      button(type="button" ng-click = "new_post  = false").close <i class="fa fa-times-circle" aria-hidden="true"></i>
       form(name="postForm", ng-submit="submit()")
         input(type="text", placeholder="Subject...", ng-model="post.subject", maxlength="100")
         textarea( name="name", rows="4", ng-model="post.body",placeholder="Write your post..." , maxlength="10000" required)

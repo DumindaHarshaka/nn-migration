@@ -40,57 +40,8 @@
     <!--[if lte IE 8]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
     <!-- Add your site or application content here -->
-    <nav ng-controller="NavbarController">
-      <div class="logo">
-        <a href="/">
-          <img src="/images/logo.png"/></a>
-      </div>
-      <div class="menu" class="ng-cloak">
-        <ul>
-          <li ng-repeat="item in nav.menu" ui-sref-active="active" ng-cloak>
-            <a ui-sref="{{item.state}}" ng-cloak>{{item.title}}</a>
-          </li>
-          <li ng-show="nav.isAdmin()" ui-sref-active="active" ng-cloak>
-            <a ui-sref="admin">Admin</a>
-          </li>
-        </ul>
-        <ul ng-cloak>
-          <li ui-sref-active="active" ng-class="getClass('/green-exchange')">
-            <a href="/green-exchange">Green Exchange</a>
-          </li>
-          <li ui-sref-active="active" ng-class="getClass('/forest')">
-            <a href="/forest">The Forest
-            </a>
-          </li>
-          <li ng-hide="isLoggedIn()" ui-sref-active="active" ng-class="getClass('/signup')">
-            <a href="/signup">Sign up</a>
-          </li>
-          <li ng-hide="isLoggedIn()" ui-sref-active="active">
-            <a href="/">Login</a>
-          </li>
-          <!-- <li ng-show="isLoggedIn()" ng-cloak>
-            <p class="navbar-text">Hello
-              {{ getCurrentUser().name }}</p>
-          </li>
-          <li ng-show="isLoggedIn()" ui-sref-active="active" ng-cloak>
-            <a ui-sref="settings">
-              <span class="glyphicon glyphicon-co"></span>
-            </a>
-          </li> -->
-          <li class="profile" , ng-show="isLoggedIn()" ng-cloak>
-            <div class="image"><img src="/images/avatar.svg"/></div>
-            <div class="details">
-              <div class="greet">
-                <span>Hi
-                </span>
-                <span class="username" ng-cloak>{{currentUser()}}</span>
-              </div>
-              <a href="/logout">Logout</a>
-            </div>
+    <nav ng-controller="NavbarController" ng-include="'views/nav.html'">
 
-          </li>
-        </ul>
-      </div>
     </nav>
 
     <div ng-view=""></div>

@@ -44,6 +44,12 @@ angular
       console.log("logging out");
       auth.logout();
     }
+    $scope.toggle_menu = false;
+    $scope.toggleMenu = function() {
+      if ($scope.toggle_menu) {
+        $scope.toggle_menu = false
+      }
+    }
   })
   .config(function ($routeProvider,$locationProvider) {
     $routeProvider

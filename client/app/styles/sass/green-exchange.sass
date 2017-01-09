@@ -1,14 +1,77 @@
 input[type=button]
   transition: all 0.2s ease
 .green-ex-container
-  margin-top: 80px
+  margin-top: 60px
+  .cloak
+    @media only screen and (min-width: 768px)
+      display: none
+    position: fixed
+    display: block
+    width: 100vw
+    height: 100vh
+    opacity: 0.8
+    background: #fff
+    z-index: 998
+
+  button
+    &.menu-toggle
+      transition: all 0.5s ease
+      position: fixed
+      z-index: 999
+      width: 40px
+      height: 40px
+      @include border-top-radius(25px)
+      @include border-bottom-radius(25px)
+      margin-top: 5px
+      margin-left: 5px
+      font-size: 24px
+      background: $nature_green
+      color: #fff
+      border: 1px solid #e0e0e0
+      outline: none
+      @media only screen and (min-width: 768px)
+        display: none
+      &.toggle-menu-active
+        margin-left: calc(70% + 5px)
+  button
+    &.new-post
+      transition: all 0.5s ease
+      position: fixed
+      z-index: 999
+      width: auto
+      height: 40px
+      @include border-top-radius(25px)
+      @include border-bottom-radius(25px)
+      margin-top: 5px
+      margin-left: 50px
+      font-size: 16px
+      background: $nature_green
+      color: #fff
+      border: 1px solid #e0e0e0
+      outline: none
+      padding-left: 10px
+      padding-right: 10px
+      @media only screen and (min-width: 768px)
+        display: none
+      &.toggle-menu-active
+        //margin-left: calc(70% + 5px)
+
+
+
+
   .side-bar
+
     overflow-y: scroll
     position: fixed
     @include col(3,12)
     background: #fff
     height: 100vh
     border-right: 1px solid rgb(224, 224, 224)
+    z-index: 999
+    @media only screen and (max-width: 767px)
+      transition: all 0.5s ease
+      width: 70%
+      margin-left: -70%
     &::-webkit-scrollbar
       width: 1px
       height: 1px
@@ -16,6 +79,11 @@ input[type=button]
       background: #fff
     &::-webkit-scrollbar-thumb
       background: #e0e0e0
+    &.toggle-menu-active
+      @media only screen and (max-width: 767px)
+
+        width: 70%
+        margin-left: 0%
     .menu
       ul
         padding: 0px
@@ -742,9 +810,9 @@ input[type=button]
                   background: $nature_green
                   color: #fff
 
-              .yes
-
-              .no
+              // .yes
+              //
+              // .no
           .form
             form
               .buttons

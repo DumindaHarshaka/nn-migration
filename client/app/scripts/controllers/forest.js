@@ -203,11 +203,18 @@ angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upl
   }
 
 
-  // $scope.tinymceOptions = {
-  //   menubar: false,
-  //   plugins: 'link image lists paste',
   //
-  //   toolbar: 'bold italic | bullist numlist | link '
-  // };
+  //
+  //toggle_sidebar
+  //
+  //
+  $scope.toggle_sidebar = false;
+
+  //
+  //
+  //new-post-active
+  //
+  //
+  $scope.new_post = false;
 
 });
