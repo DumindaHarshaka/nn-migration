@@ -35,6 +35,7 @@
       vertical-align: bottom
       border-bottom-width: 0px
       outline: none
+      margin: 0
     input[type=text]
       width: 100%
       box-sizing: border-box
@@ -46,6 +47,7 @@
       vertical-align: bottom
       border-bottom-width: 0px
       outline: none
+      margin: 0
   .controles-panal
     background: #f9f9f9
     padding: 15px
@@ -171,6 +173,9 @@
         &:hover
           color: #c0c0c0
         &:focus
+          & + .drop
+            display: block
+        &:active
           & + .drop
             display: block
       .drop

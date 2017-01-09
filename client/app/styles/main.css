@@ -1250,6 +1250,10 @@ input[type=button] {
                   outline: none; }
                   .green-ex-container .posts .post .item .controles ul li .trigger:focus + .menu {
                     display: block; }
+                .green-ex-container .posts .post .item .controles ul li .trigger:active {
+                  outline: none; }
+                  .green-ex-container .posts .post .item .controles ul li .trigger:active + .menu {
+                    display: block; }
               .green-ex-container .posts .post .item .controles ul li .menu {
                 position: absolute;
                 display: none;
@@ -1931,7 +1935,8 @@ input[type=button] {
     border: 1px solid #e0e0e0;
     vertical-align: bottom;
     border-bottom-width: 0px;
-    outline: none; }
+    outline: none;
+    margin: 0; }
   .post-form form input[type=text] {
     width: 100%;
     box-sizing: border-box;
@@ -1943,7 +1948,8 @@ input[type=button] {
     border: 1px solid #e0e0e0;
     vertical-align: bottom;
     border-bottom-width: 0px;
-    outline: none; }
+    outline: none;
+    margin: 0; }
   .post-form .controles-panal {
     background: #f9f9f9;
     padding: 15px;
@@ -2070,6 +2076,8 @@ input[type=button] {
   .post .owner .controls button:hover {
     color: #c0c0c0; }
   .post .owner .controls button:focus + .drop {
+    display: block; }
+  .post .owner .controls button:active + .drop {
     display: block; }
 .post .owner .controls .drop {
   background: #fff;
