@@ -70,6 +70,14 @@
   @include border-top-radius(5px)
   @include border-bottom-radius(5px)
   text-align: center
+  @media only screen and (max-width: 767px)
+    &.md
+      display: none
+  @media only screen and (min-width: 768px)
+    &.mobile
+      display: none
+
+
   input
     display: block
     width: 100%
