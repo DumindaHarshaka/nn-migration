@@ -13,6 +13,7 @@ var router = new Router();
 // router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 // router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/',upload.img_upload.array('file'),controller.create);
+router.post('/find_one',controller.findOne);
 router.get('/',controller.findAll);
 router.put('/:id',controller.update);
 // router.get('/verify/:id', controller.verify);

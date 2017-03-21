@@ -103,6 +103,11 @@ angular
         controller: 'ForestCtrl',
         controllerAs: 'forest'
       })
+      .when('/post/:post_id', {
+        templateUrl: 'views/post.html',
+        controller: 'PostCtrl',
+        controllerAs: 'post'
+      })
       .otherwise({
         redirectTo: '/'
       });

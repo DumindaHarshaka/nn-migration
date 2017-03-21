@@ -1,71 +1,276 @@
-/*
-Error: Undefined mixin 'container'.
-        on line 2 of styles/sass/home.sass, in `container'
-        from line 2 of styles/sass/home.sass
+.container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-top: 80px; }
+  .container p {
+    font-size: 14px; }
+  .container .hero {
+    width: 100%;
+    display: inline-block;
+    font-size: 16px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background: #fff;
+    padding: 40px;
+    margin-top: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid #e0e0e0; }
+    @media only screen and (min-width: 768px) {
+      .container .hero {
+        width: 32.66667%;
+        margin-left: 0%;
+        margin-right: 1%;
+        margin-right: 1; } }
+    .container .hero .img {
+      width: 100%;
+      display: inline-block;
+      font-size: 16px;
+      box-sizing: border-box;
+      vertical-align: top; }
+      @media only screen and (min-width: 768px) {
+        .container .hero .img {
+          width: 100%;
+          margin-left: 0%;
+          margin-right: 1%;
+          margin-right: 1; } }
+      .container .hero .img img {
+        width: 100%; }
+      .container .hero .img .text1 {
+        width: 100%;
+        display: inline-block;
+        font-size: 16px;
+        box-sizing: border-box;
+        vertical-align: top;
+        padding-left: 10px; }
+        @media only screen and (min-width: 768px) {
+          .container .hero .img .text1 {
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 1%;
+            margin-right: 1; } }
+        .container .hero .img .text1 h1 {
+          color: #50AD65;
+          font-size: 40px;
+          font-weight: 500;
+          margin: 0; }
+        .container .hero .img .text1 h2 {
+          color: #5B5B5B;
+          font-size: 36px;
+          font-weight: 300;
+          margin: 0; }
+      .container .hero .img .text2 {
+        width: 100%;
+        display: inline-block;
+        font-size: 16px;
+        box-sizing: border-box;
+        vertical-align: top; }
+        @media only screen and (min-width: 768px) {
+          .container .hero .img .text2 {
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 1%;
+            margin-right: 0; } }
+  .container .sections {
+    width: 100%;
+    display: inline-block;
+    font-size: 16px;
+    box-sizing: border-box;
+    vertical-align: top; }
+    @media only screen and (min-width: 768px) {
+      .container .sections {
+        width: 49.5%;
+        margin-left: 0%;
+        margin-right: 1%;
+        margin-right: 1; } }
+  .container .green-ex {
+    width: 100%;
+    display: inline-block;
+    font-size: 16px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background: #fff;
+    padding: 40px;
+    margin-top: 10px;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px; }
+    @media only screen and (min-width: 768px) {
+      .container .green-ex {
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 1%;
+        margin-right: 0; } }
+    .container .green-ex .img {
+      width: 100%;
+      display: inline-block;
+      font-size: 16px;
+      box-sizing: border-box;
+      vertical-align: top; }
+      @media only screen and (min-width: 768px) {
+        .container .green-ex .img {
+          width: 49.5%;
+          margin-left: 0%;
+          margin-right: 1%;
+          margin-right: 1; } }
+      .container .green-ex .img img {
+        width: 100%; }
+  .container .forest {
+    width: 100%;
+    display: inline-block;
+    font-size: 16px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background: #fff;
+    padding: 40px;
+    margin-top: 10px;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px; }
+    @media only screen and (min-width: 768px) {
+      .container .forest {
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 1%;
+        margin-right: 0; } }
+    .container .forest .img {
+      width: 100%;
+      display: inline-block;
+      font-size: 16px;
+      box-sizing: border-box;
+      vertical-align: top; }
+      @media only screen and (min-width: 768px) {
+        .container .forest .img {
+          width: 49.5%;
+          margin-left: 0%;
+          margin-right: 1%;
+          margin-right: 1; } }
+      .container .forest .img img {
+        width: 100%; }
 
-1: .container
-2:   @include container()
-3:   margin-top: 80px
-4:   p
-5:     font-size: 14px
-6:   .hero
-7: 
+.login {
+  width: 100%;
+  display: inline-block;
+  font-size: 16px;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding: 5px;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: center; }
+  @media only screen and (min-width: 768px) {
+    .login {
+      width: 15.83333%;
+      margin-left: 0%;
+      margin-right: 1%;
+      margin-right: 0; } }
+  @media only screen and (max-width: 767px) {
+    .login.md {
+      display: none; } }
+  @media only screen and (min-width: 768px) {
+    .login.mobile {
+      display: none; } }
+  .login input {
+    display: block;
+    width: 100%;
+    margin: 0px;
+    box-sizing: border-box;
+    border: 2px solid #50AD65;
+    font-size: 16px; }
+    .login input:disabled {
+      opacity: 0.5; }
+    .login input:focus {
+      outline: none; }
+    .login input:first-child {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      font-size: 12px;
+      padding: 2px; }
+    .login input:nth-child(2) {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top: 0px;
+      border-bottom: 0px;
+      font-size: 12px;
+      padding: 2px; }
+    .login input:last-child {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background: #50AD65;
+      color: #fff; }
+  .login a {
+    text-decoration: none;
+    color: #50AD65; }
 
-Backtrace:
-styles/sass/home.sass:2:in `container'
-styles/sass/home.sass:2
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:351:in `block in visit_mixin'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `block in with_mixin'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `with_mixin'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:349:in `visit_mixin'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:331:in `block in watch'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `call'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `on_change'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:254:in `call'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined mixin 'container'.\A         on line 2 of styles/sass/home.sass, in `container'\A         from line 2 of styles/sass/home.sass\A \A 1: .container\A 2:   @include container()\A 3:   margin-top: 80px\A 4:   p\A 5:     font-size: 14px\A 6:   .hero\A 7: "; }
+.start {
+  width: 100%;
+  display: inline-block;
+  font-size: 16px;
+  box-sizing: border-box;
+  vertical-align: top; }
+  @media only screen and (min-width: 768px) {
+    .start {
+      width: 100%;
+      margin-left: 0%;
+      margin-right: 1%;
+      margin-right: 0; } }
+  .start .flex {
+    text-align: left; }
+    .start .flex a {
+      -webkit-transition: all 0.5s ease;
+              transition: all 0.5s ease;
+      font-size: 14px;
+      color: #50AD65;
+      background: #fff;
+      border: 2px solid #50AD65;
+      border-radius: 8px;
+      padding: 10px 20px;
+      text-decoration: none;
+      white-space: nowrap; }
+      .start .flex a:hover {
+        color: #fff;
+        background: #50AD65; }
+      .start .flex a:focus {
+        outline: none; }
+
+.text1 {
+  width: 100%;
+  display: inline-block;
+  font-size: 16px;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding-left: 10px; }
+  @media only screen and (min-width: 768px) {
+    .text1 {
+      width: 49.5%;
+      margin-left: 0%;
+      margin-right: 1%;
+      margin-right: 0; } }
+  .text1 h1 {
+    color: #50AD65;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0; }
+  .text1 h2 {
+    color: #5B5B5B;
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0; }

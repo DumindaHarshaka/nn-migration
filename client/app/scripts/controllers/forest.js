@@ -7,7 +7,7 @@
  * # ForestCtrl
  * Controller of the naturenurtureApp
  */
-angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload, $http, config, auth, $timeout, $location, $window) {
+angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload, $http, config, auth, $timeout, $location, $window, post) {
   $scope.$on('$viewContentLoaded', function(event) {
     $window.ga('send', 'pageview', { page: $location.url() });
   });
@@ -24,6 +24,14 @@ angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upl
 
   }
   this.init();
+  //
+  //
+  // generate post url
+  //
+  //
+  $scope.postUrl = function (post) {
+    return (config.baseUrl + 'post/'+ post._id)
+  }
   //
   //
   //collapse sign up form

@@ -164,5 +164,40 @@ module.exports = {
 
     });
 
+  },
+  findOne: function(req, res) {
+    Post.findOne({
+      _id: req.body.post_id,
+      type: {
+        $nin: ['comment']
+      },
+      status: {
+        $nin: ['deleted', 'closed', 'pending']
+      }
+
+    }, null, {
+      sort: {
+        createdAt: -1
+      }
+    }).select('-status').populate('comments.comment').populate('owner', '_id name').exec(function(err, data) {
+      if (err) {
+        res.send({error: true, message: err});
+        return;
+      } else {
+
+        return User.populate(data, {
+          path: 'comments.comment.owner',
+          select: '_id name',
+          // <== We are populating phones so we need to use the correct model, not User
+        }, function(err, doc) {
+          if (err) {
+            res.send({error: true, message: err});
+            return;
+          }
+          res.send(doc);
+        });
+      }
+
+    })
   }
 }
