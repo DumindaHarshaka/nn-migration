@@ -2326,7 +2326,9 @@ input[type=button] {
       width: 768px; } }
 
 .post .signup-request {
-  margin-top: 40px; }
+  margin-top: 20px;
+  padding: 10px;
+  box-sizing: border-box; }
   .post .signup-request p span {
     font-size: 18px; }
     .post .signup-request p span a {
@@ -2356,10 +2358,12 @@ input[type=button] {
   text-align: center; }
   .post .tiles .tile-container {
     display: inline-block;
-    text-align: center; }
+    text-align: center;
+    width: 100%; }
     .post .tiles .tile-container .tile-align {
       display: inline-block;
-      text-align: center; }
+      text-align: center;
+      width: 100%; }
       @media only screen and (min-width: 768px) {
         .post .tiles .tile-container .tile-align {
           text-align: left; } }
