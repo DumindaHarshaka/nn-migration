@@ -9,7 +9,7 @@
  */
 angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upload, $http, config, auth, $timeout, $location, $window, post) {
   $scope.$on('$viewContentLoaded', function(event) {
-    $window.ga('send', 'pageview', { page: $location.url() });
+    $window.ga('send', 'pageview', {page: $location.url()});
   });
   this.init = function() {
 
@@ -26,11 +26,41 @@ angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upl
   this.init();
   //
   //
+  // submit comment
+  //
+  //
+
+  $scope.submit_comment = function(post) {
+    if (post.new_comment && (post.new_comment.body.trim() !== "")) {
+      auth.getCurrentUser().then(function(res) {
+        post.new_comment.pending = true;
+        post.new_comment.owner = res._id;
+        post.new_comment.type = 'comment';
+        post.new_comment.parent = post._id;
+        post.new_comment.discussion_id = post._id;
+        //console.log(post.new_comment);
+        $http.post(config.baseUrl + 'api/post/comment', {post: post.new_comment}).then(function(res) {
+          //console.log(res);
+          //$scope.posts.unshift(res.data);
+          res.data.createdAt = new Date();
+          post.comments.push(res.data)
+          post.new_comment.pending = false;
+          post.new_comment = {}
+        });
+        //post.new_comment = {}
+      })
+    }
+    else {
+      //console.log('empty');
+    }
+  }
+  //
+  //
   // generate post url
   //
   //
-  $scope.postUrl = function (post) {
-    return (config.baseUrl + 'post/'+ post._id)
+  $scope.postUrl = function(post) {
+    return (config.baseUrl + 'post/' + post._id)
   }
   //
   //
@@ -209,7 +239,6 @@ angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upl
   $scope.newlineToBr = function(str) {
     return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
   }
-
 
   //
   //

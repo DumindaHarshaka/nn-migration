@@ -2,13 +2,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 //child schema - Responses
-var commentSchema = new Schema({
-  comment: {
-    type: Schema.Types.ObjectId,
-    ref: 'Post'
-  }
 
-})
 var imageSchema = new Schema({
   url: {
     type: String,
@@ -82,7 +76,10 @@ var postSchema = new Schema({
     required: false,
     default: 'active'
   },
-  comments: [commentSchema]
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Post'
+  }]
 }, {timestamps: true});
 
 //

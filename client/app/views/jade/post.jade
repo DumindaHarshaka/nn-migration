@@ -39,4 +39,27 @@
           span <i class="fa fa-facebook-square" aria-hidden="true"></i> 
           span.txt Share
           
-    
+    .comments.round
+      
+        
+      ul(ng-show="post.comments && post.comments.length")
+        li(ng-repeat="comment in post.comments") 
+          .comment 
+            .avatar
+              img(class='img',src='/images/avatar.svg')
+            .text
+              .meta
+                span.owner {{comment.owner.name}}  
+                span {{comment.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}
+              .content 
+                p {{comment.body}}
+      form(ng-submit="submit_comment(post)", ng-hide="!isLoggedIn()")
+        p Press enter to post your comment
+        input(type="text", placeholder="Write your comment...", ng-model="post.new_comment.body")
+        input(type="submit" ng-disabled="post.new_comment.pending", style="position: absolute; left: -9999px; width: 1px; height: 1px;")
+          
+    .signup-request(ng-hide="isLoggedIn()")
+      p 
+        span 
+          a(href="/signup" target="_blank") Signup
+        span  to post a comment    

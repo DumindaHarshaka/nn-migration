@@ -172,53 +172,25 @@
           span.txt Share
       
           
-      .comments(ng-show="post.comments && post.comments.length")
-        ul
-          li 
+      .comments
+        
+          
+        ul(ng-show="post.comments && post.comments.length")
+          li(ng-repeat="comment in post.comments") 
             .comment 
               .avatar
                 img(class='img',src='/images/avatar.svg')
               .text
                 .meta
-                  span.owner දුමින්ද විජේසිංහ  
-                  span 23/02/2016 02:34 PM
+                  span.owner {{comment.owner.name}}  
+                  span {{comment.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}
                 .content 
-                  p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            ul
-              li 
-                .comment 
-                  .avatar
-                    img(class='img',src='/images/avatar.svg')
-                  .text
-                    .meta
-                      span.owner දුමින්ද විජේසිංහ  
-                      span 23/02/2016 02:34 PM
-                    .content 
-                      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    
-                ul
-                  li 
-                    .comment 
-                      .avatar
-                        img(class='img',src='/images/avatar.svg')
-                      .text
-                        .meta
-                          span.owner දුමින්ද විජේසිංහ  
-                          span 23/02/2016 02:34 PM
-                        .content 
-                          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              li 
-                .comment 
-                  .avatar
-                    img(class='img',src='/images/avatar.svg')
-                  .text
-                    .meta
-                      span.owner දුමින්ද විජේසිංහ  
-                      span 23/02/2016 02:34 PM
-                    .content 
-                      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      
-
+                  p {{comment.body}}
+        form(ng-submit="submit_comment(post)", ng-hide="!isLoggedIn()")
+          p Press enter to post your comment
+          input(type="text", placeholder="Write your comment...", ng-model="post.new_comment.body")
+          input(type="submit" ng-disabled="post.new_comment.pending", style="position: absolute; left: -9999px; width: 1px; height: 1px;")
+            
       
 
 

@@ -123,14 +123,14 @@ module.exports = {
       sort: {
         createdAt: -1
       }
-    }).select('-status').populate('comments.comment').populate('owner', '_id name').exec(function(err, data) {
+    }).select('-status').populate('comments').populate('owner', '_id name').exec(function(err, data) {
       if (err) {
         res.send({error: true, message: err});
         return;
       } else {
 
         return User.populate(data, {
-          path: 'comments.comment.owner',
+          path: 'comments.owner',
           select: '_id name',
           // <== We are populating phones so we need to use the correct model, not User
         }, function(err, docs) {
@@ -179,14 +179,14 @@ module.exports = {
       sort: {
         createdAt: -1
       }
-    }).select('-status').populate('comments.comment').populate('owner', '_id name').exec(function(err, data) {
+    }).select('-status').populate('comments').populate('owner', '_id name').exec(function(err, data) {
       if (err) {
         res.send({error: true, message: err});
         return;
       } else {
 
         return User.populate(data, {
-          path: 'comments.comment.owner',
+          path: 'comments.owner',
           select: '_id name',
           // <== We are populating phones so we need to use the correct model, not User
         }, function(err, doc) {
@@ -199,5 +199,37 @@ module.exports = {
       }
 
     })
+  },
+  createComment: function(req, res) {
+
+    if (req.body.post.type === 'comment') {
+      console.log(req.body);
+      //res.send(req.body)
+      Post.create(req.body.post, function(err, result) {
+
+        if (!err) {
+          console.log(result);
+          Post.findByIdAndUpdate(req.body.post.parent, { $push: { comments: result.id }}, { new: true }, function (err, post) {
+            if (err) return res.send({error: true, message: err});
+
+            User.populate(req.body.post, {
+              path: 'owner',
+              select: '_id name',
+              // <== We are populating phones so we need to use the correct model, not User
+            }, function(err, doc) {
+              if (err) {
+                res.send({error: true, message: err});
+                return;
+              }
+              res.send(doc);
+            });
+
+          });
+        }else {
+          console.log(err);
+          return res.status(400).send(err);
+        }
+      })
+    }
   }
 }

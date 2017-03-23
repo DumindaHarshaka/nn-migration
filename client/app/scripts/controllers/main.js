@@ -18,7 +18,7 @@ angular.module('naturenurtureApp').controller('MainCtrl', function($scope, $http
         console.info(res);
         //$window.location.reload();
 
-        $location.path("/green-exchange");
+        $location.path("/forest");
       });
     });
   }

@@ -341,19 +341,36 @@
 .post .comments {
   border-top: 1px solid #e0e0e0;
   background: #f9f9f9; }
+  .post .comments form input[type="text"] {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+    border: 0px;
+    outline: none;
+    box-sizing: border-box; }
+  .post .comments form p {
+    font-size: 10px;
+    margin: 0px;
+    padding: 4px;
+    box-sizing: border-box;
+    color: #50AD65; }
   .post .comments li ul {
     margin-left: 40px;
     border-left: 2px solid #50AD65;
     padding-left: 10px; }
   .post .comments ul {
-    padding: 15px;
+    padding: 5px;
+    padding-bottom: 3px;
+    padding-top: 3px;
     margin: 0px; }
     .post .comments ul li {
-      display: block; }
+      display: block;
+      border-bottom: 1px solid #e5e5e5; }
       .post .comments ul li .comment .avatar {
         position: absolute;
         width: 30px;
-        display: inline-block; }
+        display: inline-block;
+        padding: 5px; }
         .post .comments ul li .comment .avatar img {
           width: 100%;
           height: auto; }
@@ -365,10 +382,12 @@
         vertical-align: top;
         padding-left: 40px; }
         .post .comments ul li .text .meta span {
-          font-size: 12px; }
+          font-size: 10px; }
           .post .comments ul li .text .meta span.owner {
+            font-size: 12px;
             color: #50AD65; }
         .post .comments ul li .text .content p {
           font-size: 13px;
           margin: 0px;
-          margin-top: 5px; }
+          margin-top: 3px;
+          margin-bottom: 5px; }

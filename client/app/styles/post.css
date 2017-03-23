@@ -8,6 +8,18 @@
     .post-container {
       width: 768px; } }
 
+.post .signup-request {
+  margin-top: 40px; }
+  .post .signup-request p span {
+    font-size: 18px; }
+    .post .signup-request p span a {
+      color: #50AD65; }
+
+.post .comments.round {
+  margin-top: 10px;
+  border-radius: 5px;
+  overflow: hidden; }
+
 .post .post-title {
   text-align: center;
   padding: 0px 5px; }
