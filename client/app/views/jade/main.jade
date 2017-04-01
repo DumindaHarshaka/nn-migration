@@ -29,6 +29,23 @@
         p A thousand flowers blooming and a million people blossoming as a result of engaging with nature. 
         p People committing a tiny part of themselves to a collective that nurtures all and belongs to all and is led by none. 
   .sections  
+    .top-story(ng-repeat="post in top_stories")
+      a(href="{{postUrl(post)}}", target="_blank")  
+        .image(ng-style="{'background-image':'url(../../'+post.images[0].url+')'}", ng-class="post.images.length === 0 ? 'img-collapse' : ''")
+          //img(src="/images/green_exchange.png", alt="")
+          .owner 
+            .image
+              img(src="/images/avatar.svg", alt="")
+            .details  
+              p {{post.owner.name}} 
+                span  on The Forest
+                span.top TOP STORIES 
+              p.date {{post.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}
+              
+          
+        .text
+          h1 {{post.subject}}
+          p(ng-bind-html="post.body | words: 20")
     .green-ex
       .img
         img(src="/images/green_exchange.png", alt="")

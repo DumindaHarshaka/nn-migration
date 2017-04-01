@@ -144,6 +144,30 @@ module.exports = {
 
     })
   },
+  findTopStories: function(req, res) {
+    Post.find({
+      type: {
+        $nin: ['comment']
+      },
+      status: {
+        $nin: ['deleted', 'closed', 'pending']
+      },
+      top: true
+
+    }, null, {
+      sort: {
+        createdAt: -1
+      }
+    }).select('-status').populate('owner', '_id name').exec(function(err, data) {
+      if (err) {
+        res.send({error: true, message: err});
+        return;
+      } else {
+        res.send(data);
+      }
+
+    })
+  },
   update: function(req, res) {
     console.log(req.body);
     Post.findOneAndUpdate({

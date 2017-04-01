@@ -79,7 +79,12 @@ var postSchema = new Schema({
   comments: [{
     type: Schema.Types.ObjectId,
     ref: 'Post'
-  }]
+  }],
+  top: {
+    type: Boolean,
+    required: false,
+    default: false
+  }
 }, {timestamps: true});
 
 //

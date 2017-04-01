@@ -16,6 +16,7 @@ router.post('/',upload.img_upload.array('file'),controller.create);
 router.post('/find_one',controller.findOne);
 router.post('/comment',controller.createComment);
 router.get('/',controller.findAll);
+router.get('/top_stories',controller.findTopStories);
 router.put('/:id',controller.update);
 // router.get('/verify/:id', controller.verify);
 // router.get('/discard/:id', controller.discard);
