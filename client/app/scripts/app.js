@@ -23,7 +23,7 @@ angular
     // 'ui.tinymce'
   ])
   .controller('NavbarController', function ($scope,$location,auth) {
-    $scope.getClass = function(path) {
+    $scope.getNavClass = function(path) {
       //console.log($location.path().substr(0, path.length));
       //console.log(path);
       return ($location.path().substr(0, path.length) === path) ? 'active' : '';

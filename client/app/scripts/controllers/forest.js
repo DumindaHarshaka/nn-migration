@@ -111,7 +111,7 @@ angular.module('naturenurtureApp').controller('ForestCtrl', function($scope, Upl
     console.log("efs");
   }
 
-  $scope.submit = function() {
+  $scope.submitPost = function() {
     $scope.postLoading = true;
     console.log('submitting...');
     if ($scope.postForm.file.$valid && $scope.files && $scope.files.length) {

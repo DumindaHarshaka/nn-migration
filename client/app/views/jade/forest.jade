@@ -91,7 +91,7 @@
         p We have sent you a verification email to the email address you provided and it should be in your inbox shortly.
     .post-form(ng-hide="!isLoggedIn()" ng-class="new_post ? 'new-post-active' : '' ")
       button(type="button" ng-click = "new_post  = false").close <i class="fa fa-times-circle" aria-hidden="true"></i>
-      form(name="postForm", ng-submit="submit()")
+      form(name="postForm", ng-submit="submitPost()")
         input(type="text", placeholder="Subject...", ng-model="post.subject", maxlength="100")
         textarea( name="name", rows="4", ng-model="post.body",placeholder="Write your post..." , maxlength="10000" required)
         .controles-panal

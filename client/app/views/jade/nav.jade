@@ -13,13 +13,13 @@ button(type="button" ng-click="toggle_menu = toggle_menu ? false : true" ng-clas
       a(ui-sref='admin') Admin
 
   ul 
-    li(ui-sref-active='active' ng-class="getClass('/green-exchange')")
+    li(ui-sref-active='active' ng-class="getNavClass('/green-exchange')")
       a(href='/green-exchange') Green Exchange
 
-    li(ui-sref-active='active' ng-class="getClass('/forest')")
+    li(ui-sref-active='active' ng-class="getNavClass('/forest')")
       a(href='/forest') The Forest 
 
-    li(ng-hide='isLoggedIn()', ui-sref-active='active' ng-class="getClass('/signup')")
+    li(ng-hide='isLoggedIn()', ui-sref-active='active' ng-class="getNavClass('/signup')")
       a(href='/signup') Sign up
 
     li(ng-hide='isLoggedIn()', ui-sref-active='active')
@@ -45,13 +45,13 @@ button(type="button" ng-click="toggle_menu = toggle_menu ? false : true" ng-clas
       a(ui-sref='admin') Admin
 
   ul 
-    li(ui-sref-active='active' ng-class="getClass('/green-exchange')")
+    li(ui-sref-active='active' ng-class="getNavClass('/green-exchange')")
       a(href='/green-exchange') Green Exchange
 
-    li(ui-sref-active='active' ng-class="getClass('/forest')")
+    li(ui-sref-active='active' ng-class="getNavClass('/forest')")
       a(href='/forest') The Forest 
 
-    li(ng-hide='isLoggedIn()', ui-sref-active='active' ng-class="getClass('/signup')")
+    li(ng-hide='isLoggedIn()', ui-sref-active='active' ng-class="getNavClass('/signup')")
       a(href='/signup') Sign up
 
     li(ng-hide='isLoggedIn()', ui-sref-active='active')
