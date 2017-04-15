@@ -130,6 +130,47 @@ router.post('/', function(req, res) {
 });
 //
 //
+// create a submition
+//
+//
+router.post('/submition', function(req, res) {
+
+  Plant.create(req.body, function(err, dt) {
+    //console.log(req.body);
+    //console.log(dt);
+    if (err) {
+      res.status(500).send({error: true, message: err});
+
+    } else {
+
+      Plant.findOne({_id: dt._id}).populate('owner', '_id name').exec(function(err, data) {
+        if (err) {
+          res.status(500).send({error: true, message: err});
+          return;
+        }
+        if (req.body.instant) {
+          var ins_data = data;
+          ins_data.verification_link = config.url + 'api/plant/verify_instant_post/' + crypto.encryptText(data._id.toString());
+          ins_data.offer_text = ((ins_data.type == 'Request') ? 'requested ' : 'offered ') + ins_data.quantity + ' '+ ins_data.name + ((ins_data.quantity>1)? ' plants':' plant');
+          console.log(ins_data);
+          email.send('instant_post_verification', ins_data, {
+            from: config.email_from,
+            to: ins_data.owner_email,
+            subject: 'Instant post verification'
+          }).then(function(body) {
+            console.log('instant post verification mail sent');
+          }).catch(function(err) {
+            console.log('mail failed');
+            console.log(err);
+          })
+        }
+        res.send(data);
+      })
+    }
+  })
+});
+//
+//
 ///verify_instant_post
 //
 //

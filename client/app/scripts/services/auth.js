@@ -113,7 +113,7 @@ angular.module('naturenurtureApp').factory('auth', function($location, $http, $c
         return "Not logged in."
       }
     },
-    isLoggedIn() {
+    isLoggedIn: function() {
 
       return currentUser.hasOwnProperty('role');
 
