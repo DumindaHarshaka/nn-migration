@@ -13,6 +13,9 @@ button(type="button" ng-click="toggle_menu = toggle_menu ? false : true" ng-clas
       a(ui-sref='admin') Admin
 
   ul 
+    li(ui-sref-active='active' ng-class="getNavClass('/movement')")
+      a(href='/movement') Movement
+      
     li(ui-sref-active='active' ng-class="getNavClass('/green-exchange')")
       a(href='/green-exchange') Green Exchange
 
@@ -45,6 +48,9 @@ button(type="button" ng-click="toggle_menu = toggle_menu ? false : true" ng-clas
       a(ui-sref='admin') Admin
 
   ul 
+    li(ui-sref-active='active' ng-class="getNavClass('/movement')")
+      a(href='/movement') Movement
+      
     li(ui-sref-active='active' ng-class="getNavClass('/green-exchange')")
       a(href='/green-exchange') Green Exchange
 

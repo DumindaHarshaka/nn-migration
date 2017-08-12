@@ -45,6 +45,16 @@ var plantSchema = new Schema({
     required: false,
     default: false
   },
+  image:{
+    type: String,
+    required: function() {
+      if (this.type == 'Movement') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
   owner_name: {
     type: String,
     required: function() {

@@ -108,6 +108,11 @@ angular
         controller: 'PostCtrl',
         controllerAs: 'post'
       })
+      .when('/movement', {
+        templateUrl: 'views/movement.html',
+        controller: 'MovementCtrl',
+        controllerAs: 'movement'
+      })
       .otherwise({
         redirectTo: '/'
       });
