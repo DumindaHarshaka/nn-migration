@@ -202,10 +202,10 @@ router.post('/movement',upload.img_upload.array('file'),function(req, res) {
               ins_data.verification_link = config.url + 'api/plant/verify_instant_post/' + crypto.encryptText(data._id.toString());
               ins_data.offer_text = "Planted" + ' ' + ins_data.quantity + ' ' + ins_data.name + ((ins_data.quantity>1)? ' plants':' plant');
               console.log(ins_data);
-              email.send('instant_post_verification', ins_data, {
+              email.send('instant_movement_verification', ins_data, {
                 from: config.email_from,
                 to: ins_data.owner_email,
-                subject: 'New plant verification'
+                subject: 'Thank you for joining us'
               }).then(function(body) {
                 console.log('New plant verification mail sent');
               }).catch(function(err) {
@@ -222,10 +222,10 @@ router.post('/movement',upload.img_upload.array('file'),function(req, res) {
                   ins_data.verification_link = config.url + 'api/plant/verify_instant_post/' + crypto.encryptText(data._id.toString());
                   ins_data.offer_text = "Planted" + ' ' + ins_data.quantity + ' ' + ins_data.name + ((ins_data.quantity>1)? ' plants':' plant');
                   console.log(ins_data);
-                  email.send('instant_post_verification', ins_data, {
+                  email.send('instant_movement_verification', ins_data, {
                     from: config.email_from,
                     to: user.email,
-                    subject: 'New plant verification'
+                    subject: 'Thank you for joining us'
                   }).then(function(body) {
                     console.log('New plant verification mail sent');
                   }).catch(function(err) {

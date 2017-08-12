@@ -6,13 +6,18 @@
         input(type="text", class="name", ng-class="{ 'has-error' : pform.plantForm.name.$invalid && !pform.plantForm.name.$pristine }" name="name", ng-model="plant.name", placeholder="Name of the plant" required)
         input(type="text", name="description", ng-class="{ 'has-error' : pform.plantForm.description.$invalid && !pform.plantForm.description.$pristine }", ng-model="plant.description", placeholder="Description")    
         // number of plants will be 1
-        input(places-auto-complete size=80 ng-model="plant.address" component-restrictions="{country:'lk'}" types="{{types}}" on-place-changed="movement.placeChanged()", ng-class="{ 'has-error' : pform.plantForm.location.$invalid && !pform.plantForm.location.$pristine }", name="location", class="location" placeholder="Location" required) 
-        .map  
-          ng-map(class="map")   
+        input(places-auto-complete size=80 ng-model="plant.address" component-restrictions="{country:'lk'}" types="{{types}}" on-place-changed="movement.placeChanged()", ng-class="{ 'has-error' : pform.plantForm.location.$invalid && !pform.plantForm.location.$pristine }", name="location", class="location" placeholder="Location") 
+        //- .map  
+        //-   ng-map(class="map")   
         .email(ng-hide="isLoggedIn()") 
-          p Provide your contact details so you can write about your plant later
-          input(type="text", name="owner", ng-class="{ 'has-error' : pform.plantForm.owner.$invalid && !pform.plantForm.owner.$pristine }", ng-model="plant.owner_name", placeholder="Name" ng-required="!isLoggedIn()")
-          input(type="email", name="email", ng-class="{ 'has-error' : pform.plantForm.email.$invalid && !pform.plantForm.email.$pristine }", ng-model="plant.owner_email", placeholder="Email" ng-required="!isLoggedIn()")  
+          input(type="text", name="owner", ng-class="{ 'has-error' : pform.plantForm.owner.$invalid && !pform.plantForm.owner.$pristine }", ng-model="plant.owner_name", placeholder="Name")
+          a(href="#" ng-click = "email_drop  = email_drop ? false : true")
+            p Click here to enter your email so you can follow up your plant later
+              span  <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+          
+          .hidden(ng-class="email_drop ? 'show' : ''")  
+            
+            input(type="email", name="email", ng-class="{ 'has-error' : pform.plantForm.email.$invalid && !pform.plantForm.email.$pristine }", ng-model="plant.owner_email", placeholder="Email")  
         .buttons  
           button(type="button", name="file", ngf-select ng-model="files" ngf-multiple="true", ngf-keep="false" ngf-max-size="5MB" ngf-dimensions="dim($file, $width, $height)") <i class="fa fa-picture-o" aria-hidden="true"></i> Photo
           input(type="submit", value="Post", ng-disabled="pform.plantForm.$invalid || plant.plantLoading || !files.length")
@@ -25,9 +30,9 @@
           img(class='img',src='/images/avatar.svg')
         .details
           h2(class='name')  {{post.owner.name ? post.owner.name : post.owner_name}}
-          p(class='action') has offered a new plant on 
+          p(class='action') has joined the
             span#marketplace 
-              strong Green Exchange
+              strong Movement
           p(class='date') {{post.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}
           
             

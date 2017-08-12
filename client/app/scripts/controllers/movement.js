@@ -39,6 +39,8 @@ angular.module('naturenurtureApp')
     }
     this.init();
 
+    $scope.email_drop = false;
+
     $scope.isLoggedIn = function() {
       //console.log(auth.isLoggedIn());
       return auth.isLoggedIn();
@@ -72,6 +74,7 @@ angular.module('naturenurtureApp')
         });
 
       }else {
+        // not demanding the username and email
         $scope.plant.instant = true;
         if ($scope.pform.plantForm.file.$valid && $scope.files && $scope.files.length) {
           $scope.uploadFiles($scope.files);
@@ -133,6 +136,7 @@ angular.module('naturenurtureApp')
         });
       }else {
         //$scope.plant.owner = res._id;
+        // not demanding email
         $scope.plant.instant = true;
         if (files && files.length) {
           console.log(files);

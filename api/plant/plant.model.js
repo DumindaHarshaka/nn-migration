@@ -18,7 +18,13 @@ var responsesSchema = new Schema({
 var plantSchema = new Schema({
   address: {
     type: String,
-    required: true,
+    required: function() {
+      if (this.type == 'Movement') {
+        return false;
+      } else{
+        return true;
+      }
+    },
     trim: true
   },
   name: {
@@ -68,7 +74,10 @@ var plantSchema = new Schema({
   owner_email: {
     type: String,
     required: function() {
-      if (this.instant) {
+      if (this.instant && this.type == 'Movement') {
+        return false;
+      }
+      else if (this.instant) {
         return true;
       } else {
         return false;
