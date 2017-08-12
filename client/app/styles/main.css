@@ -2882,6 +2882,13 @@ input[type=button] {
     box-sizing: border-box;
     width: calc(100%);
     vertical-align: top; }
+    .movement-submit .movement-form .preview .img-preview {
+      width: 200px;
+      height: 200px;
+      overflow: hidden; }
+      .movement-submit .movement-form .preview .img-preview img {
+        height: 100%;
+        width: auto; }
     .movement-submit .movement-form a {
       text-decoration: none; }
     .movement-submit .movement-form .hidden {
