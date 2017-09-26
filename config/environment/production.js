@@ -6,6 +6,8 @@ module.exports = {
   //global url
   url: 'http://www.naturenurture.lk/',
 
+  data_dir: process.env.OPENSHIFT_DATA_DIR,
+
   // Server IP
   ip:     process.env.OPENSHIFT_NODEJS_IP ||
           process.env.IP ||

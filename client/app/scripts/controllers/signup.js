@@ -8,7 +8,10 @@
  * Controller of the naturenurtureApp
  */
 angular.module('naturenurtureApp')
-  .controller('SignupCtrl', function ($scope,$http,config,auth) {
+  .controller('SignupCtrl', function ($scope,$http,config,auth, $location, $window) {
+    $scope.$on('$viewContentLoaded', function(event) {
+      $window.ga('send', 'pageview', {page: $location.url()});
+    });
     $scope.signUp = function() {
       $scope.user.name = $scope.user.first_name.toLowerCase();
       //console.log($scope.user);

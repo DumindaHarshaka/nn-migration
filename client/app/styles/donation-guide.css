@@ -78,7 +78,8 @@ body {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px; }
       .guide .donation-guide .text img {
-        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease;
         display: block;
         width: 100%;
         height: auto;
@@ -98,5 +99,3 @@ body {
         margin: 2px; }
         .guide .donation-guide .text p span.bold {
           font-weight: 600; }
-
-/*# sourceMappingURL=donation-guide.css.map */

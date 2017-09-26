@@ -16,10 +16,14 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMap'
+    'ngMap',
+    'ngFileUpload',
+    'truncate',
+    '720kb.socialshare',
+    // 'ui.tinymce'
   ])
   .controller('NavbarController', function ($scope,$location,auth) {
-    $scope.getClass = function(path) {
+    $scope.getNavClass = function(path) {
       //console.log($location.path().substr(0, path.length));
       //console.log(path);
       return ($location.path().substr(0, path.length) === path) ? 'active' : '';
@@ -39,6 +43,12 @@ angular
     $scope.logout = function() {
       console.log("logging out");
       auth.logout();
+    }
+    $scope.toggle_menu = false;
+    $scope.toggleMenu = function() {
+      if ($scope.toggle_menu) {
+        $scope.toggle_menu = false
+      }
     }
   })
   .config(function ($routeProvider,$locationProvider) {
@@ -87,6 +97,21 @@ angular
         templateUrl: 'views/reset_password.html',
         controller: 'ResetPasswordCtrl',
         controllerAs: 'resetPassword'
+      })
+      .when('/forest', {
+        templateUrl: 'views/forest.html',
+        controller: 'ForestCtrl',
+        controllerAs: 'forest'
+      })
+      .when('/post/:post_id', {
+        templateUrl: 'views/post.html',
+        controller: 'PostCtrl',
+        controllerAs: 'post'
+      })
+      .when('/movement', {
+        templateUrl: 'views/movement.html',
+        controller: 'MovementCtrl',
+        controllerAs: 'movement'
       })
       .otherwise({
         redirectTo: '/'
