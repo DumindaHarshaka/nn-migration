@@ -3,7 +3,7 @@ var fs = require('fs');
 var dot = require('dot');
 var config = require('../config/environment');
 
-var api_key = 'key-ef9f09e4f7e3c4c48b3928e3be4cae3b';
+var api_key = 'key-***********************';
 var domain = 'naturenurture.lk';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 var url = config.url;
