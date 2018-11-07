@@ -1,6 +1,6 @@
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
-    password = 'nnmartini';
+    password = '****';
 
 function encrypt(text){
   var cipher = crypto.createCipher(algorithm,password)
