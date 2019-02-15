@@ -24,7 +24,3 @@ module.exports = {
     return decrypt(text);
   }
 }
-
-// var hw = encrypt("hello world")
-// // outputs hello world
-// console.log(decrypt(hw));
